@@ -1,10 +1,10 @@
-
 \documentclass[14pt]{extarticle}
 \usepackage{fontspec}
 \usepackage{polyglossia} % use instead of babel
 \usepackage{pgfplots}
 \usepackage{float}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \setdefaultlanguage{hebrew}
 \setotherlanguage{english}
 \newfontfamily\hebrewfont[Script=Hebrew]{Arial}
@@ -123,7 +123,7 @@ $L=120cm$
     v = \sqrt{\frac{T}{\mu}} = \sqrt{\frac{150 \cdot 10^{-3} \cdot 9.81}{3.14 \cdot 10^{-4}}} = 68.457 \frac{m}{s}
 \end{equation*}
 
-לבסוף, כיוונו את הערך המולל ל $70 [Hz]$, כך שלא מתקבל גל עומד. לאחר מכן הקטנו את אורך המיתר עד קבלת גל עומד עם שני מקטעים, האורך  שהתקבל הוא $L=0.98[m]$.
+לבסוף, כיוונו את תדר המחולל ל $70 [Hz]$, כך שלא מתקבל גל עומד. לאחר מכן הקטנו את אורך המיתר עד קבלת גל עומד עם שני מקטעים, האורך  שהתקבל הוא $L=0.98[m]$.
 כאשר מתקבל גל עומד עם שני מקטעים ($n=2$), ואורך המיתר הוא $L=0.98[m]$, מתקיים:
 \begin{equation*}
     \lambda = \frac{2L}{n} = \frac{2 \cdot 0.98}{2} = 0.98 \, m
@@ -212,7 +212,7 @@ $L=120cm$
 בעזרת תוצאות אלו, ושימוש בנוסחא (1), מצאנו את צפיפות המיתר.
 
 \subsection*{תוצאות וניתוח}
-תוצאות מדידת התדירויות עבורן התקבל גלמ עומד בעל ארבע מקטעים מתוארים בטבלה הבאה:
+תוצאות מדידת התדירויות עבורן התקבל גל עומד בעל ארבע מקטעים מתוארים בטבלה הבאה:
 
 \begin{table}[H]
     \centering
@@ -235,7 +235,7 @@ $L=120cm$
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{frequency_squared_to_mass.jpg}
-    \caption{קו מגמה עבור תדירויות המחולל}
+    \caption{קו מגמה עבור תדירויות המחולל כפונקציה של המסה התלויה}
 \end{figure}
 
 שיפוע הגרף שהתקבל הוא 84007.7. ע"פ נוסחא (1) נוכל למצוא את צפיפות המיתר:
@@ -378,9 +378,9 @@ $L=120cm$
 \begin{center}
     \begin{equation*}
         \begin{aligned}
-            f^2 = \frac{g}{\mu} (\frac{n}{2L})^2 \cdot m               \\
+            f^2 = \frac{g}{\mu} (\frac{n}{2L})^2 \cdot m              \\
             \frac{g}{\mu} (\frac{n}{2L})^2 = 6849.3                   \\
-            n=4, L=1.2[m], g=9.81[\frac{m}{s^2}]                       \\
+            n=4, L=1.2[m], g=9.81[\frac{m}{s^2}]                      \\
             \mu = \frac{4^2 \cdot 9.81}{6849.3 \cdot (2 \cdot 1.2)^2} \\
             \mu = 3.978 * 10^{-3} [\frac{kg}{m}]
         \end{aligned}
@@ -389,7 +389,7 @@ $L=120cm$
 
 השגיאה היחסית ביחס למדידה בסעיף 1 היא:
 \begin{equation*}
-\frac{|3.978 * 10^{-3} - 4.254 * 10^{-3}|}{4.254 * 10^{-3}} \cdot 100\% \approx 6.48\%
+    \frac{|3.978 * 10^{-3} - 4.254 * 10^{-3}|}{4.254 * 10^{-3}} \cdot 100\% \approx 6.48\%
 \end{equation*}
 
 \subsection*{דיון ומסקנות}
@@ -410,9 +410,29 @@ $L=120cm$
 לסיכום, מהירות הגל במיתר נקבעת ע"י מתיחות המיתר $T$ ועל ידי הצפיפות הקווית שלו $\mu$. אורך המיתר, אופן התנודה ותדירות אינם משפיעים ישירות על מהירות הגל, אבל קובעים את התנאים להיווצרות גל עומד.
 
 \section*{שאלה בונוס}
-התבקשנו להוכיח את נוסחא (3) ברקע התיאורטי:
+התבקשנו להוכיח את נוסחא (3) ברקע התיאורטי: $L=n\frac{\lambda}{2}$
+
+יהי שני גלים בעלי  אמפליטודה זהה מתקדמים לכיוונים   שונים, נחשב את הסופרפוזיציה שלהם:
 \begin{equation*}
-L=n\frac{\lambda}{2}
+    y(x,t) = Asin(kx-wt) + Asin(kx+wt) = 2Asin(kx)cos(wt)
 \end{equation*}
+נדרוש שבקצוות יתקיים $y(0,t)=0$ ו- $y(L,t)=0$.
+\begin{center}
+    \begin{equation*}
+        \begin{aligned}
+            y(0,t) = 2A\sin(0)\cos(wt) = 0 \\
+            y(L,t) = 2A\sin(kL)\cos(wt) = 0 \Rightarrow \sin(kL) = 0 \Rightarrow kL = n\pi, n \in \mathbb{Z}
+        \end{aligned}
+    \end{equation*}
+\end{center}
+עבור $k=\frac{2\pi}{\lambda}$, נקבל:
+
+\begin{center}
+    \begin{equation*}
+        \begin{aligned}
+            kL = n\pi \Rightarrow \frac{2\pi}{\lambda}L = n\pi \Rightarrow L = \frac{n\lambda}{2} \quad \Box
+        \end{aligned}
+    \end{equation*}
+\end{center}
 
 \end{document}
