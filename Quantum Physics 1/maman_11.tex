@@ -1,0 +1,170 @@
+\documentclass[14pt]{extarticle}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Hebrew setup
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\newfontfamily\hebrewfont[Script=Hebrew]{Arial}
+
+% Math font setup for proper Greek symbols
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% Increase line spacing throughout document
+\linespread{1.3}
+
+\usepackage[margin=1in]{geometry}
+
+% Left-aligned equation environment
+\newenvironment{lefteqs}{%
+    \begin{english}%
+    \begin{flushleft}%
+    \renewcommand{\arraystretch}{1.3}%
+    $\begin{array}{@{}l@{}}%
+}{%
+    \end{array}$%
+    \end{flushleft}%
+    \end{english}%
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{ממ"ן 11 - פיזיקה קוונטית 1}}\\[0.5em]
+    {\large שי רואימי - 318986270}\\[0.3em]
+    {\today}
+\end{center}
+
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 1}
+
+\textbf{א)}
+התבקשנו למצוא את צפיפות ההסתברות $\rho$ ואת צפיפות הזרם $J$, עבור:
+
+\begin{english}
+\begin{flalign*}
+(1) \quad &\Psi(x,t)=A \cdot e^{-(kx-\omega t)^2}  & \\
+(2) \quad &\Psi(x,t)=A \cdot e^{-a^2x^2+i(kx-\omega t)} &
+\end{flalign*}
+\end{english}
+
+כאשר
+$J(x,t)=\frac{i \hbar}{2m}(\Psi \frac{\partial \Psi^*}{\partial x} - \Psi^* \frac{\partial \Psi}{\partial x})$
+,ו $\rho(x,t)=|\Psi(x,t)|^2$.
+
+עבור (1):
+
+\begin{lefteqs}
+\rho(x,t) = A^2 e^{-2(kx-\omega t)^2} \\
+\dfrac{\partial \Psi}{\partial x} = \dfrac{\partial \Psi^*}{\partial x} \\
+\Psi=\Psi^* \\
+J(x,t) = 0
+\end{lefteqs}
+
+עבור (2):
+
+\begin{lefteqs}
+\Psi^* = Ae^{-a^2x^2 -i(kx-\omega t)} \\
+\rho(x,t) = \Psi \Psi^* = Ae^{-a^2x^2+i(kx-\omega t)} \cdot Ae^{-a^2x^2-i(kx-\omega t)}
+\rho(x,t)=A^2 e^{-2a^2x^2} \\
+\dfrac{\partial \Psi}{\partial x} = (-2a^2x+ik)Ae^{-a^2x^2+i(kx-\omega t)} \\
+\dfrac{\partial \Psi^*}{\partial x} = (-2a^2x-ik)Ae^{-a^2x^2 -i(kx-\omega t)} \\
+J(x,t)=\frac{i\hbar}{2m} \cdot ((-2a^2x-ik)|\Psi|^2 - (-2a^2x+ik)|\Psi|^2) = \frac{\hbar k}{m} |\Psi|^2 \\
+J(x,t) = \frac{\hbar k}{m} A^2e^{-2a^2x^2}
+\end{lefteqs}
+
+\textbf{ב)}
+עבור (1)
+
+\begin{lefteqs}
+\frac{\partial \rho}{\partial t} = A^2 \cdot 4\omega(kx-wt)e^{-2k(kx-\omega t)^2}
+\end{lefteqs}
+
+ואילו
+\begin{lefteqs}
+\frac{\partial J}{\partial x} = 0
+\end{lefteqs}
+משוואת הרציפות אינה מתקיימת
+
+עבור (2)
+\begin{lefteqs}
+\rho(x,t)=A^2e^{-2a^2x^2} \Rightarrow \dfrac{\partial \rho}{\partial t} = 0 \\
+\dfrac{\partial J}{\partial x} = \frac{\hbar k}{m} A^2 \cdot (-4a^2x)e^{-2a^2x^2} = -\frac{4\hbar k a^2 x}{m} A^2 e^{-2a^2x^2}
+\end{lefteqs}
+
+משוואת הרציפות מתקיימת רק עבור $x=0$.
+
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 2}
+
+\textbf{א)}
+חלקיק נע במימד אחד וברגע $t_0$ מתקיים $\Psi(x,t_0)=N\cdot e^{\frac{-x^2}{2a^2}}$
+
+נמצא את מקדם הנרמול $N$. מקדם הנרמול מקיים: $\int_{-\infty}^{\infty} |\Psi(x,t_0)|^2 dx = 1$.
+
+\begin{lefteqs}
+\int_{-\infty}^{\infty}N e^{\frac{-x^2}{2a^2}} \cdot N e^{\frac{-x^2}{2a^2}} dx = 1 \\
+N^2 \int_{-\infty}^{\infty} e^{\frac{-x^2}{a^2}} dx = 1 \\
+N^2 \cdot 2 \int_{0}^{\infty} e^{\frac{-x^2}{a^2}} dx = 1 \\
+N^2 \cdot 2 \cdot \frac{a \sqrt{\pi}}{2} = 1 \\
+N^2 \cdot a \sqrt{\pi} = 1 \\
+N^2 = \frac{1}{a \sqrt{\pi}} \\
+N = \sqrt[4]{\frac{1}{a^2 \pi}}
+\end{lefteqs}
+
+\textbf{ב)}
+אי הוודאות במקום הוא $\sigma_x$, כאשר:
+
+\begin{lefteqs}
+\sigma_x = \sqrt{\langle x^2 \rangle - \langle x \rangle^2} \\
+\langle x \rangle = \int_{-\infty}^{\infty} x \cdot N^2 e^{\frac{-x^2}{a^2}} dx = 0 \\
+\end{lefteqs}
+
+האינטגרל שווה ל0 כי הפונקציה היא זוגית והכפלה בx הופכת אותה לאי זוגית.
+
+אינטגרל של פונקציה אי זוגית מעל טווח סימטרי סביב 0 שווה ל0.
+
+\begin{lefteqs}
+\langle x^2 \rangle = \int_{-\infty}^{\infty} x^2 \cdot N^2 e^{\frac{-x^2}{a^2}} dx = 2 \int_{0}^{\infty} x^2 \cdot N^2 e^{\frac{-x^2}{a^2}} dx \\
+=2N^2 \cdot \int_{0}^{\infty} x^2 e^{\frac{-x^2}{a^2}} dx = 2N^2 \cdot \sqrt{\pi} \cdot 2 \cdot (\frac{a}{2})^3 \\
+\langle x^2 \rangle = \frac{a^2}{2} \\
+\sigma_x = \sqrt{\frac{a^2}{2} - 0} = \frac{a}{\sqrt{2}}
+\end{lefteqs}
+
+\textbf{ג)}
+\begin{lefteqs}
+\sigma_p = \sqrt{\langle p^2 \rangle - \langle p \rangle^2} \\
+\langle p \rangle = \int_{-infty}^{\infty} \Psi^* \cdot (-i\hbar \frac{\partial}{\partial x}) \cdot \Psi dx = \int_{-\infty}^{\infty} N e^{\frac{-x^2}{2a^2}} \cdot (-i\hbar \frac{\partial}{\partial x}) \cdot N e^{\frac{-x^2}{2a^2}} dx \\
+= \int_{-\infty}^{\infty} N e^{\frac{-x^2}{2a^2}} \cdot (-i\hbar) \cdot N \cdot (-\frac{x}{a^2}) e^{\frac{-x^2}{2a^2}} dx \\
+= \int_{-\infty}^{\infty} N^2 \cdot \frac{i\hbar x}{a^2} e^{\frac{-x^2}{a^2}} dx = 0
+\end{lefteqs}
+גם פה האינטגרל שווה 0 בתור אינטגרל של פונקציה אי זוגית בטווח סימטרי סביב 0
+\begin{lefteqs}
+\langle p^2 \rangle = \int_{-\infty}^{\infty} \Psi^* \cdot (-i\hbar \frac{\partial}{\partial x})^2 \cdot \Psi dx = \int_{-\infty}^{\infty} N e^{\frac{-x^2}{2a^2}} \cdot (-i\hbar \frac{\partial}{\partial x})^2 \cdot N e^{\frac{-x^2}{2a^2}} dx \\
+\dfrac{\partial \Psi}{\partial x} = -\frac{x}{a^2} \cdot N e^{\frac{-x^2}{2a^2}}
+\dfrac{\partial^2 \Psi}{\partial x^2} = (-\frac{1}{a^2} + \frac{x^2}{a^4}) \cdot N e^{\frac{-x^2}{2a^2}} \\
+\langle p^2 \rangle = \int_{-\infty}^{\infty} N^2 \hbar^2 \cdot \frac{1}{a^2} e^{\frac{-x^2}{a^2}} dx - \int_{-\infty}^{\infty} N^2 \hbar^2 \cdot \frac{x^2}{a^4} e^{\frac{-x^2}{a^2}} dx \\
+= \frac{N^2 \hbar^2}{a^2} ( \int_{-\infty}^{\infty} e^{\frac{-x^2}{a^2}} dx - \frac{1}{a^2}\int_{-\infty}^{\infty} x^2 e^{\frac{-x^2}{a^2}} dx ) \\
+= \frac{2 \cdot N^2 \hbar^2}{a^2} (\frac{a \sqrt{\pi}}{2} - \frac{1}{a^2} \cdot \frac{a^3 \sqrt{\pi}}{4}) \\
+\langle p^2 \rangle = \frac{\hbar^2}{2a^2} \\
+\sigma_p = \sqrt{\frac{\hbar^2}{2a^2} - 0} = \frac{\hbar}{\sqrt{2}a} \\
+\sigma_x \sigma_p = \frac{a}{\sqrt{2}} \cdot \frac{\hbar}{\sqrt{2}a} = \frac{\hbar}{2} \geq \frac{\hbar}{2} \\
+\end{lefteqs}
+עקרון אי הוודאות מתקיים
+
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\end{document}
