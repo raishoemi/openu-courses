@@ -19,5 +19,6 @@
             ]
         }
     ],
-    "latex-workshop.latex.defaultRecipe": "XeLaTeX"
+    "latex-workshop.latex.defaultRecipe": "XeLaTeX",
+    "latex-workshop.latex.autoBuild.run": "onSave"
 }
