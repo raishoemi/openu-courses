@@ -81,18 +81,18 @@
 בהנתן $\vec{F}=\vec{\nabla} (x^2+y^2)$
 
 \textbf{א)}
-נמצא את $\int\int\int \vec{\nabla} \vec{F} \, dV$
+נמצא את $\iiint \vec{\nabla} \vec{F} \, dV$
 
 \begin{lefteqs}
     \vec{F} = 2x \hat{x} + 2y \hat{y} \\
     \vec{\nabla} \cdot \vec{F} = \frac{\partial (2x)}{\partial x} + \frac{\partial (2y)}{\partial y} = 2 + 2 = 4 \\
-    \int\int\int 4 \, dV = 4 \cdot \pi R^2 h = 4 \cdot \pi \cdot 4 \cdot 5 = 80 \pi
+    \iiint 4 \, dV = 4 \cdot \pi R^2 h = 4 \cdot \pi \cdot 4 \cdot 5 = 80 \pi
 \end{lefteqs}
 
 \textbf{ב)}
 נמצא את השטף הכולל דרך דפנות הצילינדר
 
-על פי משפט הדיביגרנץ, השטף דרך כל הגליל שווה לתוצאה בסעיף א', כלומר $\phi = \int\int\int (\vec{\nabla} \cdot \vec{F}) \, dV = 80 \pi$.
+על פי משפט הדיביגרנץ, השטף דרך כל הגליל שווה לתוצאה בסעיף א', כלומר $\phi = \iiint (\vec{\nabla} \cdot \vec{F}) \, dV = 80 \pi$.
 
 השטף דרך הפאה העליונה והתחתונה שווה לאפס כיוון של-$\vec{F}$ אין רכיב בכיוון $z$, 
 והנומרל בשתי הפאות הוא $\hat{z}$ ו $-\hat{z}$ בהתאמה, ולכן $\vec{F} \cdot d\vec{S} = 0$.
@@ -100,37 +100,114 @@
 לכן השטף דרך הדפנות הוא $80 \pi$.
 
 \textbf{ג)}
-נאשר את קיומו של משפט הדיבגרנץ: כלומר נראה ש $\int\int \vec{F} \cdot d\vec{S} = 80 \pi$
+נאשר את קיומו של משפט הדיבגרנץ: כלומר נראה ש $\iint \vec{F} \cdot d\vec{S} = 80 \pi$
 
 ראשית נזכיר כפי שהוסבר בתשובה לסעיף ב' שהשטף דרך הפאות הוא אפס, ולכן נחשב רק את השטף דרך הדפנות. וכן:
 
 \begin{lefteqs}
     \vec{F} = 2x \hat{x} + 2y \hat{y} = 2(x \hat{x} + y \hat{y}) = 2r \hat{r} \\
-    \phi = \int \int \vec{F} \cdot d\vec{S} = 4 \int \int dS = 4 \cdot 2\pi r \cdot h = 80 \pi
+    \phi = \iint \vec{F} \cdot d\vec{S} = 4 \iint dS = 4 \cdot 2\pi r \cdot h = 80 \pi
 \end{lefteqs}
 
 קיבלנו תשובה זהה לסעיף א', ולכן אישרנו את קיומו של משפט הדיבגרנץ.
 
+\vspace{3em}
+\hrule
+\vspace{2em}
 
-% \begin{english}
-%     \begin{flalign*}
-%         (1) \quad & \Psi(x,t)=A \cdot e^{-(kx-\omega t)^2}       & \\
-%         (2) \quad & \Psi(x,t)=A \cdot e^{-a^2x^2+i(kx-\omega t)} &
-%     \end{flalign*}
-% \end{english}
+\textbf{\large שאלה 3}
 
-% כאשר
-% $J(x,t)=\frac{i \hbar}{2m}(\Psi \frac{\partial \Psi^*}{\partial x} - \Psi^* \frac{\partial \Psi}{\partial x})$
-% ,ו $\rho(x,t)=|\Psi(x,t)|^2$.
+(שאלה 14 מפרק המבוא)
 
-% עבור (1):
+נוכיח את משפט סטוקס לעגבי השדה $\vec{F} = y\hat{x} - x\hat{y} + z\hat{z}$
 
-% \begin{lefteqs}
-%     \rho(x,t) = A^2 e^{-2(kx-\omega t)^2} \\
-%     \dfrac{\partial \Psi}{\partial x} = \dfrac{\partial \Psi^*}{\partial x} \\
-%     \Psi=\Psi^* \\
-%     J(x,t) = 0
-% \end{lefteqs}
+נתחיל מלחשב את ישירות את הסירקולציה הכוללת במסילה המקיפה את הריבוע $0<x<l, 0<y<l, z=3$ כפי שנתבקש בשאלה 13,
+ולאחר מכן נשווה את התוצאה לאינטגרל השטח המצויין בגוף השאלה.
+
+\begin{lefteqs}
+    \oint \vec{f} \cdot d\vec{l} = \oint_{I} \vec{F} \cdot d\vec{l} + \oint_{II} \vec{F} \cdot d\vec{l} + \oint_{III} \vec{F} \cdot d\vec{l} + \oint_{IV} \vec{F} \cdot d\vec{l}
+\end{lefteqs}
+
+כאשר המקטעים I, II, III, IV הם המקטעים של המסילה המקיפה את הריבוע לפי כיוון השעון.
+
+\begin{lefteqs}
+    \oint_{I} \vec{F} \cdot d\vec{l} = \left. \int_{0}^{l} -x \, dy \right|_{x=0} = 0 \\
+    \oint_{II} \vec{F} \cdot d\vec{l} = \left. \int_{0}^{l} y \, dx \right|_{y=l} = l^2 \\
+    \oint_{III} \vec{F} \cdot d\vec{l} = \left. \int_{l}^{0} -x \, dy \right|_{x=l} = l^2 \\
+    \oint_{IV} \vec{F} \cdot d\vec{l} = \left. \int_{l}^{0} y \, dx \right|_{y=0} = 0 \\
+    \oint \vec{F} \cdot d\vec{l} = l^2 + l^2 = 2l^2
+\end{lefteqs}
+
+ובעזרת חישוב האינטגרל השטחי נקבל:
+
+\begin{lefteqs}
+    \vec{\nabla} \times \vec{F} = \begin{vmatrix}
+    \hat{x} & \hat{y} & \hat{z} \\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+    y & -x & z
+    \end{vmatrix} = -2\hat{z}
+    \iint -2\hat{z} \cdot -\hat{z} \, dS = 2 \iint dS = 2l^2
+\end{lefteqs}
+
+קיבלו תוצאה זהה ולכן חוק סטוקס מתקיים.
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 4}
+(שאלה 19 מפרק המבוא)
+
+נחשב את $\int_{(0,0)}^{(2,1)} \vec{F} \cdot d\vec{r}$ על מסלול $C$ כאשר $C$ מסלול על העקומה $y=2x^2$ ו- $\vec{F} = 3xy\hat{x} - y^2\hat{y}$
+
+\begin{lefteqs}
+    F_x=3xy \Rightarrow Fx=6x^3 \\
+    F_y = -y^2 \Rightarrow F_y = -4x^4 \\
+    dy = 4xdx \\
+    \int_{0}^{1} (F_x dx + F_y dy) = \int_{0}^{1} (6x^3 dx - 4x^4 \cdot 4x dx) \\
+    = \int_{0}^{1} (6x^3 - 16x^5) dx = \left[ \frac{6x^4}{4} - \frac{16x^6}{6} \right]_{0}^{1} = -\frac{7}{6}
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 5}
+
+\textbf{א)}
+נחשב את השטף של השדה $\vec{F} = kr^{-p} \hat{r}$ דרך פני כדור ברדיוס $R$.
+
+נעזר במשפט הדיביגרנץ:
+
+\begin{lefteqs}
+    \vec{\nabla} \cdot \vec{F} = -kp r^{-p-1} + 2kr^{-p-1} = k(2-p)r^{-p-1} \\
+    \phi = \iiint \vec{\nabla} \cdot \vec{F} \, dV = k(2-p) \iiint r^{-p-1} \, dV \\
+    = 4\pi k(2-p) \int_{0}^{R} r^{1-p} \, dr = 4\pi k (2-p) \left[ \frac{r^{2-p }}{2-p} \right]_{0}^{R} \\
+    \phi = 4\pi k R^{2-p}
+\end{lefteqs}
+
+\textbf{ב)}
+אילו היה $\vec{\nabla} \cdot \vec{F} = 0$ אז לפי משפט הדיביגרנץ השטף היה גם הוא 0 ולכן לא תלוי ב-$R$. לכן העובדה שהשטף תלוי ב-$R$ גורר את כך ש $\vec{\nabla} \cdot \vec{F} \neq 0$.
+
+\textbf{ג)}
+חושב בסעיף א:
+
+\begin{lefteqs}
+    \vec{\nabla} \cdot \vec{F} = \frac{\partial F_r}{\partial r} + \frac{2F_r}{r} = -kp r^{-p-1} + 2kr^{-p-1} = k(2-p)r^{-p-1}
+\end{lefteqs}
+
+\textbf{ד)}
+ערכו של האינטגרל של $\vec{\nabla} \cdot \vec{F}$ על פני כל הנפח של הכדור חושב בסעיף ב':
+\begin{lefteqs}
+    \iiint \vec{\nabla} \cdot \vec{F} \, dV = 4\pi k R^{2-p}
+\end{lefteqs}
+
+עבור $0<p<2$ השטף גדל עם הרדיוס
+
+עבור $p>2$ השטף קטן עם הרדיוס
+
+\textbf{ה)}
+השוואה הייתה מראה את התקיימות משפט הדיביגרנץ, אך בפתרון שלי החישוב הראשוני נעשה כבר בעזרת משפט הדיביגרנץ (לא הייתה הנחייה לא להשתמש בו).
 
 
 \end{document}
