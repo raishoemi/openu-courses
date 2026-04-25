@@ -1,0 +1,468 @@
+\documentclass[14pt]{extarticle}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Hebrew setup
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\newfontfamily\hebrewfont[Script=Hebrew]{Arial}
+
+% Math font setup for proper Greek symbols
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% Increase line spacing throughout document
+\linespread{1.3}
+
+\usepackage[margin=1in]{geometry}
+
+% Left-aligned equation environment
+\newenvironment{lefteqs}{%
+    \begin{english}%
+    \begin{flushleft}%
+    \renewcommand{\arraystretch}{1.3}%
+    $\begin{array}{@{}l@{}}%
+}{%
+    \end{array}$%
+    \end{flushleft}%
+    \end{english}%
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{מטלה 2 - פיזיקה קוונטית 1}}\\[0.5em]
+    {\large שי רואימי - 318986270}\\[0.3em]
+\end{center}
+
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 1}
+
+בזמן $t=0$ נתון $\Psi(x,0)=(b\sin\frac{\pi x}{2a}+c)\cdot \cos(\frac{5\pi x}{2a})$
+
+כאשר $\Psi(x,0)$ פונקצית הגל המנורמלת של חלקיק בבור פוטנציאל אינסופי
+
+רוחב הבור $2a$, והוא ממוקם ב $-a \leq x \leq a$.
+
+\textbf{א)}
+נמצא את המצבים העצמיים עבור בוא הפוטנציאל הנתון
+
+בטווח $[-a,a]$ מתקיים $V(x)=0$, ולכן משוואת שרודינגר הבלתי תלויה בזמן היא:
+
+\begin{lefteqs}
+    \frac{d^2 \psi}{dx^2} = -\kappa^2 \psi \\
+    \kappa = \sqrt{\frac{2mE}{\hbar^2}}
+\end{lefteqs}
+
+הפתרון הכללי של משוואה זו הוא:
+\begin{lefteqs}
+    \psi(x) = A \sin(\kappa x) + B \cos(\kappa x)
+\end{lefteqs}
+
+נציב תנאי שפה: $\psi(-a)=\psi(a)=0$:
+\begin{lefteqs}
+    \psi(-a) = -A \sin(\kappa a) + B \cos(\kappa a) = 0 \\
+    \psi(a) = A \sin(\kappa a) + B \cos(\kappa a) = 0
+\end{lefteqs}
+סכום המשוואות נותן $2B \cos(\kappa a)=0$, ולכן $B=0$.
+
+הפרש המשוואות נותן $2A \sin(\kappa a)=0$, ולכן $\kappa a = n\pi$ כאשר $n$ הוא מספר שלם חיובי.
+
+נבצע נורמליזציה ל $\psi(x)$:
+\begin{lefteqs}
+    \int_{-\infty}^{\infty} |\psi(x)|^2 \, dx = \int_{-a}^{a} \psi \cdot \psi^{*} \, dx =
+    A^2 \int_{-a}^{a} \sin^2(\frac{n\pi x}{a}) \, dx = \\
+    = A^2 \int_{-a}^{a} \frac{1}{2} - \frac{1}{2} \cos(\frac{2n\pi x}{a}) \, dx =
+    A^2 \left[ \frac{x}{2} -\frac{a}{4n\pi} \sin(\frac{2n\pi x}{a}) \right]_{-a}^{a} = A^2 \cdot a = 1 \\
+    \Rightarrow A = \frac{1}{\sqrt{a}} \\
+    \psi_n(x) = \frac{1}{\sqrt{a}} \sin(\frac{n\pi x}{a})\
+\end{lefteqs}
+
+זה הפתרון עבור $n$ זוגי, נמצא פתרונות עבור $n$ אי זוגי:
+\begin{lefteqs}
+    A=0 \Rightarrow 2B\cos(\kappa a)=0 \Rightarrow \kappa a = (n+\frac{1}{2})\pi \\
+    \psi(x) = B \cos((n+\frac{1}{2})\frac{\pi x}{a}) \\
+
+    \int_{-\infty}^{\infty} |\psi(x)|^2 \, dx = \int_{-a}^{a} \psi \cdot \psi^{*} \, dx =
+    = B^2 \int_{-a}^{a} \cos^2((n+\frac{1}{2})\frac{\pi x}{a}) \, dx = \\
+    = \frac{B^2}{2} \int_{-a}^{a} 1 + \cos((2n+1)\frac{\pi x}{a}) \, dx = \\
+    = \frac{B^2}{2} \left[ x + \frac{a}{(2n+1)\pi} \sin((2n+1)\frac{\pi x}{a}) \right]_{-a}^{a} = \\
+    = \frac{B^2}{2} \left(a + \frac{2a}{\pi(2n+1)}\sin((2n+1)\pi - a) \right) = B^2 \cdot a = 1 \\
+    \Rightarrow B = \frac{1}{\sqrt{a}} \\
+
+    \psi_n(x) = \frac{1}{\sqrt{a}} \cos((n+\frac{1}{2})\frac{\pi x}{a}) \\
+
+    \psi_n(x) = \begin{cases}
+        \frac{1}{\sqrt{a}} \sin(\frac{n\pi x}{a})               & n \text{ even} \\
+        \frac{1}{\sqrt{a}} \cos((n+\frac{1}{2})\frac{\pi x}{a}) & n \text{ odd}
+    \end{cases}
+\end{lefteqs}
+
+\textbf{ב)}
+נביע את $\Psi(x,0)$ כצירוף ליניארי של פונקציות עצמיות מנומרלות:
+
+נתון כי: $\Psi(x,0)=(b\sin\frac{\pi x}{2a}+c)\cdot \cos(\frac{5\pi x}{2a})$
+
+\begin{lefteqs}
+    \Rightarrow \Psi(x,0) = b\sin(\frac{\pi x}{2a})\cdot \cos(\frac{5\pi x}{2a}) + c \cdot \cos(\frac{5\pi x}{2a}) \\
+    * \sin(\alpha)cos(\beta) = \frac{1}{2}(\sin(\alpha+\beta) + \sin(\alpha-\beta)) \\
+    \Rightarrow \Psi(x,0) = \frac{b}{2} \sin(\frac{6\pi x}{2a}) + \frac{b}{2} \sin(-\frac{4\pi x}{2a}) + c \cdot \cos(\frac{5\pi x}{2a}) \\
+\end{lefteqs}
+
+ע"פ 2.39 $\Psi(x,0) = \sum_{n} c_n \psi_n(x)$:
+\begin{lefteqs}
+    \sin(6\pi x){2a} = \sqrt{a} \cdot \psi_6(x) \\
+    \sin(-4\pi x){2a} = -\sqrt{a} \cdot \psi_4(x) \\
+    \cos(\frac{5\pi x}{2a}) = \sqrt{a} \cdot \psi_5(x) \\
+    c_4 = -\frac{b}{2} \sqrt{a} \\
+    c_5 = c \sqrt{a} \\
+    c_6 = \frac{b}{2} \sqrt{a} \\
+    \Psi(x,0) = -\frac{b}{2} \sqrt{a} \cdot \psi_4(x) + c \sqrt{a} \cdot \psi_5(x) + \frac{b}{2} \sqrt{a} \cdot \psi_6(x)
+\end{lefteqs}
+
+\textbf{ג)}
+ע"פ 2.41 $\langle H \rangle = \sum |c_n|^2 E_n$
+
+ע"פ 2.30, כאשר רוחב הבור $2a$: $E_n=\frac{n^2 \pi^2 \hbar^2}{8ma^2}$
+
+\begin{lefteqs}
+    \langle H \rangle = \frac{\hbar^2 \pi^2}{8ma^2} \sum |c_n|^2 \cdot n^2 = \frac{\hbar^2 \pi^2}{8ma^2} \left( |c_4|^2 \cdot 4^2 + |c_5|^2 \cdot 5^2 + |c_6|^2 \cdot 6^2 \right) = \\
+    = \frac{\hbar^2 \pi^2}{8ma^2} \left( 16 \cdot \frac{b^2 a}{4} + 25 \cdot c^2 a + 36 \cdot \frac{b^2 a}{4} \right) = \\
+    \langle H \rangle = \frac{\hbar^2 \pi^2}{8ma} \left( 13 b^2 + 25 c^2 \right)
+\end{lefteqs}
+
+\textbf{ד)}
+ע"פ 2.17 $\Psi(x,t) = \sum_{n=1}^{\infty} c_n \Psi_n(x,t)$
+
+כאשר ע"פ 2.18  $\Psi_n(x,t) = \psi_n(x) e^{\frac{-iE_n t}{\hbar}}$
+
+\begin{lefteqs}
+    \Psi(x,t) = c_4 \psi_4(x) e^{\frac{-iE_4 t}{\hbar}} + c_5 \psi_5(x) e^{\frac{-iE_5 t}{\hbar}} + c_6 \psi_6(x) e^{\frac{-iE_6 t}{\hbar}} = \\
+    \Psi(x,t) = -\frac{b}{2} \sqrt{a} \cdot \sin(\frac{4\pi x}{2a}) e^{\frac{-2i\pi^2 \hbar t}{ma^2}} + c \sqrt{a} \cdot \cos(\frac{5\pi x}{2a}) e^{\frac{-25i\pi^2 \hbar t}{8ma^2}} + \frac{b}{2} \sqrt{a} \cdot \sin(\frac{6\pi x}{2a}) e^{\frac{-36i\pi^2 \hbar t}{8ma^2}}
+\end{lefteqs}
+
+\textbf{ה)}
+\begin{lefteqs}
+    \langle p \rangle = m \frac{d \langle x \rangle}{dt} \\
+    \langle x \rangle = \int_{-\infty}^{\infty} x |\Psi(x,t)|^2 dx = \int_{-a}^{a} x |\Psi(x,t)|^2 dx = \int_{-a}^{a} x \Psi \Psi^{*} dx \\
+\end{lefteqs}
+
+נסתכל על המכפלה $x \cdot \Psi \Psi^{*}$:
+
+כתוצאה ממכפלה של פונקציה זוגית עם פונקציה אי זוגית, האינטגרל של הביטויים מהסוג $x \cdot \Psi_i \cdot \Psi_i^{*}$ יהיה 0.
+
+כנ"ל גם גורמים שמכילים $x, \Psi_4, \Psi_6$ כי שלושתן פונקציות אי זוגיות. ונותרנו עם:
+
+\begin{lefteqs}
+    x\Psi \Psi^{*} = c_5 c_4 \psi_5(x) \psi_6(x) (\phi_5(t)\phi_4^{*}(t) + \phi_5^{*}(t)\phi_6(t)) \\
+    + c_5 c_6 \psi_5(x) \psi_6(x) (\phi_5(t)\phi_6^{*}(t) + \phi_5^{*}(t)\phi_6(t)) \\
+    = c \frac{-b}{2} \cos(\frac{5\pi x}{2a}) \sin(\frac{4\pi x}{2a})\left( e^{\frac{9i\pi^2t}{8ma^2}} +  e^{\frac{-9i\pi^2t}{8ma^2}} \right) \\
+    + c \frac{b}{2} \cos(\frac{5\pi x}{2a}) \sin(\frac{6\pi x}{2a})\left( e^{\frac{11i\pi^2t}{8ma^2}} +  e^{\frac{-11i\pi^2t}{8ma^2}} \right) \\
+    = -bc \cdot (\frac{1}{2} \sin(\frac{9\pi x}{2a}) - \frac{1}{2} \sin(\frac{\pi x}{2a})) \cdot \cos(\frac{9\pi^2 \hbar t}{8ma^2}) \\
+    + bc \cdot (\frac{1}{2} \sin(\frac{11\pi x}{2a}) + \frac{1}{2} \sin(\frac{\pi x}{2a})) \cdot \cos(\frac{11\pi^2 \hbar t}{8ma^2}) \\
+    \frac{bc}{2} \left[ (\sin(\frac{11\pi x}{2a}) +  \sin(\frac{\pi x}{2a})) \cos(\frac{11\pi^2 \hbar t}{8ma^2}) - (\sin(\frac{9\pi x}{2a}) + \sin(\frac{\pi x}{2a}))\cos(\frac{9\pi^2 \hbar t}{8ma^2}) \right]
+
+\end{lefteqs}
+בביטוי זה הגורמים היחידים עם תלות ב$x$ הם מהצורה $\sin(\frac{n\pi x}{2a})$, נמצא אינטגרל זה:
+
+\begin{lefteqs}
+    \int_{-a}^{a} x \cdot \sin(\frac{n\pi x}{2a}) dx \\
+    \left[ u = \frac{n\pi x}{2a} \Rightarrow x=\frac{2au}{n\pi} \Rightarrow dx = \frac{2a}{n\pi} du \right] \\
+    \int_{\frac{-n\pi}{2}}^{\frac{n\pi}{2}} \frac{2au}{n\pi} \sin(u) \cdot \frac{2a}{n\pi} du = \frac{4a^2}{n^2 \pi^2} \int_{\frac{-n\pi}{2}}^{\frac{n\pi}{2}} u \sin(u) du \\
+    = \frac{4a^2}{n^2 \pi^2} \left[ \sin(u) - u\cos(u) \right]_{\frac{-n\pi}{2}}^{\frac{n\pi}{2}} = \frac{4a^2}{n^2 \pi^2} \left[ 2\sin(\frac{n\pi}{2}) \right] = \frac{8a^2}{n^2 \pi^2} \sin(\frac{n\pi}{2}) \\
+
+    \int_{-a}^{a} x \cdot \sin(\frac{n\pi x}{2a}) dx = \begin{cases}
+        \frac{8a^2}{\pi^2} \cdot 1              & n=1  \\
+        \frac{8a^2}{\pi^2} \cdot \frac{1}{81}   & n=9  \\
+        \frac{8a^2}{\pi^2} \cdot \frac{-1}{121} & n=11 \\
+    \end{cases} \\
+
+    \Rightarrow \langle x \rangle = \frac{8a^2}{\pi^2} \cdot \frac{bc}{2} \left[ (1-\frac{1}{121})\cos(\frac{11\pi^2 t}{8ma^2}) -(\frac{1}{81} - 1)\cos(\frac{9\pi^2 t}{8ma^2}) \right] \\
+    \langle p \rangle = m \frac{d \langle x \rangle}{dt} = \frac{8a^2}{\pi^2} \cdot \frac{bc}{2} \left[ (1-\frac{1}{121})\sin(\frac{11\pi^2 t}{8ma^2}) \cdot \frac{11\pi^2 \hbar}{8ma^2} -(\frac{1}{81} - 1)\sin(\frac{9\pi^2 t}{8ma^2}) \cdot \frac{9\pi^2 \hbar}{8ma^2} \right] \\
+    \langle p \rangle = \frac{bc\hbar}{2} \left[ (1-\frac{1}{121})\sin(\frac{11\pi^2 t}{8ma^2}) \cdot 11 -(\frac{1}{81} - 1)\sin(\frac{9\pi^2 t}{8ma^2}) \cdot 9 \right] \\
+    \langle p \rangle = -\hbar bc \left[ \frac{60}{121}\sin(\frac{11\pi^2 t}{8ma^2}) + \frac{40}{81}\sin(\frac{9\pi^2 t}{8ma^2}) \right] \\
+\end{lefteqs}
+
+וכן:
+
+\begin{lefteqs}
+    \langle H \rangle = \frac{\langle p^2 \rangle}{2m} \Rightarrow \langle p^2 \rangle = 2m \langle H \rangle = \frac{\hbar^2 \pi^2}{4a} (13 b^2 + 25 c^2) \\
+    \sigma_p = \sqrt{\langle p^2 \rangle - \langle p \rangle^2} = \sqrt{\frac{\hbar^2 \pi^2}{4a} (13 b^2 + 25 c^2) - \hbar^2 b^2 c^2 \left[ \frac{60}{121}\sin(\frac{11\pi^2 t}{8ma^2}) + \frac{40}{81}\sin(\frac{9\pi^2 t}{8ma^2}) \right]^2}
+\end{lefteqs}
+
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 2}
+
+נתון אוסצילטור הרמוני $\Psi(x,t) = a\Psi_1(x,t) + b\Psi_2(x,t)$
+כאשר $a,b>0$ וגם $a,b \in \mathbb{R}$
+
+מתקיים $a^2+b^2=1$ וגם $\Psi_1, \Psi_2$ פונקציות הגל המנורמלות המתארות את שני המצבים המעוררים הראשונים של האוסצילטור ההרמוני.
+
+\textbf{א)}
+\begin{lefteqs}
+    \int_{-\infty}^{\infty} |\Psi(x,t)|^2 dx = \int_{-\infty}^{\infty} (a\Psi_1 + b\Psi_2)(a\Psi_1 + b\Psi_2)^{*} dx \\
+    = \int_{-\infty}^{\infty} a^2 |\Psi_1|^2 + b^2 |\Psi_2|^2 + ab(\Psi_1 \Psi_2^{*} + \Psi_1^{*} \Psi_2) dx \\
+    = a^2\int_{-\infty}^{\infty} |\Psi_1|^2 dx + b^2 \int_{-\infty}^{\infty} |\Psi_2|^2 dx + ab \int_{-\infty}^{\infty} (\Psi_1 \Psi_2^{*} + \Psi_1^{*} \Psi_2) dx \\
+    = a^2 + b^2 = 1
+\end{lefteqs}
+
+כאשר האינטגרלים $\int_{-\infty}^{\infty} |\Psi_1|^2 dx$ ו $\int_{-\infty}^{\infty} |\Psi_2|^2 dx$ שווים ל-1 כי $\Psi_1, \Psi_2$ מנורמלות
+
+והאינטגרל $\int_{-\infty}^{\infty} (\Psi_1 \Psi_2^{*} + \Psi_1^{*} \Psi_2) dx$ שווה ל-0 כי $\Psi_1, \Psi_2$ מתארות מצבים מהועערים שונים, אז יש להם ערכים עצמיים שונים (אנרגיות עצמיות) ולכן הם אורתוגונלים
+(ע"פ 2.32 $m\neq n$ מתקיים $\int \Psi_m \Psi_n^{*} dx = 0$)
+
+\textbf{ב)}
+נחשב את:
+\begin{lefteqs}
+    \int_{-\infty}^{\infty} x |\Psi(x,t)|^2 dx = \int_{-\infty}^{\infty} x (a^2 |\Psi_1|^2 + b^2 |\Psi_2|^2 + ab(\Psi_1 \Psi_2^{*} + \Psi_1^{*} \Psi_2)) dx \\
+\end{lefteqs}
+ראשית, הפונקציה $x$ היא אי זוגית. שנית, ידוע שהזוגיות של מעצבים מעוררים מתחלפת לסירוגין, כלומר אם $\Psi_n$ זוגית אז $\Psi_{n+1}$ אי זוגית ולהפך.
+
+לכן $|\Psi_1|^2$ ו $|\Psi_2|^2$ הן פונקציות זוגיות, ולכן $x \cdot |\Psi_1|^2$ ו $x \cdot |\Psi_2|^2$ הן פונקציות אי זוגיות, ולכן האינטגרלים $\int_{-\infty}^{\infty} x \cdot |\Psi_1|^2 dx$ ו $\int_{-\infty}^{\infty} x \cdot |\Psi_2|^2 dx$ שווים ל-0.
+
+וכן $\Psi_1 \Psi_2^{*}$ ו $\Psi_1^{*} \Psi_2$ אי זוגיות, ולכן $x \cdot \Psi_1 \Psi_2^{*}$ ו $x \cdot \Psi_1^{*} \Psi_2$ הן פונקציות זוגיות והאינטגרלים שלהם אינם מתאפסים.
+
+\begin{lefteqs}
+    \langle x \rangle = ab \int_{\infty}^{\infty} x (\Psi_1 ^{*} \Psi_2 + \Psi_1 \Psi_2{*}) dx = 2ab \int_{0}^{\infty} x (\Psi_1 ^{*} \Psi_2 + \Psi_1 \Psi_2{*}) dx \\
+\end{lefteqs}
+ע"פ 2.86: $\psi_n(x) = (\frac{m\omega}{\pi \hbar})^{\frac{1}{4}} \frac{1}{\sqrt{2^n n!}} H_n(\xi) e^{-\xi^2/2}$
+
+ע"פ 2.84: $E_n = (n+\frac{1}{2})\hbar \omega$
+
+ע"פ 2.72: $\xi = \sqrt{\frac{m\omega}{\hbar}} x$
+
+\begin{lefteqs}
+    \psi_1(x) = (\frac{m\omega}{\pi \hbar})^{\frac{1}{4}} \frac{1}{\sqrt{2}} H_1(\xi) e^{-\xi^2/2} = (\frac{m\omega}{\pi \hbar})^{\frac{1}{4}} \sqrt{2} \xi e^{-\xi^2/2} \\
+    \phi_1(t) = e^{\frac{-iE_1 t}{\hbar}} \\
+    \psi_2(x) = (\frac{m\omega}{\pi \hbar})^{\frac{1}{4}} \frac{1}{2} H_2(\xi) e^{-\xi^2/2} = (\frac{m\omega}{\pi \hbar})^{\frac{1}{4}} \frac{1}{2} (4\xi^2 - 2) e^{-\xi^2/2} \\
+    \phi_2(t) = e^{\frac{-iE_2 t}{\hbar}} \\
+    \Psi_1(x,t) = \psi_1(x) \phi_1(t) = (\frac{m\omega}{\pi \hbar})^{\frac{1}{4}} \sqrt{2} \xi e^{-\xi^2/2} \cdot e^{\frac{-iE_1 t}{\hbar}} \\
+    \Psi_2(x,t) = \psi_2(x) \phi_2(t) = (\frac{m\omega}{\pi \hbar})^{\frac{1}{4}} \frac{1}{2} (4\xi^2 - 2) e^{-\xi^2/2} \cdot e^{\frac{-iE_2 t}{\hbar}} \\
+    \Psi_1^{*} \Psi_2 + \Psi_1 \Psi_2{*} = 2 (\frac{m\omega}{\pi \hbar})^{\frac{1}{2}} (4\xi^3 - 4\xi) e^{-\xi^2} \cdot \left( e^{\frac{-i(E2-E1)t}{\hbar}} + e^{\frac{i(E2-E1)t}{\hbar}} \right) \\
+    e^{\frac{-i(E2-E1)t}{\hbar}} + e^{\frac{i(E2-E1)t}{\hbar}} = e^{-i(\frac{3}{2} - \frac{5}{2})\omega t} + e^{-i(\frac{5}{2}-\frac{3}{2})\omega t} = e^{i\omega t} + e^{-i\omega t} = 2\cos(\omega t) \\
+    \Psi_1^{*} \Psi_2 + \Psi_1 \Psi_2{*} = 4 (\frac{m\omega}{\pi \hbar})^{\frac{1}{2}} (4\xi^3 - 4\xi) e^{-\xi^2} \cdot \cos(\omega t) \\
+    \langle x \rangle = 4ab \frac{\hbar}{m\omega} \cdot \sqrt{\frac{m\omega}{\pi \hbar}} \cdot \cos(\omega t) \int_{0}^{\infty} (2\xi^4 - \xi^2) e^{-\xi^2} \, d\xi
+\end{lefteqs}
+
+האינטגרל מורכב משני אינטגרלים גאוסיינים ידועים: (נלקח מסוף הספר)
+\begin{lefteqs}
+    * \int_{0}^{\infty} x^{2n} e^{\frac{-x^2}{a^2}} dx = \sqrt{\pi} \cdot \frac{(2n)!}{n!} \cdot (\frac{a}{2})^{2n+1} \\
+    \int_{0}^{\infty} (2\xi^4 - \xi^2) e^{-\xi^2} \, d\xi = 2 \cdot \int_{0}^{\infty} \xi^4 e^{-\xi^2} d\xi - \int_{0}^{\infty} \xi^2 e^{-\xi^2} d\xi \\
+    2 \cdot \int_{0}^{\infty} \xi^4 e^{-\xi^2} d\xi = \sqrt{\pi} \cdot \frac{24}{2} \cdot (\frac{1}{2})^5 = \frac{3}{4}\sqrt{\pi} \\
+    \int_{0}^{\infty} \xi^2 e^{-\xi^2} d\xi = \sqrt{\pi} \cdot 2 \cdot (\frac{1}{2})^3 = \frac{1}{4}\sqrt{\pi} \\
+    \int_{0}^{\infty} (2\xi^4 - \xi^2) e^{-\xi^2} \, d\xi = \frac{3}{4}\sqrt{\pi} - \frac{1}{4}\sqrt{\pi} = \frac{1}{2}\sqrt{\pi} \\
+    \Rightarrow \langle x \rangle = 4ab \cos(\omega t) \cdot \frac{\hbar}{m\omega} \cdot \sqrt{\frac{m\omega}{\hbar \pi}} \cdot \frac{1}{2}\sqrt{\pi} \\
+    \Rightarrow \langle x \rangle = 2ab \cdot \cos(\omega t) \cdot \sqrt{\frac{\hbar}{m\omega}} \\
+    \blacksquare
+\end{lefteqs}
+
+\textbf{ג)}
+\begin{lefteqs}
+    \langle p \rangle = m \frac{d \langle x \rangle}{dt} = -2ab \cdot \sin(\omega t) \cdot \sqrt{\hbar m \omega} \\ \\
+\end{lefteqs}
+
+\textbf{ד)}
+ע"פ 2.41:
+
+\begin{lefteqs}
+    \langle E \rangle = \sum |c_n|^2 E_n = a^2 \cdot E_1 + b^2 \cdot E_2 = \frac{3a^2 + 5b^2}{2} \hbar \omega
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 3}
+
+נתונה פונקצית הגל של חלקיק בפוטנציאל $V(x) = \frac{1}{2} mx^2\omega^2$, ב $t=0$:
+\begin{lefteqs}
+    \Psi(x,0) = A \displaystyle \sum_{n=0} (\frac{1}{\sqrt{2}})^n \cdot \psi_n(x)
+\end{lefteqs}
+
+כאשר $\psi_n(x)$ מצבים עצמיים מנורמלים של האנרגיה עם ערכים עצמיים:
+
+$E_n=(n+\frac{1}{2})\hbar \omega$
+
+\textbf{א)}
+
+\begin{lefteqs}
+    \int_{-\infty}^{\infty} |\Psi(x,0)|^2 \, dx = \int_{-\infty}^{\infty} A^2 \displaystyle \sum_{n=0} (\frac{1}{\sqrt{2}})^n \cdot \psi_n(x) \cdot \displaystyle \sum_{m=0} (\frac{1}{\sqrt{2}})^m \cdot \psi_m^{*}(x) dx \\
+    = A^2 \displaystyle \sum_{n=0} (\frac{1}{\sqrt{2}})^{2n} \int_{-\infty}^{\infty} |\psi_n(x)|^2 \, dx = A^2 \displaystyle \sum_{n=0} (\frac{1}{2})^n = 2A^2 \\
+    \Rightarrow A = \frac{1}{\sqrt{2}}
+\end{lefteqs}
+
+\textbf{ב)}
+\begin{lefteqs}
+    \Psi(x,t) = \psi(x) \cdot \phi(t) = \frac{1}{\sqrt{2}} \displaystyle \sum_{n=0} (\frac{1}{\sqrt{2}})^n \cdot \psi_n(x) \cdot  e^{\frac{-iE_n t}{\hbar}} \\
+    \Rightarrow \Psi(x,t) = \displaystyle \sum_{n=0} (\frac{1}{\sqrt{2}})^{n+1} \cdot  \psi_n(x) \cdot e^{\frac{-i(2n+1)\omega t}{2}} \\
+\end{lefteqs}
+
+\textbf{ג)}
+
+\begin{lefteqs}
+    |\Psi(x,t)|^2 = \Psi(x,t) \cdot \Psi^{*}(x,t) = \\
+    = \displaystyle \sum_{n=0} (\frac{1}{\sqrt{2}})^{n+1} \cdot  \psi_n(x) \cdot e^{\frac{-i(2n+1)\omega t}{2}} \cdot \displaystyle \sum_{m=0} (\frac{1}{\sqrt{2}})^{m+1} \cdot  \psi_m^{*}(x) \cdot e^{\frac{i(2m+1)\omega t}{2}} = \\
+    = \displaystyle \sum_{n,m=0} (\frac{1}{\sqrt{2}})^{n+m+2} \cdot \psi_n(x) \cdot \psi_m^{*}(x) \cdot e^{i(m-n)\omega t} \\
+\end{lefteqs}
+
+על מנת להוכיח מחזוריות בזמן נסתכל על $|\Psi(x,t)|^2$ בזמן $t+T_0$ כאשר $T_0=\frac{2\pi}{\omega}$:
+
+\begin{lefteqs}
+    e^{i(m-n)\omega(t+T_0)} = e^{i(m-n)\omega(t+\frac{2\pi}{\omega})} = e^{i(m-n)\omega t} \cdot e^{i(m-n)2\pi} = e^{i(m-n)\omega t}
+\end{lefteqs}
+
+כלומר לכל $t$, מתקיים: $|\Psi(x,t+T_0)|^2 = |\Psi(x,t)|^2$, ולכן היא מחזורית בזמן.
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 4}
+
+חלקיק עם מסה $m$ בבור פוטנציאל: $V(x) = -g [\delta(x-x_0) + \delta(x+x_0)]$
+
+נראה כי המצב המעורר קיים רק אם $gx_0 > \frac{\hbar^2}{2m}$
+
+נסתכל על הטווחים $(x_0, \infty)$ , $(-\infty, -x_0)$ ו $(-x_0, x_0)$ בכולם $V(x)=0$:
+
+\begin{lefteqs}
+    -\frac{\hbar^2}{2m} \cdot \frac{d^2 \psi}{dx^2} + V(x) \psi = E \psi \Rightarrow \frac{d^2 \psi}{dx^2} = -\frac{2mE}{\hbar^2} \psi
+\end{lefteqs}
+
+נציב $\kappa = \sqrt{-\frac{2mE}{\hbar^2}}$ ונקבל $\frac{d^2 \psi}{dx^2} = \kappa^2 \psi$
+
+כיוון ו $E<0$ (בהנחה שמדובר במצב קשור) ולכן $\kappa$ ממשי וחיובי, והפתרון הכללי הוא:
+\begin{lefteqs}
+    \psi(x) = A e^{\kappa x} + B e^{-\kappa x} \\
+\end{lefteqs}
+כאשר $x \rightarrow \infty$ הביטוי $A e^{\kappa x}$ מתבדר ולכן בטווח $(x_0, \infty)$ $A=0$ ונקבל $\psi(x) = B e^{-\kappa x}$
+
+כאשר $x \rightarrow -\infty$ הביטוי $B e^{-\kappa x}$ מתבדר ולכן בטווח $(-\infty, -x_0)$ $B=0$ ונקבל $\psi(x) = A e^{\kappa x}$
+
+בטווח $(-x_0, x_0)$ הפתרון הכללי גם הוא $\psi(x) = C e^{\kappa x} + D e^{-\kappa x}$
+
+כאשר המצב המעורר הראשון $\psi_1(x)$ אי זוגית ולכן $\psi(x) = -\psi(-x)$:
+
+\begin{lefteqs}
+    C e^{\kappa x} + D e^{-\kappa x} = - (C e^{-\kappa x} + D e^{\kappa x}) \Rightarrow C=-D \\
+\end{lefteqs}
+
+ולכן בטווח $(-x_0, x_0)$:  
+$\psi(x) = C (e^{\kappa x} - e^{-\kappa x})$
+
+כידוע (2.214) פונקצית הגל רציפה והנגזרת שלה רציפה חוץ מנהוקודת בהן הפונטנציאל אינסופי.
+
+\begin{lefteqs}
+    \underline{x=x_0:} \\
+    C (e^{\kappa x_0} - e^{-\kappa x_0}) = B e^{-\kappa x_0} \\
+    (*2.128) \Psi'(x_0^{+}) - \Psi'(x_0^{-}) = -\frac{2mg}{\hbar^2} \cdot \Psi(x_0) \\
+    \Psi'(x_0^{+}) = -\kappa B e^{-\kappa x_0} \\
+    \Psi'(x_0^{-}) = C \kappa (e^{\kappa x_0} + e^{-\kappa x_0}) \\
+    \Rightarrow -\kappa B e^{-\kappa x_0} - C \kappa (e^{\kappa x_0} + e^{-\kappa x_0}) = -\frac{2mg}{\hbar^2} \cdot C (e^{\kappa x_0} - e^{-\kappa x_0}) \\
+    \Rightarrow -\kappa C (e^{\kappa x_0} - e^{-\kappa x_0}) - C \kappa (e^{\kappa x_0} + e^{-\kappa x_0}) = -\frac{2mg}{\hbar^2} \cdot C (e^{\kappa x_0} - e^{-\kappa x_0}) \\
+    \Rightarrow -2\kappa C e^{\kappa x_0} = -\frac{2mg}{\hbar^2} \cdot C (e^{\kappa x_0} - e^{-\kappa x_0}) \\
+    \Rightarrow \kappa = \frac{mg}{\hbar^2} \cdot (1 - e^{-2\kappa x_0}) \\
+\end{lefteqs}
+
+קיים מצבב מעורר רק אם למשוואה זו יש פתרון כך ש $\kappa >0$.
+
+שתי הפונקציות $f(\kappa) = \kappa$ ו $h(\kappa) = \frac{mg}{\hbar^2} \cdot (1 - e^{-2\kappa x_0})$ מקיימות $f(0)=h(0)=0$.
+
+השיפוע של $f$ קבוע, $\frac{df}{d\kappa} = 1$, והפונקציה $h$ חסומה ($h(\kappa) < \frac{mg}{\hbar^2}$ לכל $\kappa$).
+
+ולכן אם $\frac{df}{d\kappa} |_{\kappa=0} < \frac{dh}{d\kappa} |_{\kappa=0}$ אז בהכרח הפונקציות יפגשו עבור $\kappa > 0$ כלשהו
+
+\begin{lefteqs}
+    \frac{d}{d\kappa} (\kappa) |_{\kappa=0} < \frac{d}{d\kappa} (\frac{mg}{\hbar^2} \cdot (1 - e^{-2\kappa x_0})) |_{\kappa=0} \\
+    \iff \frac{mg}{\hbar^2} \cdot 2x_0 > 1 \iff gx_0 > \frac{\hbar^2}{2m} \\
+    \blacksquare
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 5}
+
+(שאלה 2.48 מספר הלימוד)
+
+יהי חלקיק עם מסה $m$ בשדה פוטנציאל: $V(x) = \begin{cases}
+    \infty & x<0 \\
+    \frac{-32\hbar^2}{ma^2} & 0 \leq x \leq a \\
+    0 & x > a
+\end{cases}$
+
+\textbf{א)}
+כמה מצבים קשורים יש?
+
+\begin{lefteqs}
+\forall x \in (a,\infty), \, V(x) = 0 \Rightarrow \frac{d^2 \psi}{dx^2} = \kappa^2 \psi, \, \kappa = \sqrt{-\frac{2mE}{\hbar^2}} \\
+\Rightarrow \psi(x) = A e^{\kappa x} + B e^{-\kappa x} \\
+\end{lefteqs}
+
+בגבול $x \rightarrow \infty$ הביטוי $A e^{\kappa x}$ מתבדר ולכן בטווח $(a, \infty)$ $A=0$:
+
+ונקבל $\psi(x) = B e^{-\kappa x}$
+
+\begin{lefteqs}
+    \forall x \in [0,a], \, V(x) = \frac{-32\hbar^2}{ma^2} \Rightarrow \frac{d^2 \psi}{dx^2} + \frac{64\hbar^2}{a^2}\psi = \kappa^2 \psi \\
+    \Rightarrow \frac{d^2 \psi}{dx^2} = \psi (\kappa^2 - \frac{64\hbar^2}{a^2}) \\
+\end{lefteqs}
+
+נסמן $l=\kappa^2 - \frac{64\hbar^2}{a^2}$ והפתרון הכללי יהיה:
+
+$\psi(x) = C\sin(lx) + D\cos(lx)$
+
+מכיוון ש $\psi(0)=0$ אז $D=0$ ונקבל $\psi(x) = C\sin(lx)$
+
+ובנקודה $x=a$:
+
+\begin{lefteqs}
+    \psi(a) = C\sin(la) = Be^{-\kappa a} \\
+    \frac{d}{dx}(C\sin(lx))|_{x=a} = \frac{d}{dx}(Be^{-\kappa x})|_{x=a} \Rightarrow l\cdot C \cdot \cos(la) = -\kappa \cdot B \cdot e^{-\kappa a} \\
+    \Rightarrow lC \cos(la) = -\kappa C \sin(la) \Rightarrow l=-\kappa tan(la) \\
+\end{lefteqs}
+
+נעזר בסימונים מ 2.158:
+
+\begin{lefteqs}
+    z_0 = \frac{a}{\hbar} \sqrt{2m \cdot \frac{32\hbar^2}{ma^2}} \rightarrow z_0 = 8 \\
+    z=la \\
+\end{lefteqs}
+
+לפי ההגדרה של $l$, נקבל $k^2+l^2 = \frac{64}{a^2}$
+
+\begin{lefteqs}
+    \Rightarrow (\kappa a)^2 + (la)^2 = 64 \Rightarrow (ka)^2 = z_0^2 - z^2 \Rightarrow ka=\sqrt{z_0^2 - z^2} \\
+\end{lefteqs}
+
+זו משוואה קשה לפתירה אבל אם ננסה לצייר את הפונקציות בגרף (או בעזרת Desmos) ניתן לראות שישנן 3 נקודות חיתוך, ולכן ישנם שלושה מצבים קשורים.
+
+\textbf{ב)}
+את נקודת המפגש במצב המעורר הגבוה ביותר נמצא בעזרת Desmos, ונקבל ש $z \approx 7.95732$
+
+כלומר, $ka=\sqrt{z_0^2 - z^2} \approx 0.82526$
+
+ההסבתרות שהחלקיק יהיה מחוץ לבור הפוטנציאל היא:
+\begin{lefteqs}
+    P = \frac{\int_{a}^{\infty} B^2 e^{-2\kappa x} \, dx}{\int_{a}^{\infty} B^2 e^{-2\kappa x} \, dx + \int_{0}^{a} C^2 \sin^2(lx) \, dx} \\
+    \int_{a}^{\infty} B^2 e^{-2\kappa x} \, dx = B^2 \frac{1}{-2\kappa} \left[ e^{-2\kappa x} \right]_a^{\infty} = \frac{B^2}{2\kappa} e^{-2\kappa a} \\
+    B=C\sin(la)\cdot e^{\kappa a} \Rightarrow \int_{a}^{\infty} B^2 e^{-2\kappa x} \, dx = \frac{C^2 \sin^2(la)}{2\kappa} \\
+    \int_{0}^{a} C^2 \sin^2{lx} \, dx = C^2 \int_{0}^{a} (1 - \cos^2(lx)) \, dx = \frac{C^2}{2} (a - \frac{\sin(2la)}{2l}) \\
+    P = \frac{\frac{C^2 \sin^2{la}}{2\kappa}}{\frac{C^2}{2}(a - \frac{\sin(2la)}{2l}) + \frac{C^2 \sin^2{la}}{2\kappa}} \\
+    P = \frac{\sin^2(z)}{ka - \frac{\sin(2la)}{2l} + \sin^2(la)} \approx 0.542
+
+\end{lefteqs}
+
+\end{document}
