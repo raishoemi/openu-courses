@@ -1,0 +1,91 @@
+\documentclass[14pt]{extarticle}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Hebrew setup
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\newfontfamily\hebrewfont[Script=Hebrew]{Arial}
+
+% Math font setup for proper Greek symbols
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% Increase line spacing throughout document
+\linespread{1.3}
+
+\usepackage[margin=1in]{geometry}
+
+% Left-aligned equation environment
+\newenvironment{lefteqs}{%
+    \begin{english}%
+    \begin{flushleft}%
+    \renewcommand{\arraystretch}{1.3}%
+    $\begin{array}{@{}l@{}}%
+}{%
+    \end{array}$%
+    \end{flushleft}%
+    \end{english}%
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{מטלה 2 - אלקטרומגנטיות אנליטית}}\\[0.5em]
+    {\large שי רואימי - 318986270}\\[0.3em]
+\end{center}
+
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 1}
+(פרק 1 שאלה 2)
+
+נתון הפוטנציאל $V=\frac{V_0}{b} (x^2 + y^2 + z^2)$
+
+\textbf{א)} 
+נמצא את גרדיינט הפוטנציאל בקוארדינטות קרטזיות:
+
+\begin{lefteqs}
+    \nabla V = \frac{V_0}{b} (2x \hat{x} + 2y \hat{y} + 2z \hat{z})
+\end{lefteqs}
+
+\textbf{ב)}
+נראה כי הווקטור הנורמלי למשטחים שווי פוטנציאל שמצאתי הוא (בקאורדינטות כדוריות) ורטור היחידה בכיוון $r$
+
+בקאורדינטות כדוריות, $V=\frac{V_0}{b} r^2$ (כי $r=\sqrt{x^2+y^2+z^2}$)
+
+ולכן $\nabla V = 2\frac{V_0}{b} r \hat{r}$
+
+לפי הפוטנציאל בקאורדינטות כדוריות, הוא גדל לפי $r^2$ והמשטחים שווי הפוטנציאל הם כדורים,
+לכן הוקטור שמצביע לכיוון בו הפוטנציאל גדל הכי מהר הוא נורמלי למשטחים שווי הפוטנציאל ושווה ל $\nabla V$.
+ ולכן הנורמל הוא:
+
+ \begin{lefteqs}
+    \frac{\nabla V}{|\nabla V|} = \frac{2\frac{V_0}{b} r \hat{r}}{2\frac{V_0}{b} r} = \hat{r}
+ \end{lefteqs}
+
+\textbf{ג)}
+נבצע במפורש את אינטגרל המסלול על $\vec{E}$ בין ראשית הצירים לנק' $(a,a,0)$
+לאורך המסילה $x=y \, , z=0$
+
+נראה כי תוצאות האינטגרל אכן שוות להפרש הפוטנציאלים בין שתי הנקודות:
+
+\begin{lefteqs}
+    \vec{E} = -\nabla V(x,y,z) = -\frac{V_0}{b} (2x \hat{x} + 2y \hat{y} + 2z \hat{z}) \\
+    x=y \, , z=0 \Rightarrow \vec{E} = -\frac{2V_0}{b} (x \hat{x} + x \hat{y}) \\
+    d\vec{l} = dx\hat{x} + dy\hat{y} \\
+    \int_{(0,0,0)}^{(a,a,0)} \vec{E} \cdot d\vec{l} = \int_{0}^{a} -\frac{2V_0}{b} (x \hat{x} + x \hat{y}) \cdot (dx\hat{x} + dy\hat{y}) \\
+    = \frac{-2V_0}{b} \int_{0}^{a} xdx + xdx = \frac{-4V_0}{b} \int_{0}^{a} xdx \\
+    = \frac{-4V_0}{b} \left[ \frac{x^2}{2} \right]_{0}^{a} = \frac{-4V_0}{b} \cdot \frac{a^2}{2} = \frac{-2V_0 a^2}{b} \\
+    V(0,0,0) - V(a,a,0) = 0 - \frac{V_0}{b} (a^2 + a^2) = \frac{-2V_0 a^2}{b} \\
+    \Rightarrow \int_{(0,0,0)}^{(a,a,0)} \vec{E} \cdot d\vec{l} = \Delta V \, \, \blacksquare
+\end{lefteqs}
+
+
+\end{document}
