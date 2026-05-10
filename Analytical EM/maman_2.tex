@@ -5,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{pgfplots}
+\usepackage{romannum}
 \pgfplotsset{compat=1.18}
 
 % Hebrew setup
@@ -87,5 +88,432 @@
     \Rightarrow \int_{(0,0,0)}^{(a,a,0)} \vec{E} \cdot d\vec{l} = \Delta V \, \, \blacksquare
 \end{lefteqs}
 
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 2}
+(פרק 1 שאלה 5)
+
+תייל סופי באורך $L$ טעון במטען $\lambda$ ליחידת אורך.
+
+\textbf{א)} 
+נמצא את הפוטנציאל בנק' שהיא במרחק $r$ מהתיל ובמרחק $h$ מקצה התיל
+
+\begin{lefteqs}
+    V=\frac{1}{4\pi \epsilon_0} \int \frac{1}{q} dq = \frac{1}{4\pi \epsilon_0} \int \frac{1}{r(l)} \lambda dl
+    = \frac{\lambda}{4\pi \epsilon_0} \int_0^L \frac{1}{\sqrt{r^2 + (h-l)^2}} dl \\
+    = \frac{\lambda}{4\pi \epsilon_0} \left[ -\ln(h-l+\sqrt{r^2+(h-l)^2} \right]_0^L \\
+    = \frac{\lambda}{4\pi \epsilon_0} \ln\left( \frac{h+\sqrt{r^2+h^2}}{(h-L)+\sqrt{r^2+(h-L)^2}} \right)
+\end{lefteqs}
+
+\textbf{ב)} 
+נמצא את השדה החשמלי בנק' זו באופן ישיר בעזרת חוק קולון:
+
+נחשב בנפרד את $E_x \, , E_y$ ואז $\vec{E}=E_x \hat{x}  + E_y \hat{y}$
+
+\begin{lefteqs}
+    E_x = \frac{\lambda}{4\pi \epsilon_0} \int_0^L \frac{1}{r(l)^2} \cdot \cos(\theta) dl = 
+    \frac{\lambda}{4\pi \epsilon_0} \int_0^L \frac{r}{r(l)^3} dl \\
+    = \frac{\lambda r}{4\pi \epsilon_0} \int_0^L \frac{1}{(r^2+(h-l)^2)^2} dl
+    = \frac{\lambda r}{4\pi \epsilon_0} \left[ \frac{l-h}{r^2\sqrt{r^2+(h0l)^2}} \right]_0^L  \\
+    = \frac{\lambda}{4\pi r \epsilon_0} \left( \frac{L-h}{\sqrt{r^2+(h-L)^2}} + \frac{h}{r^2+h^2} \right) \\
+    E_y = \frac{\lambda}{4\pi \epsilon_0} \int_0^L \frac{1}{r(l)^2} \sin(\theta) dl
+    = \frac{\lambda}{4\pi \epsilon_0} \int_0^L \frac{h-l}{(r^2+(h-l)^2)^{\frac{3}{2}}} dl \\
+    = \frac{\lambda}{4\pi \epsilon_0} \left[ \frac{1}{\sqrt{r^2+(h-l)^2}} \right]_0^L
+    = \frac{\lambda}{4\pi \epsilon_0} \left( \frac{1}{\sqrt{r^2+(h-L)^2}} - \frac{1}{\sqrt{r^2+h^2}} \right) \\
+    \\
+    \vec{E} = E_x \hat{x} + E_y \hat{y} \\
+    \vec{E} = \frac{\lambda}{4\pi r \epsilon_0} \left( \frac{L-h}{\sqrt{r^2+(h-L)^2}} + \frac{h}{r^2+h^2} \right) \hat{x} + \frac{\lambda}{4\pi \epsilon_0} \left( \frac{1}{\sqrt{r^2+(h-L)^2}} - \frac{1}{\sqrt{r^2+h^2}} \right) \hat{y}
+
+\end{lefteqs}
+
+\textbf{ג)} 
+נחשב את $\vec{E}=-\nabla V$
+
+\begin{lefteqs}
+    V=\frac{\lambda}{4\pi \epsilon_0} \ln{\left( \frac{h+\sqrt{r^2+h^2}}{(h-L) + \sqrt{r^2+(h-L)^2}} \right)}  \\
+    = \frac{\lambda}{4\pi \epsilon_0} \left( \ln(h+\sqrt{r^2+h^2}) -\ln(h-L+\sqrt{r^2+(h-L)^2}) \right) \\
+    \vec{E} = -\nabla V = -\frac{\partial V}{\partial  r} \hat{x} - \frac{\partial V}{\partial h} \hat{y}
+\end{lefteqs}
+
+כפי שראינו מקודם, ערכו של $V$ בצורתו האינטגרלית הוא:
+
+\begin{lefteqs}
+    V=\frac{\lambda}{4\pi \epsilon_0} \int_0^L \frac{dl}{r^2+(h-l)^2} \\
+    -\frac{\partial V}{\partial r} = \frac{-\lambda}{4\pi \epsilon_0} \int_0^L \frac{\partial}{\partial r} \left( \frac{1}{\sqrt{r^2 + (h-l)^2}} \right) dl =
+    \frac{-\lambda}{4\pi \epsilon_0} \int_0^L \frac{r}{r^2 +  (h-l)^2} dl \\
+    \Rightarrow E_x = -\frac{\partial V}{\partial r} 
+\end{lefteqs}
+ערך זה חושב בסעיף ב'
+
+\begin{lefteqs}
+    \frac{-\partial V}{\partial h} = -\frac{\lambda}{4\pi \epsilon_0} \int_0^L \frac{\partial}{\partial h} \left( \frac{1}{\sqrt{r^2+(h-l)^2}} \right) \\
+    = \frac{-\lambda}{4\pi \epsilon_0} \int_0^L \frac{h-l}{(r^2 + (h-l)^2)^{\frac{3}{2}}} \\
+    \Rightarrow E_y = -\frac{\partial V}{\partial h}
+\end{lefteqs}
+ערך זה חושב בסעיף ב'
+
+\textbf{ד)} 
+
+קיבלנו תוצאה זהה בסעיף ב' וג'
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 3}
+(פרק 1 שאלה 12)
+
+נתונה מסגרת מוליכה שעובייה בכיוון $x$ הוא $a$ ובכיוון $y$ הוא $b$, הקצה $x=a$ מוחזק בפוטנציאל:
+
+\begin{lefteqs}
+    V(a,y) = V_0 \cdot \sin^3(\frac{\pi y}{b})
+\end{lefteqs}
+ואילו יתר צלעות הפוטנציאל אפס.
+
+\textbf{א)} 
+נמצא את הפוטנציאל בכל מקום בתוך המסגרת
+
+נפתור את משוואת לפלס $\nabla^2 V(x,y,z) = 0$ ע"י הפרדת משתנים.
+
+תנאי השפה הם $V(0,y)=V(x,0)=V(x,b)=0$
+
+אנחנו מחפשים פתרון מהצורה $V(x,y,z)=X(x)Y(y)Z(z)$
+
+כאשר $Y(y)$ צריך להתאפס פעמיים (ב $y=b$ וב $y=0$)
+
+ולכן ע"פ הטבלה בעמוד 67 יתאים פתאון מהצורה:
+
+\begin{lefteqs}
+    Y(y)=A\sin(k_y y) + B\cos(k_y y)
+\end{lefteqs}
+
+משיקולי סימטריה הפוטנציאל בבעיה לא תלוי ב $z$ ולכן נקבע $Z(z)=1 \, (k_z=0)$
+
+$X(x)$ צריך להתאפס עבור $x=0$ ולקיים את $V(a,y)$ ב $x=a$
+
+מכיוון ש $k_y^2>0$ (ע"פ הטבלה) וסכום הקבועים חייב להיות אפס, אז הפתרון של $X(x)$ יהיה מהצורה:
+
+\begin{lefteqs}
+    X(x)=A\sinh(|k_x| x) + B\cosh(|k_x| x)
+\end{lefteqs}
+
+ע"פ תנאי השפה:
+
+\begin{lefteqs}
+    Y(0) = A\sin(k_y \cdot 0) B \cos(k_y \cdot 0) \Rightarrow B = 0 \\
+    Y(b) = A\sin(k_y \cdot b) = 0 \Rightarrow k_y = \frac{n\pi}{b} \Rightarrow Y(y)=A\sin(\frac{n\pi}{b}y) \\
+    X(0) = C \sinh(|k_x| \cdot 0) + D\cosh(|k_x| \cdot 0) \Rightarrow  D=0 \\
+    \Rightarrow X(x) = C\sinh(|k_x|x) \\
+    k_x^2 = -k_y^2 = -(\frac{n\pi}{b})^2 \Rightarrow |k_x| = \frac{n\pi}{b} \\
+    V(x,y,z) = V(x,y) = \displaystyle \sum_{n=1}^{\infty} A_n \sinh(\frac{n\pi}{b}x)\sin(\frac{n\pi}{b}y) \\
+    \sin^3(\theta)=\frac{3}{4}\sin(\theta) - \frac{1}{4}\sin(3\theta) \\
+    V_0\sin^3(\frac{\pi y}{b}) = V_0\left( \frac{3}{4}\sin(\frac{\pi y}{b}) - \frac{1}{4}\sin(\frac{3\pi y}{b}) \right) \\
+\end{lefteqs}
+
+נבדוק את תנאי השפה: $V(x=a,y) = V_0 \cdot \sin^3(\frac{\pi y}{b})$
+
+\begin{lefteqs}
+    \displaystyle \sum_{n=1}^{\infty} A_n \sinh(\frac{n\pi a}{b}) \sin(\frac{n\pi}{b}y) =
+    V_0\left( \frac{3}{4}\sin(\frac{\pi y}{b}) -  \frac{1}{4} \sin(\frac{3\pi y}{b})\right ) \\
+\end{lefteqs}
+ע"פ השוואת מקדמים:
+\begin{lefteqs}
+    A_1 \cdot \sinh(\frac{\pi a}{b}) = \frac{3V_0}{4} \Rightarrow A_n=\frac{3V_0}{4\sinh(\frac{\pi a}{b})} \\
+    A_3 \cdot \sinh(\frac{3\pi a}{b}) = \frac{-V_0}{4} \Rightarrow A_3 = \frac{-V_0}{4\sinh(\frac{3\pi a}{b})} \\
+    V(x,y) = \frac{3V_0 \cdot \sinh(\frac{\pi x}{b}) \sin(\frac{\pi y}{b})}{4\sinh(\frac{\pi a}{b})}
+    - \frac{V_0\sin(\frac{3\pi x}{b})\sin({\frac{3\pi y}{b}})}{4\sinh(\frac{3\pi a}{b})}
+
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 4}
+(פרק 1 שאלה 15)
+בפינה בין שני לוחות מוארקים ניצבים זה לזה ישנו מטען $Q_1$ על קו חוצה ובמרחק $d$ מהפינה.
+
+מציבים מטען נוסף $Q_2$ על אותו קו ובמרחק $d$ מהמטען הראשון.
+
+מה הכוח שפועל על $Q_1$ כתוצאה מהבאת המטען הנוסף (גודל וכיוון)?
+
+נעזר בשיטת התמונות.
+
+נוסיף מטענים דמיוניים סימטריים ל $Q_2$ ביחס לציר ה$x$ ולציר ה$y$ במטען נגדי.
+
+וכן נוסיף מטען זהה ל $Q_2$ בהמשך הקו החוצה (קו $Q1 \, ,Q_2$) במרחק $2d$ מהפינה (כלומר ברגע השלישי).
+
+בעזרת שלושת מטענים אלו מצאנו קונפיגורצית מטענים שיוצרת $V=0$ במקומות בהם היו לוחות מאורקים, ולכן ע"פ משפט
+הקיום והיחידות (כיוון ולא הוספנו מטענים ברבע I) נוכל לחשב כוחות על מטענים בעזרת שלושת המטענים הדמיוניים:
+
+נסמן את המטענים הדימיוניים, ברבע $\Romannum{3}$ ב $Q_2'$ וברבע $\Romannum{2}$ ב$Q_3$ וברבע $\Romannum{4}$ ב $Q_4$
+
+המרחק בין $Q_3 \, , Q_4$ לבין $Q_1$ הוא $\sqrt{(2d)^2 + n^2} = \sqrt{5}\cdot d$
+
+המרחק בין $Q_2'$ לבין $Q_1$ הוא $3d$ וכמובן המרחק בין $Q_2$ ל $Q_1$ הוא $d$
+
+$Q_2$ מפעיל כוח דוחה על $Q_1$ - לכיוון הפינה
+
+$Q_3 \, , Q_4$ מושכים אותו לכיוונם וגם לפני הפינה, כאשר המשיכה לכיוונם מתבטלת (הם מבטלים זה את זה)
+
+$Q_2'$ דוחף את $Q_1$ המרחק מהפינה
+
+\begin{lefteqs}
+    F=\frac{kQ_1Q_2}{r^2} \\
+    F_{Q_2} = -\frac{kQ_1Q_2}{d^2}
+    F_{Q_2'} = \frac{kQ_1Q_2}{(3d)^2} = \frac{kQ_1Q_2}{9d^2} \\
+    F_{Q_3} = -\frac{d}{d\sqrt{5}} \cdot \frac{kQ_1Q_2}{(d\sqrt{5})^2} = -0.447 \cdot \frac{kQ_1Q_2}{5d^2} \\
+    \Sigma F = \frac{kQ_1Q_2}{d^2} \left( \frac{1}{9} -1 -2\frac{0.447}{5} \right) = -1.068 \cdot \frac{kQ_1Q_2}{d^2} \\
+\end{lefteqs}
+גודל הכוח הוא $-1.068 \cdot \frac{kQ_1Q_2}{d^2}$ והכיוון הוא לכיוון הפינה
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 5}
+\textbf{א)} 
+נעזר בשיטת התמונות שוב
+
+גם כאן ניתן להניח גליל אינסופי מעבר ללוח האינסופי בפוטנציאל $-V_0$ ולייצר מצב של $V=0$ איפה שהלוח היה.
+
+במקום גליל, נחליף את שני הגלילים במטען קווי אינסופי.
+\begin{lefteqs}
+    \oint E(r) \cdot dA = \frac{Q_{in}}{\epsilon_0} \Rightarrow E(r) \cdot 2\pi r \cdot L  = \frac{\lambda \cdot L}{\epsilon_0} \\
+    E(r) = \frac{\lambda}{2\pi \epsilon_0} \cdot \frac{1}{r} \Rightarrow V(r) = -\int \vec{E}(r) d\vec{r} = -\frac{\lambda}{2\pi \epsilon_0} \ln(r) \\
+\end{lefteqs}
+כעת נשים לב, שאומנם המטענים הקוויים מאפסים את הפוטנציאל במיקום בלוח הלוח האינסופי,
+הפוטנציאל במיקום הגליל כבר לא יהיה $V_0$ אם שני המטענים הקוויים במרחק $d$ ממיקום הלוח
+וצפיפות מטענים קווית $\lambda$, כי המטען המדומה ישפיע על הפוטנציאל בגליל.
+
+נסמן, מרחק המטען הקווי האינסופי מממיקום הגליל הוא $s$, בעל צפיפות מטען קווית $\lambda$, ומרחק המטען הקווי בצד השני (המדומה) הוא $-s$ בעל צפיפות מטען קווית $-\lambda$.
+
+הפוטנציאל בכל נקודה הוא:
+
+\begin{lefteqs}
+    V=V_1 + V_2 = -\frac{\lambda}{2\pi \epsilon_0} \ln(\frac{r_1}{r_2})
+\end{lefteqs}
+כאשר $r_1 \, , r_2$ מרחקי נקודה כלשהי משני המטענים הקווים, בהתאם.
+
+\begin{lefteqs}
+    \forall (x,y) \, , r_1^2=(x-s)^2 + y^2 \, , r_2^2=(x+s)^2 + y^2 \\
+\end{lefteqs}
+על מנת שנקבל גליל שווה פוטינציאל נדרוש $(x,y)$ ככה ש $V$ קבוע
+
+כלומר $\ln(\frac{r_1}{r_2})=\text{const}$ , כלומר $\frac{r_1}{r_2}=k$
+
+\begin{lefteqs}
+    \frac{(x-s)^2 + y^2}{(x+s)^2 + y^2} = k^2 \Rightarrow x^2 -2xs + s^2 +y^2 = k^2(x^2 + 2xs + s^2 + y^2) \\
+    x^2(1-k^2) -2xs(1+k^2) + s^2(1-k^2) + y^2(1-k^2) = 0 \\
+    x^2 - \frac{2s(1+k^2)}{1-k^2}x + s^2 + y^2 = 0 \\
+\end{lefteqs}
+
+עבור $x_0=\frac{s(1+k^2)}{1-k^2}$ נקבל:
+
+\begin{lefteqs}
+    (x-x_0)^2 + y^2 = x_0^2 - s^2
+\end{lefteqs}
+
+כלומר, מיקומי הגלילים יהיו $x_0=\frac{s(1+k^2)}{1-k^2}$ עם רדיוס $R=\sqrt{x_0^2 - s^2}$
+
+\begin{lefteqs}
+    R=a \iff a^2=x_0^2-s^2 \iff s=\sqrt{x_0^2-a^2} = \sqrt{d^2-a^2}
+\end{lefteqs}
+
+כלומר המטענים הקוויים יהיהו במיקומים $\pm \sqrt{d^2-a^2}$
+
+כעת יש לדרוש שהפוטנציאל על הגליל יהיה $V_0$
+
+המרחק של הנקודה $(d-a,0)$ מהמטענים הקוויים הוא:
+
+\begin{lefteqs}
+    r_1 = s-d+a \, , r_2 = s+d-a  \\
+    V=\frac{-\lambda}{2\pi \epsilon_0} \ln(\frac{r_1}{r_2}) = V_0 \Rightarrow \lambda = -\frac{2\pi \epsilon_0 V_0}{\ln(\frac{s-d+a}{s+d-a})}
+\end{lefteqs}
+
+ושוב הפוטנציאל בכל נקודה הוא:
+
+\begin{lefteqs}
+    V=\frac{-\lambda}{2\pi \epsilon_0} \ln(\frac{r_1}{r_2}) \\
+    r_1 = \sqrt{(x-s)^2 + y^2} \\
+    r_2 = \sqrt{(x+s)^2 + y^2} \\
+\end{lefteqs}
+
+\textbf{ב)} 
+
+כידוע, $\vec{E}-\nabla V$, ולכן על הלוח (ב $x=0$):
+
+\begin{lefteqs}
+    E_x = -\frac{\partial V}{\partial x} = \frac{\lambda}{2\pi \epsilon_0}  \left( \frac{\partial \ln(r_2)}{\partial x} - \frac{\partial \ln(r_2)}{\partial x} \right) \\
+    = \frac{\lambda}{2\pi \epsilon_0} \left( \frac{\partial \ln(\sqrt{(x-s)^2 + y^2})}{\partial x} - \frac{\partial \ln(\sqrt{(x+s)^2 + y^2})}{\partial x} \right) \\
+    = \frac{\lambda}{2\pi \epsilon_0} \left( \frac{x-s}{(x-s)^2 + y^2} - \frac{x+s}{(x+s)^2 + y^2} \right) \\
+    E_x |_{x=0} = \frac{\lambda}{2\pi \epsilon_0} \left( \frac{-s}{s^2 + y^2} - \frac{s}{s^2 + y^2} \right) = -\frac{\lambda s}{\pi \epsilon_0 (s^2 + y^2)} \\
+\end{lefteqs}
+לכן על הלוח השדה החשמלי הוא $\vec{E} = -\frac{\lambda s}{\pi \epsilon_0 (s^2 + y^2)} \hat{x}$ והתפלגות המטענים היא:
+\begin{lefteqs}
+    \sigma(x_0,y,z) = \epsilon_0 E_n |_{x=0} = -\frac{\lambda s}{\pi (s^2 + y^2)}
+\end{lefteqs}
+
+כאשר $E_z=E_y=0$
+
+נעבור לגליל, נסמן נקודה על פני הגליל: $(x,y)=(d+a\cos(\theta), a\sin(\theta))$
+
+את $E_x$ חישבנו עבור הלוח:
+
+\begin{lefteqs}
+    E_x = \frac{\lambda}{2\pi \epsilon_0} \left( \frac{x-s}{(x-s)^2 + y^2} - \frac{x+s}{(x+s)^2 + y^2} \right) \\
+\end{lefteqs}
+
+נחשב את $E_y$:
+
+\begin{lefteqs}
+    E_y = -\frac{\partial V}{\partial y} = \frac{\lambda}{2\pi \epsilon_0} \left( \frac{\partial \ln(\sqrt{(x-s)^2 + y^2})}{\partial y} - \frac{\partial \ln(\sqrt{(x+s)^2 + y^2})}{\partial y} \right) \\
+    = \frac{\lambda}{2\pi \epsilon_0} \left( \frac{y}{(x-s)^2 + y^2} - \frac{y}{(x+s)^2 + y^2} \right) \\
+\end{lefteqs}
+
+עבור $(x,y)$ על פני הגליל:
+
+\begin{lefteqs}
+    E_x = \frac{\lambda}{2\pi \epsilon_0} \left( \frac{d+a\cos(\theta) -s}{(d+a\cos(\theta)-s)^2 + (a\sin(\theta))^2} - \frac{d+a\cos(\theta) +s}{(d+a\cos(\theta)+s)^2 + (a\sin(\theta))^2} \right) \\
+    E_y = \frac{\lambda}{2\pi \epsilon_0} \left( \frac{a\sin(\theta)}{(d+a\cos(\theta)-s)^2 + (a\sin(\theta))^2} - \frac{a\sin(\theta)}{(d+a\cos(\theta)+s)^2 + (a\sin(\theta))^2} \right) \\
+\end{lefteqs}
+
+והתפלגות המטענים היא:
+
+\begin{lefteqs}
+    \sigma(\theta) = \epsilon \cdot E_n = \epsilon_0(E_x \cos(\theta) + E_y \sin(\theta))
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 6}
+\textbf{א)}
+נחשב את כל רכיבי מומנט הקוואדרופול של דסקה דקה בעלת רדיוס $a$ הטעונה באופן אחיד במטען חשמלי $Q$
+
+ע"פ 1.193 טנזור הקוודרופול הוא:
+\begin{lefteqs}
+    Q_{ij} = \iiint (3r_i \prime r_j \prime - \delta_{ij}(r \prime)^2) \rho(\vec{r \prime}) dV \\
+\end{lefteqs}
+אנחנו מסתכלים על דסקה ולכן $dV=dA$ (נחשב שטח, לא נפח)
+
+לכל $i\neq j$, מתקיים $\delta_{ij}=0$ ולכן $Q_{ij} = 3\iint r_i \prime r_j \prime \rho(\vec{r \prime}) dA$
+כאשר אינטגרל שטח זה מתאפס עבור $Q_{xy}$
+
+וכן $Q_{xz} = Q_{yz} = 0$ מכיוון ש $z=0$ על הדסקה.
+
+\begin{lefteqs}
+    Q_{zz} = \iint (3z\prime^2-r\prime^2) \sigma dA\prime = -\sigma \iint r\prime^2 dA\prime = -\sigma \iint r\prime^2 r\prime \cdot dr\prime d\theta \\
+    = -\sigma \int_0^a r\prime^3 dr\prime \int_0^{2\pi} d\theta = -\sigma \cdot \frac{a^4}{4} \cdot 2\pi = -\frac{\sigma a^4 \pi}{2} \\
+    Q_{xx} = \iint (3x\prime^2 - r\prime^2) \sigma dA\prime = \sigma \iint (3x\prime^2 -x\prime^2-y\prime^2) dA\prime \\
+    = \sigma \iint 2x\prime^2 -y\prime^2 dA\prime = \sigma \int_0^{2\pi} \int_0^a (2r\prime^2\cos^2(\theta) - r\prime^2\sin^2(\theta)) r\prime dr\prime d\theta \\
+    = \sigma \int_0^{2\pi} \int_0^a r\prime^3 (2\cos^2(\theta) - \sin^2(\theta)) dr\prime d\theta \\
+    = \sigma \int_0^a r\prime^3 dr\prime \left[2\int_0^{2\pi}\cos^2(\theta)d\theta -\int_0^{2\pi}\sin^2(\theta)d\theta \right] \\
+    = \sigma \cdot \frac{a^4}{4} \cdot \left( 2\cdot \left[\frac{\theta}{2} + \frac{1}{4}\sin(2\theta)\right]_0^{2\pi} - \left[\frac{\theta}{2} - \frac{1}{4}\sin(2\theta)\right]_0^{2\pi} \right) \\
+    = \sigma \cdot \frac{a^4}{4} \cdot (2 \dot \frac{2\pi}{2} - \frac{2\pi}{2}) = \frac{\sigma a^4 \pi}{4}
+\end{lefteqs}
+
+מטעמי סימטריה $Q_{yy}=Q_{xx}$ וכן:
+
+\begin{lefteqs}
+    Q=\sigma \cdot \pi a^2 \Rightarrow \sigma = \frac{Q}{\pi a^2} \\
+    Q_{xx} = Q_{yy} = Q \cdot \frac{a^2}{4} \\
+    Q_{zz} = -\frac{Q \cdot a^2}{2} \\
+    \Rightarrow Q_{ij} = \frac{Qa^2}{4}\begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & -2
+    \end{bmatrix}
+\end{lefteqs}
+
+\textbf{ב)}
+הפוטנציאל עד סדר גודל $\frac{1}{r^3}$ הוא:
+\begin{lefteqs}
+    V = \frac{1}{4\pi \epsilon_0} \left( \frac{\text{monopole}}{r} + \frac{\text{dipole}}{r^2} + \frac{\text{quadrupole}}{r^3} \right) \\
+\end{lefteqs}
+כאשר את הקוואדרופול חישבנו. המונופול הוא כמובן $Q$, והדיפול הוא 0 כי מומנט הדיפול הוא $\vec{p} = \iiint r\prime \sigma dV\prime$ כאשר $p_z=0$ כי הדסקה על $z=0$
+ו $p_x=p_y=0$ ע"פ סימטריה.
+
+\begin{lefteqs}
+    V_{monopole} = \frac{1}{4\pi \epsilon_0} \cdot \frac{Q}{r} \\
+    V_{dipole} = 0 \\
+    V_{quadrupole} = \frac{1}{4\pi \epsilon_0} \cdot \frac{1}{2r^3} \displaystyle \sum_{ij} \hat{r_i} \hat{r_j} Q_{ij} \\
+    = \frac{1}{8\pi \epsilon_0 r^3} (\hat{r_x}^2 \cdot \frac{Qa^2}{4} + \hat{r_y}^2 \cdot \frac{Qa^2}{4} + \hat{r_z}^2 \cdot -\frac{Qa^2}{2}) \\
+    = \frac{1}{8\pi \epsilon_0 r^3} (\sin^2(\theta)\cos^2(\phi)\frac{Qa^2}{4} + \sin^2(\theta)\sin^2(\phi)\frac{Qa^2}{4} + \cos^2(\theta) \cdot -\frac{Qa^2}{2}) \\
+    = \frac{1}{8\pi \epsilon_0 r^3} (\frac{Qa^2}{4} \cdot \sin^2(\theta) - \frac{Qa^2}{2} \cdot \cos^2(\theta)) \\
+    = \frac{1}{8\pi \epsilon_0 r^3} \cdot \frac{Qa^2}{4} \cdot (1 - 3\cos^2(\theta)) \\
+    \Rightarrow V = \frac{Q}{4\pi\epsilon_0 r} + \frac{Qa^2(1-3\cos^2(\theta))}{32\pi \epsilon_0 r^3}
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 7}
+\textbf{א)}
+ננסה לפתור בעזרת שיטת התמונות.
+
+עבור לוח אינסופי ב $z=0$, על מנת לפתור את משוואת לפלטס היינו מניחים מטען $-q$ בנקודה $(x_0, y_0, -z_0)$
+
+ועבור כדור, המטען הדמיוני היה  צריך להיות $q'=q\frac{R}{d} \, , d=\frac{R^2}{d}$
+כאשר $d$ הוא המרחק בין המטען $q$ למרכז הכדור (זה ע"פ הדוגמא בעמוד 99)
+
+געת, אם מתקיים $V=0$ בלוח $z=0$ \textbf{וגם} $V=0$ על פני חצי הכדור ברדיוס $R$ כאשר $z\geq 0$ אז נקיים את התנאים הנדרשים לחצי הכדור בשאלה.
+
+נסמן $q_1$ הוא המטען המקורי מהשאלה, בעל מטען $q$, בעל מטען $q$ בנקודה:
+
+$(x_0, y_0, z_0)$
+
+מטען $q_2$ בעל מטען $-q$, ממוקם ב $(x_0, y_0, -z_0)$ - מייצר $V=0$ על $xy$
+
+מטען $q_3$ בעל מטען $-q\frac{R}{d}$, ממוקם ב $(\frac{R}{d})^2 (x_0,y_0,z_0)$ מייצר $V=0$ בכדור.
+
+לבסוף, נוסיף מטען $q_4$, בעל מטען $q\frac{R}{d}$ בנקודה $(\frac{R}{d})^2 (x_0,y_0,-z_0)$
+
+כאשר הזוגות $q_1 \, , q_2$ ו $q_3 \, , q_4$ מייצרים שניהם $V=0$ בכדור סביב ראשית הצירים עם רדיוס $R$,
+ולכן ארבעת מטענים אלה מייצרים $V=0$ בחצי הכדור.
+
+תהי נקודה כלשהי $(x,y,z)$ בחצי הכדור, נסמן את המרחקים שלה מהמטענים ב $r_i$:
+
+\begin{lefteqs}
+    r_1 = \sqrt{(x_0 - x)^2 + (y_0 - y)^2 + (z_0 - z)^2} \\
+    r_2 = \sqrt{(x_0 - x)^2 + (y_0 - y)^2 + (z_0 + z)^2} \\
+    r_3 = \sqrt{(\frac{R}{d})^4 ((x_0 - x)^2 + (y_0 - y)^2 + (z_0 - z)^2)} \\
+    r_4 = \sqrt{(\frac{R}{d})^4 ((x_0 - x)^2 + (y_0 - y)^2 + (z_0 + z)^2)} \\
+\end{lefteqs}
+
+כאשר $d=\sqrt{x_0^2 + y_0^2 + z_0^2}$
+
+\begin{lefteqs}
+    V = \frac{1}{4\pi \epsilon_0} \left( \frac{q}{r_1} - \frac{q}{r_2} - \frac{qR}{dr_3} + \frac{qR}{dr_4} \right)
+\end{lefteqs}
+
+\textbf{ב)}
+\begin{lefteqs}
+    G(r) = \frac{V(r)}{q} = \frac{1}{4\pi \epsilon_0} \left( \frac{1}{r_1} - \frac{1}{r_2} - \frac{R}{dr_3} + \frac{R}{dr_4} \right) \\
+\end{lefteqs}
+כאשר $d \, , r_i$ הם כפי שהוגדרו בסעיף א'
+
+\textbf{ג)}
+
+\begin{lefteqs}
+    V(r) = \int_0^{\frac{R}{2}} G(r,r\prime) \lambda dz\prime 
+\end{lefteqs}
+נחשב את $r_i$ עבור $1 \leq i \leq 4$, כאשר $x_0=y_0=0$ ו $z_0=z\prime$:
+
+התבקשנו למצוא את הפוטנציאל על ציר $z$ ולכן נסתכל על נקודות מהצורה $(0,0,z)$, וכן $d=z\prime$
+
+\begin{lefteqs}
+    r_1 = z - z\prime \\
+    r_2 = z + z\prime \\
+    r_3 = \frac{R^2}{z\prime} - z \\
+    r_4 = \frac{R^2}{z\prime} + z \\
+    V(r) = \frac{1}{4\pi\epsilon_0} \int_0^{\frac{R}{2}} \frac{1}{z-z\prime} - \frac{1}{z+z\prime} - \frac{R}{z\prime(\frac{R^2}{z\prime} - z)} + \frac{R}{z\prime(\frac{R^2}{z\prime} + z)} dz\prime \\
+    = \frac{1}{4\pi \epsilon_0} \left[ \ln|z-z\prime| - \ln|z+z\prime| - \frac{R}{z}\ln|R^2-zz\prime| + \frac{R}{z}\ln|R^2+zz\prime| \right]_0^{\frac{R}{2}} \\
+    = \frac{1}{4\pi \epsilon_0} \left( \ln(\frac{z-\frac{R}{2}}{z}) - \ln(\frac{z+\frac{R}{2}}{z}) - \frac{R}{z}\ln(\frac{R^2-z\frac{R}{2}}{R^2}) + \frac{R}{z}\ln(\frac{R^2+z\frac{R}{2}}{R^2}) \right) \\
+\end{lefteqs}
 
 \end{document}
