@@ -1,0 +1,438 @@
+\documentclass[14pt]{extarticle}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{romannum}
+\pgfplotsset{compat=1.18}
+
+% Hebrew setup
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\newfontfamily\hebrewfont[Script=Hebrew]{Arial}
+
+% Math font setup for proper Greek symbols
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% Increase line spacing throughout document
+\linespread{1.3}
+
+\usepackage[margin=1in]{geometry}
+
+% Left-aligned equation environment
+\newenvironment{lefteqs}{%
+    \begin{english}%
+    \begin{flushleft}%
+    \renewcommand{\arraystretch}{1.3}%
+    $\begin{array}{@{}l@{}}%
+}{%
+    \end{array}$%
+    \end{flushleft}%
+    \end{english}%
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{מטלה 3 - אלקטרומגנטיות אנליטית}}\\[0.5em]
+    {\large שי רואימי - 318986270}\\[0.3em]
+\end{center}
+
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 1}
+
+(פרק 2 שאלה 3)
+
+בריק נתון $\vec{E_1}=-15\hat{x} + 20\hat{y}+30\hat{z}$, וגם $\epsilon_2=4\epsilon_0$.
+
+\textbf{א)} 
+נמצא את $\vec{D_2} \, , \vec{E_2}$, בהנחה שהמישור נטול מטען חופשי.
+
+תנאי השפה הם רציפות $E$ הטנגנטיאלי, וכיוון ואין מטענים חופשיים על השפה אז $\vec{D_{1,z}=D_{2,z}}$ (רציפות $D$ הנורמלי).
+
+\begin{lefteqs}
+    \vec{E_{1,z}} = \vec{E_{2,z}} \Rightarrow \vec{E_2} = -15\hat{x} + 20\hat{y} + E_{2,z}\hat{z} \\
+    \vec{D_{1,z}} = \vec{D_{2,z}} \Rightarrow \vec{D_z} = \epsilon \vec{E_z} \Rightarrow \vec{D_{1,z}} = \epsilon_0 E_{1,z} = \epsilon_2 E_{2,z} \\
+    \epsilon_0 \cdot 30 = 4\epsilon_0 E_{2,z} \Rightarrow E_{2,z} = \frac{30}{4} = 7.5 \\
+    \vec{E_2} = -15\hat{x} + 20\hat{y} + 7.5\hat{z} \\
+    \vec{D_2} = \epsilon_2 \vec{E_2} = 4\epsilon_0(-15\hat{x} + 20\hat{y} + 7.5\hat{z}) \\
+    \vec{D_2} = \epsilon_0(-60\hat{x} + 80\hat{y} + 30\hat{z})
+\end{lefteqs}
+
+\textbf{ב)} 
+נמצא את הזווית $\theta$ שהשדה החשמלי $E_2$ יוצר עם הניצב למישור $z=0$.
+
+\begin{lefteqs}
+    \tan(\theta) = \frac{\sqrt{(-15)^2 + 20^2}}{7.5} \Rightarrow \theta = 73.3^\circ
+\end{lefteqs}
+
+\textbf{ג)} 
+כעת נניח צפיפות מטען חופשית של $2 \cdot 10^{-10} \, \frac{C}{m^2}$ על המישור.
+
+הרכיבים המקבילים של $E_2$ נותרו זהים, כלומר $E_{2,x} = E_{1,x}$ ו-$E_{2,y} = E_{1,y}$.
+
+כיוון ויש מטען חופשי על המישור, אז $D_{1,z} - D_{2,z} = \sigma = 2 \cdot 10^{-10}$.
+
+\begin{lefteqs}
+    D_{1,z} = \epsilon_0 E_{1,z} \Rightarrow D_{2,z} = D_{1,z} - \sigma = \epsilon_0 \cdot 30 - 2 \cdot 10^{-10} \\
+    \Rightarrow D_{2,z} = 6.55 \cdot 10^{-11} \\
+    E_{2,z} = \frac{D_2,z}{\epsilon_2} = \frac{6.55 \cdot 10^{-11}}{4 \cdot 8.85 \cdot 10^{-12}} = 1.85 \\
+    \vec{E_2} = -15\hat{x} + 20\hat{y} + 1.85\hat{z} \\
+    \vec{D_2} = \epsilon_2 \vec{E_2} = 4\epsilon_0(-15\hat{x} + 20\hat{y} + 1.85\hat{z}) \\
+    \vec{D_2} = \epsilon_0(-60\hat{x} + 80\hat{y} + 7.4\hat{z})
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 2}
+
+(פרק 2 שאלה 5)
+מצא את השדה החשמלי בכל מקום עבור שני האלקטרטים הבאים:
+\textbf{א)} 
+
+כדור בעל רדיוס $a$ עם קיטוב $\vec{P} = P_0 \cdot \frac{r}{a} \hat{r}$
+
+\begin{lefteqs}
+    \rho_{pol} = -\vec{\nabla} \cdot \vec{P} = \frac{-1}{r^2} \frac{\partial}{\partial r} (r^2 P_r) = \frac{-1}{r^2} \frac{\partial}{\partial r} (r^2 P_0 \cdot \frac{r}{a}) \\
+    \rho_{pol} = -\frac{P_0}{a} \cdot \frac{1}{r^2} \cdot 3r^2 = -\frac{3P_0}{a} \\
+    \sigma_{pol} |^{r=a} = \vec{P} \cdot \hat{n} = \vec{P} \cdot \hat{r} = P_0 \cdot \frac{a}{a} = P_0 \\
+    \underline{r<a:} \\
+    Q_{enc} = \int_V \rho_{pol} dV = \int_0^r -\frac{3P_0}{a} \cdot 4\pi r\prime^2 \cdot dr\prime \\
+    Q_{enc} = -\frac{12 \cdot P_0 \cdot \pi}{a} \left[ \frac{r\prime^3}{3} \right]_0^r = -\frac{4P_0\pi r^3}{a} \\
+\end{lefteqs}
+
+ע"פ חוק גאוס:
+
+\begin{lefteqs}
+    E \cdot 4\pi r^2 = \frac{Q_{enc}}{\epsilon_0} = \frac{-\frac{4P_0\pi r^3}{a}}{\epsilon_0} \\
+    \vec{E} = -\frac{P_0 r}{a \epsilon_0} \hat{r} \\
+    \underline{r>a:} \\
+    Q_{enc}\prime = Q_{volume}|_{r=a} + Q_{surface}|_{r=a} = -\frac{4P_0\pi a^3}{a} + 4\pi a^2 P_0 \\
+    \Rightarrow Q_{enc}\prime = 4\pi P_0 a^2 - 4\pi P_0 a^2 = 0 \Rightarrow \vec{E} = 0 \\
+    E = \begin{cases}
+    -\frac{P_0 r}{a \epsilon_0} \hat{r} & r < a \\
+    0 & r > a
+    \end{cases}
+\end{lefteqs}
+
+\textbf{ב)} 
+
+לוח בעל עובי $b$, בעל קיטוב $P_0 \hat{x}$ הנמצא בין שני לוחות קבל שהם בהפרש פוטנציאל $V_0$.
+נניח כי הקיטוב אני משתנה בין השדה החשמלי.
+
+\begin{lefteqs}
+    \rho_{pol} = -\vec{\nabla} \cdot \vec{P} = -\frac{\partial P_x}{\partial x} = -\frac{\partial}{\partial x} (P_0) = 0 \\
+    \sigma_{pol} = \vec{P} \cdot \hat{n} \\
+    \sigma_{top} = P_0 \hat{x} \cdot \hat{x} = P_0 \\
+    \sigma_{bottom} = P_0 \hat{x} \cdot (-\hat{x}) = -P_0 \\
+\end{lefteqs}
+
+בציור נראה כי המרחק בין לוחות הקבל הוא $d$ אז ראשית:
+
+\begin{lefteqs}
+    \forall x>d, x<0 \, , E=0
+\end{lefteqs}
+
+נסתכל על $E$ הנוצר בתוך הלוח בעל עובי $b$, למעלה לו ומתחתיו.
+
+הפנים התחתונות של הלוח בעלות צפיפות מטען $-P_0$, כלומר השדה מעל הפנים התחתונות הוא $-\frac{P_0}{2\epsilon_0}$.
+
+הפנים העליונות, למעלה $\frac{P_0}{2\epsilon_0}$ ומתחת $\frac{P_0}{2\epsilon_0}$.
+
+לכן בין הלוח לבין לוחות הקבל $E=0$ (כתוצאה מהלוח המקוטב), ובתוך האלקטרט השדה הוא $E_{bound} = \frac{-P_0}{\epsilon_0}$.
+
+נסמן את השדה הנוצר מלוחות הקבל בתור $E_c$:
+
+\begin{lefteqs}
+    \int_0^d E_{total} dl = V_0 \Rightarrow \int_0^d (E_c + E_{bound}) dl
+\end{lefteqs}
+
+נניח שהאלקטרט במרכז בין לוחות הקבל:
+
+\begin{lefteqs}
+    = \int_{\frac{d+b}{2}}^d E_c dl + \int_{\frac{d-b}{2}}^{\frac{d+b}{2}} (E_c + E_{bound}) dl + \int_0^{\frac{d-b}{2}} E_c dl \\
+    = E_c(d - \frac{d}{2} - \frac{b}{2}) + E_c(\frac{d}{2} - \frac{b}{2}) + (E_c + E_{bound})(\frac{d+b}{2} - \frac{d-b}{2}) \\
+    = E_c(d-b) + (E_c - \frac{P_0}{\epsilon_0})\cdot b = V_0
+    \Rightarrow E_c \cdot d - E_c \cdot b + E_c \cdot b -\frac{P_0}{\epsilon_0} \cdot b = V_0 \\ \\
+    \Rightarrow E_c = \frac{V_0 + \frac{P_0 b}{\epsilon_0}}{d} = \frac{V_0}{d} + \frac{P_0 b}{\epsilon_0 d}
+\end{lefteqs}
+
+לסיכון, מעבר ללוחות הקבל $E=0$
+
+בין לוחות הקבל לאקלטרט: $\vec{E} = (\frac{V_0}{d} + \frac{P_0 b}{\epsilon_0 d}) \hat{x}$
+
+ובתוך האלקטרט: $\vec{E} = (\frac{V_0}{d} + \frac{P_0 b}{\epsilon_0 d} - \frac{P_0}{\epsilon_0}) \hat{x}$
+
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 3}
+
+\textbf{א)}
+משוואה 2.14 בעמוד 138 היא:
+
+\begin{lefteqs}
+    Q_{pol} = \int_V \rho_{pol} dV + \int_S \sigma_{pol} dS = 0 \\
+    \sigma_{pol} = \vec{P} \cdot \hat{n} \\
+    \rho_{pol} = -\vec{\nabla} \cdot \vec{P}
+\end{lefteqs}
+
+ע"פ משפט הדיבגרנץ: $\iiint_V (\vec{nabla} \cdot \vec{F}) dV = \iint_S \vec{F} \cdot \hat{n} dS$.
+
+\begin{lefteqs}
+    \iiint_V \rho_{pol} dV = \iiint_V -\vec{\nabla} \cdot \vec{P} dV = -\iint_S \vec{P} \cdot \hat{n} dS = -\iint_S \sigma_{pol} dS \\
+    Q_{pol} = -\iint_S \vec{P} \cdot \hat{n} dS + \iint_S \vec{P} \cdot \hat{n} dS = 0
+\end{lefteqs}
+
+\textbf{ב)}
+המטען המושרה על השפה הוא:
+\begin{lefteqs}
+    \sigma_b = P_{R,z}|_{z=0} - P_{L,z}|_{z=0} = 0 - 0 = 0 \\
+    \vec{P} = (\epsilon - \epsilon_0)\vec{E} \Rightarrow P_{R,z} = (\epsilon_1 - \epsilon_0)E_z^R \\
+    P_{L,z} = (\epsilon_2 - \epsilon_0)E_z^L \\
+    E_z^R|_{z=0} = -\frac{1}{4\pi\epsilon_1} \cdot \frac{d(Q' - Q)}{(r^2 + d^2)^{\frac{3}{2}}} \\
+    E_z^L|_{z=0} = \frac{1}{4\pi\epsilon_2} \cdot \frac{d(Q'' d)}{(r^2 + d^2)^{\frac{3}{2}}} \\
+    \sigma_b = -\frac{\epsilon_1 - \epsilon_0}{4\pi\epsilon_1} \cdot \frac{d(Q' - Q)}{(r^2+d^2)^{\frac{3}{2}}} - \frac{\epsilon_2 - \epsilon_0}{4\pi\epsilon_2} \cdot \frac{dQ''}{(r^2 + d^2)^{\frac{3}{2}}} \\
+    Q' = \frac{\epsilon_1 - \epsilon_2}{\epsilon_1 + \epsilon_2} Q \\
+    Q'' = \frac{2\epsilon_2}{\epsilon_1 + \epsilon_2} Q \\
+    \sigma_b = -\frac{\epsilon_1 - \epsilon_0}{4\pi\epsilon_1} \cdot \frac{d(\frac{\epsilon_1 - \epsilon_2}{\epsilon_1 + \epsilon_2} Q - Q)}{(r^2 + d^2)^{\frac{3}{2}}} - \frac{\epsilon_2 - \epsilon_0}{4\pi\epsilon_2} \cdot \frac{d(\frac{2\epsilon_2}{\epsilon_1 + \epsilon_2} Q)}{(r^2 + d^2)^{\frac{3}{2}}} \\
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 4}
+
+נתון וקטור קיטוב של קוביה בראשית הצירים בעלת אורך $a$:
+
+\begin{lefteqs}
+    \vec{P}(\vec{r}) = P_0 \hat{x} + (\frac{z^2}{a^4} - \frac{x}{2a})P_0 \cdot \hat{z}
+\end{lefteqs}
+
+\textbf{א)}
+
+נחשב את צפיפות המטען המשטחי המושרה על כל אחת מדפנות הקוביה ואת צפיפות המטען הנפחי המושרה בתוך הקוביה.
+
+\underline{עבור הפאה $z=0$:}
+\begin{lefteqs}
+    \sigma_b = P(z=0) \cdot (-\hat{z}) = (P_0 \hat{x} - \frac{x}{2a}P_0\hat{z})(-\hat{z}) \\
+    \sigma_b = \frac{x}{2a}P_0
+\end{lefteqs}
+
+\underline{עבור הפאה $x=0$:}
+\begin{lefteqs}
+    \sigma_b = P(x=0) \cdot (-\hat{x}) = (P_0 \hat{x} + \frac{z^2}{a^4}P_0\hat{z})(-\hat{x}) \\
+    \sigma_b = -P_0
+\end{lefteqs}
+
+\underline{עבור הפאה $x=a$:}
+\begin{lefteqs}
+    \sigma_b = P(x=a) \cdot \hat{x} = (P_0 \hat{x} + (\frac{z^2}{a^4} - \frac{1}{2})P_0\hat{z})\hat{x} \\
+    \sigma_b = P_0
+\end{lefteqs}
+
+\underline{עבור הפאה $z=a$:}
+\begin{lefteqs}
+    \sigma_b = P(z=a) \cdot \hat{z} = (1 - \frac{x}{2a})P_0 \\
+\end{lefteqs}
+
+\underline{עבור הפאות $y=0$ ו-$y=a$:}
+\begin{lefteqs}
+    \sigma_b = P(y=0) \cdot \hat{y} = P(y=a) \cdot (-\hat{y}) = 0
+    -\vec{\nabla} \cdot \vec{P} = -\frac{\partial P_x}{\partial x} - \frac{\partial P_z}{\partial z} \\
+    = -\frac{P_z}{\partial z} = -\frac{\partial}{\partial z} \left[ (\frac{z^4}{a^4} - \frac{x}{2a})P_0 \right] = -\frac{4z^3P_0}{a^4} \\
+    \Rightarrow \rho_b = -\frac{4z^3P_0}{a^4} \\
+\end{lefteqs}
+
+\textbf{ב)}
+
+\begin{lefteqs}
+    Q_{total} = \iint_{z=0} \sigma_b dS + \iint_{z=a} \sigma_b dS + \iint_{x=0} \sigma_b dS + \iint_{x=a} \sigma_b dS + \iiint_V \rho_b dV \\
+    = \int_0^a \int_0^a \frac{x}{2a}P_0 dxdy + \int_0^a \int_0^a(1-\frac{x}{2a})P_0 dxdy  + \int_0^a \int_0^a -P_0 dydz \int_0^a \int_0^a P_0 dydz \\
+    + \int_0^a \int_0^a \int_0^a -\frac{4z^3P_0}{a^4} dxdydz \\
+    = P_0 \frac{a}{4} + \frac{3P_0 a^2}{4} - P_0 a^2 + P_0 a^2 - a^2 P_0 = 0
+\end{lefteqs}
+
+זו התוצאה שציפינו לה, פולריזציה בחומר רק מפזרת את המטען ולא יוצרת מטען נוסף (לכל דיפול יש צד חיובי וצד שלילי)
+ולכן סך המטענים המושרים תמיד יהיה 0.
+
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 5}
+(פרק 3 שאלה 5) 
+
+נתון חומר בעל צפיפות $3.3 \cdot 10^{28}$ אטומים למטר בלישית.
+פועל שדה מגנטי קבוע בגודל $H=4\frac{A}{m}$ על החומר המקבלים מכל אטום מומנט מגנטי ממוצע של $m=1.2 \cdot 10^{-24}$
+
+\textbf{א)}
+
+\begin{lefteqs}
+    M=n \cdot m = 3.3 \cdot 10^{28} \cdot 1.2 \cdot 10^{-24} = 3.96 \cdot 10^4 \frac{A}{m} \\
+    \chi_m = \frac{M}{H} = \frac{3.96 \cdot 10^4}{4} = 9.9 \cdot 10^3 \\
+    \mu = \mu_0 (1 + \chi_m) = 4\pi \cdot 10^{-7}(1+9.9 \cdot 10^3) = 0.01244 \frac{H}{m}
+\end{lefteqs}
+
+\textbf{ב)}
+\begin{lefteqs}
+    B = \mu H = 0.01244 \cdot 4 = 0.4976 T
+\end{lefteqs}
+
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 6}
+(פרק 3 שאלה 11)
+
+באזור $y<0$ שורר ריק, וב $y>0$ יש מגנטיזציה שגודלה
+
+$\vec{M} = M_0 \cos(\beta x) \exp{-\alpha y} \hat{z}$
+
+נמצא את הפוטנציאל המגנטי בכל נקודה במרחב.
+
+אין זרמין חיצוניים ($J_{ext}=0$) ולכן $\nabla^2 \phi_M = \vec{\nabla} \cdot \vec{M}$/
+
+כאשר עבור $y<0$ מתקיים $M=0$ ועבור $y>0$ $M$ נתון בשאלה.
+
+נקבל משוואת לפלאס ב $y<0$ ומשוואת פואסון ב $y>0$:
+
+\begin{lefteqs}
+    \nabla^2 \phi_M^- = 0 \\
+    \nabla^2 \phi_M^+ = \vec{\nabla} \cdot \vec{M} = -\alpha M_0 \cos(\beta x) e^{-\alpha y}
+\end{lefteqs}
+
+עבור $y<0$ הפוטנציאל צריך לדעוך כאשר $y \to -\infty$ ולכן:
+\begin{lefteqs}
+    \phi_M^- = (A\sin(kx) + B\cos(kx)) \cdot (Ce^{ky} + De^{-ky}) \\
+\end{lefteqs}
+
+כאשר $D=0$ כדי לאפשר דעיכה של הפוטנציאל ב $y \to -\infty$:
+\begin{lefteqs}
+    \phi_M^- = (A\sin(kx) + B\cos(kx)) \cdot e^{ky}
+\end{lefteqs}
+
+עבור $y>0$ הפונציאל דועך כאשר $y \to \infty$, הפתרון יהיה הפתרון הכללי פלוס פיתרון פרטי:
+
+\begin{lefteqs}
+    \phi_M^+ = (C\sin(kx) + D\cos(kx)) \cdot e^ {-ky} + \phi_p
+\end{lefteqs}
+
+נחפש פתרון פרטי מהצורה: $\phi_p = E \cos(\beta x) e^{-\alpha y}$
+
+\begin{lefteqs}
+    \nabla^2 \phi_p = \vec{\nabla} \cdot \left[ E \beta \sin(\beta x)e^{-\alpha y}\hat{x} - E \alpha \cos(\beta x) e^{-\alpha y} \hat{y} \right] \\
+    \nabla^2 = E \beta^2 \cos(\beta x)e^{-\alpha y} + E\alpha^2\cos(\beta x)e^{-\alpha y} = E\cos(\beta x)e^{-\alpha y}(\alpha^2 - \beta^2) \\
+    E(\alpha^2 - \beta^2)\cos(\beta x)e^{-\alpha y} = -\alpha M_0 \cos(\beta x) \cdot e^{-\alpha y} \\
+    \Rightarrow E(\alpha^2 - \beta^2) = -\alpha M_0 \Rightarrow E = \frac{-\alpha M_0}{\alpha^2 - \beta^2} \\
+    \Rightarrow \phi_p = \frac{-\alpha M_0}{\alpha^2 - \beta^2} \cos(\beta x) e^{-\alpha y}
+\end{lefteqs}
+
+פונקצית הפוטנציאל צריכה להיות רציפה ב $y=0$, כלומר $\phi_M^-|_{y=0} = \phi_M^+|_{y=0}$:
+
+\begin{lefteqs}
+    A\sin(kx) + B\cos(kx) = C\cdot sin(kx) + D\cdot \cos(kx) -\frac{\alpha M_0}{\alpha^2 - \beta^2}\cdot \cos(\beta x) \\
+    A = C \, k_1 = k_2 = \beta, B=D-\frac{\alpha M_0}{\alpha^2 - \beta^2} \\
+\end{lefteqs}
+שנית, $B$ הנורמלי צריך להיות רציף סביב $y=0$, מכיוון של $\vec{M}$ יש רק רכיב $y$:
+
+\begin{lefteqs}
+    B_y = mu_0 (H_y + M_y) \\
+    \forall y<0 \, , M = 0 \, , B_y^- = \mu_0 H_y = mu_0 \frac{-\partial \phi_{M,y}^-}{\partial y} \\
+    \forall y>0 \, , M = M_0 \cos(\beta x) e^{-\alpha y} \hat{z} \, , B_y^+ = \mu_0 (\frac{-\partial \phi_{M,y}^+}{\partial y} + M_0 \cos(\beta x)e^{-\alpha y}) \\
+    B_y^-|_{y=0} = B_y^+|_{y=0} \Rightarrow \\
+    -\beta(A\sin(\beta x) + B\cos(\beta x)) = \beta(C\sin(\beta x) + D\cos(\beta x)) - \frac{\alpha^2 M_0}{\alpha^2-\beta^2}\cos(\beta x) + M_0\cos(\beta x) \\
+    -\beta A=\beta C \Rightarrow A=-C \Rightarrow A=C=0 \\
+    \beta B = \beta D - \frac{\alpha^2 M_0}{\alpha^2 - \beta^2} + M_0 = \beta D + M_0 (1-\frac{\alpha^2}{\alpha^2 - \beta^2}) \\
+    \beta D + M_0 (\frac{\alpha^2 - \beta^2 -\alpha^2}{\alpha^2 - \beta^2}) = \beta D - \frac{M_0 \beta^2}{\alpha^2 - \beta^2} \\
+    B=D-\frac{\alpha M_0}{\alpha^2 - \beta^2}\\
+    -\beta D _ \frac{\alpha \beta M_0}{\alpha^2 - \beta^2} = \beta D - \frac{M_0 \beta^2}{\alpha^2 - \beta^2} \\
+    \Rightarrow 2\beta D = \frac{M_0 \beta (\alpha - \beta)}{\alpha^2 - \beta^2} = \frac{M_0 \beta(\alpha - \beta)}{(\alpha - \beta)(\alpha + \beta)} = \frac{M_0 \beta}{\alpha + \beta} \\
+    \Rightarrow D = \frac{M_0}{2(\alpha + \beta)}
+    B = \frac{M_0}{2(\alpha + \beta)} - \frac{\alpha M_0}{\alpha^2 -\beta^2} = \frac{M_0}{\alpha+\beta}(\frac{1}{2} - \frac{alpha}{\alpha-\beta}) = \frac{M_0}{\alpha + \beta}(\frac{\alpha-\beta-2\alpha}{2(\alpha-\beta)}) \\
+    \Rightarrow B=\frac{M_0}{\alpha+\beta} \cdot (\frac{-(\alpha+\beta)}{2(\alpha-\beta)}) = \frac{-M_0}{2(\alpha-\beta)} \\
+    \phi_M = \begin{cases}
+    \frac{-M_0}{2(\alpha-\beta)} \cos(\beta x) e^{\beta y} & y<0 \\
+    \frac{M_0}{2(\alpha+\beta)} \cos(\beta x) e^{-\beta y} - \frac{\alpha M_0}{\alpha^2 - \beta^2} \cos(\beta x) e^{-\alpha y} & y>0
+    \end{cases}
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 7}
+(פרק 3 שאלה 16)
+
+כדור שעליו צפיפות מטען משטחית $\sigma$ סובב סביב צירו (מקביל לציר $z$) בתדירות זוויתית $\omega$.
+
+\textbf{א)}
+נמצא את השדה המגנטי במרכז הכדור
+
+ללא הגבלת הכלליות נניח כי הכדור ממוקם בראשית הצירים. נניח רדיוס $R$.
+
+הזרם החשמלי המייצר את השדה המגנטי הוא כתוצאה מסיבוב הכדור, כלומר תנועת המטענים בתנועה הסביבות של הכדור.
+
+נשים לב גם כי כל נקודה על הכדור נעה במהירות אחרת.
+
+נסתכל על הכדור בתור הרבה טבעות, שכל אחת מסתובבת סביב ציר $z$, עם עובי אינפיניטסימלי.
+רדיוס כל טבעת  הוא $R\sin(\theta)$ והמרחק של כל בעת ממרכז הכדור הוא $R\cos(\theta)$.
+
+עבור טבעת בעובי $Rd\theta$:
+\begin{lefteqs}
+    dq = \sigma \cdot 2\pi R \sin(\theta) \cdot Rd\theta 
+\end{lefteqs}
+כלומר הזרם על כל טבעת הוא:
+\begin{lefteqs}
+    dI = \frac{dq}{T} = \frac{dq}{\frac{2\pi}{\omega}} = \omega \sigma R^2 \sin(\theta) d\theta
+\end{lefteqs}
+כידוע השדה המגנטי שיוצרת לולאת זרם הוא:
+\begin{lefteqs}
+    B = \frac{mu_0 I a^2}{2(a^2+d^2)^{\frac{3}{2}}}
+\end{lefteqs}
+נציב את הערכים:
+\begin{lefteqs}
+    \int_0^\pi \frac{mu_0 \omega \sigma R^2 \sin(\theta) \cdot R^2 \sin^2(\theta)}{2(R^2\sin^2(\theta) + R^2\cos^2(\theta))^{\frac{3}{2}}} d\theta \\
+    = \omega \mu_0 \sigma \frac{R^4}{2R^3} \int_0^\pi \frac{\sin^3(\theta)}{sin^2(\theta) + \cos^2(\theta)} d\theta = \frac{\omega \mu_0 \sigma R}{2} \int_0^\pi \sin^3(\theta) d\theta \\
+    = \frac{\omega \mu_0 \sigma R}{2} \left[-\frac{1}{3}\cos(\theta)(\sin^3(\theta) + 2) \right]_0^\pi \\
+    = \frac{\omega \mu_0 \sigma R}{2} \left(\frac{1}{3}(0+2) + \frac{1}{3}(0+2) \right) = \frac{2\omega \mu_0 \sigma R}{3}
+\end{lefteqs}
+
+את הכיוון נקבע ע"פ כלל יד ימין:
+\begin{lefteqs}
+    \vec{B} = \frac{2\omega \mu_0 \sigma R}{3} \hat{z}
+\end{lefteqs}
+
+\textbf{ב)}
+נמצא את השדה המגנטי בסדר המוביל רחוק מאוד ממרכז הכדור
+
+כאשר הנקודת יחוס רחוקה מאוד ממקור הזרם, נעשה פיתוח מולטיפולי.
+
+כאשר אין מונופולים מגנטיים ולכן הסדר הוא דיפול מגנטי.
+
+עבור לולאת זרם, $\vec{m} = IS \hat{z}$  ולכן:
+\begin{lefteqs}
+    dm=dI \cdot A = \omega \sigma R^2 \sin(\theta) d\theta = \pi (R\sin(\theta))^2 \\
+    m=\int_0^\pi dm = \int_0^\pi \omega \sigma \pi R^4\sin^3(\theta) d\theta = \omega \sigma \pi R^3 \frac{4}{3}
+\end{lefteqs}
+ע"פ 3.63
+
+\begin{lefteqs}
+    \vec{B} = \frac{mu_0 m}{4\pi r^3}(2\cos(\theta)\hat{r} + \sin(\theta)\hat{\theta}) \\
+    \vec{B} = \frac{4\mu_0 \omega \sigma R^4}{3r^3} \cdot (2\cos(\theta)\hat{r} + \sin(\theta)\hat{\theta})
+\end{lefteqs}
+
+\end{document}
