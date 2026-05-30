@@ -1,0 +1,300 @@
+\documentclass[14pt]{extarticle}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Hebrew setup
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\newfontfamily\hebrewfont[Script=Hebrew]{Arial}
+
+% Math font setup for proper Greek symbols
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% Increase line spacing throughout document
+\linespread{1.3}
+
+\usepackage[margin=1in]{geometry}
+
+% Left-aligned equation environment
+\newenvironment{lefteqs}{%
+    \begin{english}%
+    \begin{flushleft}%
+    \renewcommand{\arraystretch}{1.3}%
+    $\begin{array}{@{}l@{}}%
+}{%
+    \end{array}$%
+    \end{flushleft}%
+    \end{english}%
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{מטלה 4 - אלקטרומגנטיות אנליטית}}\\[0.5em]
+    {\large שי רואימי - 318986270}\\[0.3em]
+\end{center}
+
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 1}
+
+(פרק 4, שאלה 6)
+
+נתון שדה מגנטי תלוי זמן:
+\begin{lefteqs}
+    \vec{H}(t) = H_0(t)\hat{x} + H_1(t)\hat{y}
+\end{lefteqs}
+
+נמצא את הסירקוליציה של השדה החשמלי על המסילה שבציור.
+
+נשתמש בחוק פאראדיי האינטגרלי:
+\begin{lefteqs}
+    \oint_C \vec{E}\cdot d\vec{\ell} = -\frac{d}{dt}\iint_S \vec{B}\cdot \hat{n}\,dS, \qquad \vec{B}=\mu_0\vec{H}
+\end{lefteqs}
+
+כיוון הנורמל לשטח הוא $\hat{n}=\hat{y}$, ע"פ חוק יד ימין
+לבחירת נורמל $\hat{n}=\hat{y}$ עבור הלולאה הנתונה מתקבל:
+\begin{lefteqs}
+    -\frac{d}{dt}\iint_S \mu_0\left(H_0(t)\hat{x}+H_1(t)\hat{y}\right)\cdot\hat{y}\,dS
+    = -\frac{d}{dt}\left(\mu_0\iint_S H_1(t)\,dS\right)
+    = \mu_0wl\,\frac{dH_1}{dt}
+\end{lefteqs}
+
+ולכן:
+\begin{lefteqs}
+\oint_C \vec{E}\cdot d\vec{\ell} = \mu_0wl\,\frac{dH_1}{dt}
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 2}
+
+(פרק 4, שאלה 8, סעיף ה')
+
+נתון מעגל זרם מתחלף בעל מתח מקור:
+\begin{lefteqs}
+V(t)=V_0e^{-\gamma t}
+\end{lefteqs}
+
+במעגל ישנו קבל (שני לוחות בעלי שטח S, רדיוס a) במרחק $d$ אחד מהשני.
+
+\Middleware גליל באורך $d$ ורדיוס $b$ ($b<a$) עשוי חומר מוליף בעל מוליכות $\sigma$ ומקדם דיאלקטרי $\epsilon$ בעוד ההיקף החיצוני ריק.
+
+\textbf{א)} 
+לכל $0<r<a$, מתקיים $\vec{E}=\frac{V(t)}{d}\hat{z}=\frac{V_0e^{-\gamma t}}{d}\hat{z}$
+
+מתח המקור מקבע את הפרש הפוטנציאלים בין הלוחות.
+
+\textbf{ב)} 
+נעזר בחוק אמפר המתוקן
+
+\begin{lefteqs}
+    \oint_C\vec{B}\cdot d\vec{\ell}=\mu_0I_{in}+\mu_0\epsilon_0\frac{\partial\Phi_E}{\partial t}
+\end{lefteqs}
+
+כאשר עבור $r<b$, התווך הוא הגליל המוליך, נסתכל על לולאה אמפירית באזור בין שני הלוחות בריוס $r$:
+
+
+
+\begin{lefteqs}
+    I_{in}=J \cdot S = \sigma\pi r^2E = \sigma\pi r^2 \frac{V_0e^{-\gamma t}}{d} \\
+    \Phi_E = E \cdot S = \frac{V_0e^{-\gamma t}}{d} \cdot \pi r^2 \\
+    \frac{\partial\Phi_E}{\partial t}=-\gamma\pi r^2 \frac{V_0e^{-\gamma t}}{d} \\
+    \Rightarrow B \cdot 2\pi r = \mu_0\sigma\pi r^2 E - \mu_0\epsilon \epsilon_0\gamma\pi r^2 E \\
+    \Rightarrow \vec{B} = \frac{\mu_0 E r}{2} \left( \sigma - \epsilon \epsilon_0 \gamma \right) \hat{\phi}
+\end{lefteqs}
+
+
+לכל $b<r<a$ נסתכל על לולאה אמפירית ברדיוס $r$:
+\begin{lefteqs}
+    \oint_C \vec{B}\cdot d\vec{\ell} = 2\pi r B \\
+    \mu_0 I_{in} = \mu_0 \cdot J \cdot S = \mu_0 \sigma E \pi b^2
+\end{lefteqs}
+
+זרם העתקה קיים גם בגליל:
+
+\begin{lefteqs}
+    I_{d,1}=-\gamma\epsilon\epsilon_0E\pi b^2,
+\end{lefteqs}
+
+וגם באוויר סביבו:
+\begin{lefteqs}
+    I_{d,2}=-\gamma\epsilon_0E\pi(r^2-b^2)
+\end{lefteqs}
+
+\begin{lefteqs}
+    2\pi rB
+    =\mu_0\sigma E\pi b^2-\mu_0 \gamma \epsilon \epsilon_0 E \pi b^2 - \mu_0 \gamma \epsilon_0 E \pi (r^2 - b^2) \\
+    \vec{B} = \frac{\mu_0 E}{2r} \left( \sigma b^2 - \gamma \epsilon \epsilon_0 b^2 - \gamma \epsilon_0 (r^2 - b^2) \right) \hat{\phi}
+\end{lefteqs}
+
+\textbf{ג)} 
+
+נמצא את וקטור פוינטינג בתוך המוליך ($0<r<b$):
+
+ע"פ 4.92:
+
+\begin{lefteqs}
+    \vec{P}=\vec{E}\times\vec{H} =
+    \begin{vmatrix}
+        \hat{r} & \hat{\phi} & \hat{z}\\
+        0 & 0 & E_z\\
+        0 & H_\phi & 0
+    \end{vmatrix}
+    = -E_zH_\phi\,\hat{r}
+    = -\frac{V_0^2e^{-2\gamma t}}{2d^2}\,r\left(\sigma-\epsilon\epsilon_0\gamma\right)\hat{r}
+\end{lefteqs}
+
+% \vspace{3em}
+% \hrule
+% \vspace{2em}
+
+% \textbf{\large שאלה 3}
+
+% (פרק 4, המשך)
+
+% ניתן מתח סינוסואידלי:
+% \begin{lefteqs}
+% V(t)=V_0\cos(\omega t)
+% \end{lefteqs}
+
+% ולכן:
+% \begin{lefteqs}
+% \vec{E}=\frac{V_0\cos(\omega t)}{b}\hat{z},
+% \qquad E_z=\frac{V_0\cos(\omega t)}{b}
+% \end{lefteqs}
+
+% עבור $r<a$:
+% \begin{lefteqs}
+% \Phi_E=\frac{\pi r^2V_0\cos(\omega t)}{b},
+% \qquad
+% \frac{\partial\Phi_E}{\partial t}=-\frac{\pi r^2\omega V_0\sin(\omega t)}{b}
+% \end{lefteqs}
+
+% \begin{lefteqs}
+% B_\phi\,2\pi r=\mu_0\epsilon_0\frac{\partial\Phi_E}{\partial t}
+% \Rightarrow
+% B_\phi(r,t)=-\frac{\mu_0\epsilon_0\omega rV_0\sin(\omega t)}{2b}
+% \end{lefteqs}
+
+% שימוש חוזר בחוק פאראדיי לקבלת אגפים גבוהים בסדרת הפיתוח נותן:
+% \begin{lefteqs}
+% B_\phi^2=\frac{(\mu_0\epsilon_0)^2(\omega r)^3V_0\sin(\omega t)}{16b},
+% \quad
+% E_z^2=\frac{(\mu_0\epsilon_0)^2(\omega r)^4V_0\cos(\omega t)}{64b},\\
+% B_\phi^3=-\frac{(\mu_0\epsilon_0)^3(\omega r)^5V_0\sin(\omega t)}{384b},
+% \quad
+% E_z^3=-\frac{(\mu_0\epsilon_0)^3(\omega r)^6V_0\cos(\omega t)}{2304b}
+% \end{lefteqs}
+
+% ולכן:
+% \begin{lefteqs}
+% E_z(r,t)=\frac{V_0\cos(\omega t)}{b}\left[1-\frac{(\omega r/c)^2}{4}+\frac{(\omega r/c)^4}{64}-\frac{(\omega r/c)^6}{2304}\right]
+% \end{lefteqs}
+
+% \begin{lefteqs}
+% B_\phi(r,t)=-\frac{V_0\sin(\omega t)}{bc}\left[\frac{\omega r/c}{2}-\frac{(\omega r/c)^3}{16}+\frac{(\omega r/c)^5}{384}\right]
+% \end{lefteqs}
+
+% כאשר $c=\frac{1}{\sqrt{\epsilon_0\mu_0}}$.
+
+% השוואה לפתרון המדויק (נוסחאות 4.80--4.81):
+% \begin{lefteqs}
+% \vec{E}(r,t)=\frac{V_0}{d}\frac{J_0(kr)}{J_0(ka)}\cos(\omega t)\hat{z}
+% \end{lefteqs}
+
+% \begin{lefteqs}
+% \vec{B}(r,t)=-\sqrt{\epsilon_0\mu_0}\,\frac{V_0}{d}\frac{J_1(kr)}{J_0(ka)}\sin(\omega t)\hat{\phi}
+% \end{lefteqs}
+
+% עם פיתוחי בסל:
+% \begin{lefteqs}
+% J_0(x)=1-\frac{x^2}{4}+\frac{x^4}{64}-\frac{x^6}{2304}+\cdots,
+% \qquad
+% J_1(x)=\frac{x}{2}-\frac{x^3}{16}+\frac{x^5}{384}-\cdots
+% \end{lefteqs}
+
+% \vspace{3em}
+% \hrule
+% \vspace{2em}
+
+% \textbf{\large שאלה 4}
+
+% נתון הפוטנציאל הווקטורי (בצורה גלית):
+% \begin{lefteqs}
+% \vec{A}=\ell\,\frac{\sin\left(k(r-ct)\right)}{r}\hat{z}
+% \end{lefteqs}
+
+% נציב בצילינדריות עם:
+% \begin{lefteqs}
+% r=\sqrt{\rho^2+z^2}
+% \end{lefteqs}
+
+% ולכן:
+% \begin{lefteqs}
+% \vec{A}=\ell\,\frac{\sin\left(k\left(\sqrt{\rho^2+z^2}-ct\right)\right)}{\sqrt{\rho^2+z^2}}\hat{z}
+% \end{lefteqs}
+
+% חישוב השדה המגנטי:
+% \begin{lefteqs}
+% \vec{B}=\nabla\times\vec{A}
+% = -\ell\rho\hat{\phi}\left(\frac{k\cos(k(r-ct))}{r^2}-\frac{\sin(k(r-ct))}{r^3}\right)
+% \end{lefteqs}
+
+% בכדוריות, $\rho=r\sin\theta$:
+% \begin{lefteqs}
+% \vec{B}=-\ell\sin\theta\,\hat{\phi}\left(\frac{k\cos(k(r-ct))}{r}-\frac{\sin(k(r-ct))}{r^2}\right)
+% \end{lefteqs}
+
+% נסמן $\beta=k(r-ct)$ ונחשב את הסיבוב. מתקבל לאחר פישוט:
+% \begin{lefteqs}
+% \nabla\times\vec{B}=\mu_0\epsilon_0\frac{\partial\vec{E}}{\partial t}
+% \end{lefteqs}
+
+% וכן:
+% \begin{lefteqs}
+% \vec{E}=E_r\hat{r}+E_\theta\hat{\theta}
+% \end{lefteqs}
+
+% עם
+% \begin{lefteqs}
+% E_r=c^2\frac{-2\ell\cos\theta}{r}\int\left(\frac{k\cos\beta}{r}-\frac{\sin\beta}{r^2}\right)dt
+% =\frac{2\ell c\cos\theta}{r^2}\left(\sin\beta+\frac{\cos\beta}{kr}\right)
+% \end{lefteqs}
+
+% \begin{lefteqs}
+% E_\theta=c^2\frac{-\ell\sin\theta}{r}\int\left(k^2\sin\beta+\frac{k\cos\beta}{r}-\frac{\sin\beta}{r^2}\right)dt
+% \end{lefteqs}
+
+% \vspace{3em}
+% \hrule
+% \vspace{2em}
+
+% \textbf{\large שאלה 5}
+
+% (א) הוכחה למקסוול-פאראדיי:
+% \begin{lefteqs}
+% \nabla\times\vec{E}=-\frac{\partial\vec{B}}{\partial t}
+% \end{lefteqs}
+
+% (ב) הוכחה ל-$\nabla\cdot\vec{B}=0$ מתוך זהות וקטורית:
+% \begin{lefteqs}
+% \nabla\cdot\left(\nabla\times\vec{A}\right)=0,
+% \qquad \vec{B}=\nabla\times\vec{A}
+% \end{lefteqs}
+
+% ולכן:
+% \begin{lefteqs}
+% \nabla\cdot\vec{B}=\nabla\cdot(\nabla\times\vec{A})=0
+% \end{lefteqs}
+
+\end{document}
