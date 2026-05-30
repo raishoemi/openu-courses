@@ -87,7 +87,7 @@ V(t)=V_0e^{-\gamma t}
 
 במעגל ישנו קבל (שני לוחות בעלי שטח S, רדיוס a) במרחק $d$ אחד מהשני.
 
-\Middleware גליל באורך $d$ ורדיוס $b$ ($b<a$) עשוי חומר מוליף בעל מוליכות $\sigma$ ומקדם דיאלקטרי $\epsilon$ בעוד ההיקף החיצוני ריק.
+גליל באורך $d$ ורדיוס $b$ ($b<a$) עשוי חומר מוליף בעל מוליכות $\sigma$ ומקדם דיאלקטרי $\epsilon$ בעוד ההיקף החיצוני ריק.
 
 \textbf{א)} 
 לכל $0<r<a$, מתקיים $\vec{E}=\frac{V(t)}{d}\hat{z}=\frac{V_0e^{-\gamma t}}{d}\hat{z}$
@@ -147,154 +147,229 @@ V(t)=V_0e^{-\gamma t}
     \vec{P}=\vec{E}\times\vec{H} =
     \begin{vmatrix}
         \hat{r} & \hat{\phi} & \hat{z}\\
+        E_r & E_\phi & E_z\\
+        H_r & H_\phi & H_z
+    \end{vmatrix}
+    = \begin{vmatrix}
+        \hat{r} & \hat{\phi} & \hat{z}\\
         0 & 0 & E_z\\
         0 & H_\phi & 0
-    \end{vmatrix}
-    = -E_zH_\phi\,\hat{r}
-    = -\frac{V_0^2e^{-2\gamma t}}{2d^2}\,r\left(\sigma-\epsilon\epsilon_0\gamma\right)\hat{r}
+    \end{vmatrix} \\
+    = (-E_z H_\phi)\hat{r} = (-E_z \cdot \frac{B_\phi}{\mu_0})\hat{r} \\
+    = -\frac{V_0 \cdot e^{-\gamma t}}{d} \cdot \frac{\frac{1}{2} \cdot \frac{V_0 e^{-\gamma t}}{d}\cdot r(\sigma - \epsilon \epsilon_0 \gamma)}{\mu_0} \hat{r} \\
+    \Rightarrow \vec{P} = -\frac{1}{2d} \cdot V_0^2 e^{-2\gamma t} \cdot r(\sigma -\epsilon \epsilon_0 \gamma) \hat{r}
 \end{lefteqs}
 
-% \vspace{3em}
-% \hrule
-% \vspace{2em}
+\textbf{ד)} 
+\begin{lefteqs}
+   \vec{P} = -E \cdot \frac{E}{2r} (\sigma b^2 - \gamma \epsilon \epsilon_0 b^2 -\gamma \epsilon_0 (r^2 - b^2)) \hat{r} \\
+   \vec{p} = \frac{-1}{2r} \cdot \frac{V_0^2 e^{-2\gamma t}}{d^2} \cdot (\sigma b^2 - \gamma \epsilon \epsilon_0 b^2 -\gamma \epsilon_0(r^2-b^2)) \hat{r}
+\end{lefteqs}
 
-% \textbf{\large שאלה 3}
+\vspace{3em}
+\hrule
+\vspace{2em}
 
-% (פרק 4, המשך)
+\textbf{\large שאלה 3}
+נתון קבל עשוי משני לוחות מעגליים ברדיוס $a$ והמרחק ביניהם $b<<a$.
 
-% ניתן מתח סינוסואידלי:
-% \begin{lefteqs}
-% V(t)=V_0\cos(\omega t)
-% \end{lefteqs}
+הקבל מחובר למקור מתח $V(t)=V_0\cos(\omega t)$.
 
-% ולכן:
-% \begin{lefteqs}
-% \vec{E}=\frac{V_0\cos(\omega t)}{b}\hat{z},
-% \qquad E_z=\frac{V_0\cos(\omega t)}{b}
-% \end{lefteqs}
+\textbf{א)} 
 
-% עבור $r<a$:
-% \begin{lefteqs}
-% \Phi_E=\frac{\pi r^2V_0\cos(\omega t)}{b},
-% \qquad
-% \frac{\partial\Phi_E}{\partial t}=-\frac{\pi r^2\omega V_0\sin(\omega t)}{b}
-% \end{lefteqs}
+ע"פ חוק אמפר:
 
-% \begin{lefteqs}
-% B_\phi\,2\pi r=\mu_0\epsilon_0\frac{\partial\Phi_E}{\partial t}
-% \Rightarrow
-% B_\phi(r,t)=-\frac{\mu_0\epsilon_0\omega rV_0\sin(\omega t)}{2b}
-% \end{lefteqs}
+\begin{lefteqs}
+    \oint_C \vec{B} \cdot d\vec{\ell} = \mu_0 I_{in} + \mu_0 \epsilon_0 \frac{\partial \Phi_E}{\partial t} \\
+    \vec{E} = \frac{V_0 \cos(\omega t)}{b} \hat{z} \Rightarrow E_z = \frac{V_0 \cos(\omega t)}{b} \\
+    \underline{\forall r<a:} \\
+    \Phi_E = E \cdot S = \frac{\pi r^2 V_0 \cos(\omega t)}{b} \\
+    \partial \Phi_E / \partial t = \frac{-\pi r^2 \omega V_0 \sin(\omega t)}{b} \\
+    I_{in} = 0 \\
+    \vec{B} \cdot 2\pi r = \mu_0 \epsilon_0 \frac{-\pi r^2 \omega V_0 \sin(\omega t)}{b} \hat{\phi} \\
+    \Rightarrow B_\phi(r,t) = -\frac{\mu_0 \epsilon_0 \omega r V_0 \sin(\omega t)}{2b}
+\end{lefteqs}
 
-% שימוש חוזר בחוק פאראדיי לקבלת אגפים גבוהים בסדרת הפיתוח נותן:
-% \begin{lefteqs}
-% B_\phi^2=\frac{(\mu_0\epsilon_0)^2(\omega r)^3V_0\sin(\omega t)}{16b},
-% \quad
-% E_z^2=\frac{(\mu_0\epsilon_0)^2(\omega r)^4V_0\cos(\omega t)}{64b},\\
-% B_\phi^3=-\frac{(\mu_0\epsilon_0)^3(\omega r)^5V_0\sin(\omega t)}{384b},
-% \quad
-% E_z^3=-\frac{(\mu_0\epsilon_0)^3(\omega r)^6V_0\cos(\omega t)}{2304b}
-% \end{lefteqs}
+\textbf{ב)} 
 
-% ולכן:
-% \begin{lefteqs}
-% E_z(r,t)=\frac{V_0\cos(\omega t)}{b}\left[1-\frac{(\omega r/c)^2}{4}+\frac{(\omega r/c)^4}{64}-\frac{(\omega r/c)^6}{2304}\right]
-% \end{lefteqs}
+על מנת לחשב את $E_1$ כתוצאה מ $B_1$ נעזר בחוק פאראדיי האינטגרלי:
 
-% \begin{lefteqs}
-% B_\phi(r,t)=-\frac{V_0\sin(\omega t)}{bc}\left[\frac{\omega r/c}{2}-\frac{(\omega r/c)^3}{16}+\frac{(\omega r/c)^5}{384}\right]
-% \end{lefteqs}
+\begin{lefteqs}
+    \oint_C \vec{E} \cdot d\vec{\ell} = -\frac{d}{dt} \iint_S \vec{B} \cdot \hat{n} dS \\
+    B_\phi(r,t) = -\frac{\mu_0 \epsilon_0 \omega r V_0 \sin(\omega t)}{2b} \\
+\end{lefteqs}
 
-% כאשר $c=\frac{1}{\sqrt{\epsilon_0\mu_0}}$.
+נעזר בלולאה אמפירית מלבנית, כאשר שני צדדיה נחים על שני לוחות הקבל, צד אחד נמצא במרכז שני הלוחות ($r=0$) והצד השני ברדיוס משתנה $r$:
 
-% השוואה לפתרון המדויק (נוסחאות 4.80--4.81):
-% \begin{lefteqs}
-% \vec{E}(r,t)=\frac{V_0}{d}\frac{J_0(kr)}{J_0(ka)}\cos(\omega t)\hat{z}
-% \end{lefteqs}
+\begin{lefteqs}
+    \oint_C \vec{E} \cdot d\vec{\ell} = E(b+0+r-r) = bE \\
+    -\frac{d}{dt} \iint_S \vec{B} \cdot \hat{n} dS = -\frac{d}{dt} \int_0^r B_\phi^1(r') b dr' = -\frac{d}{dt} \int_0^r -\frac{\mu_0 \epsilon_0 \omega r' V_0 \sin(\omega t)}{2b} b dr' \\
+    = -\frac{d}{dt} \frac{b\mu_0 \epsilon_0 \omega V_0 \sin(\omega t)}{2b} \int_0^r r' dr' = -\frac{d}{dt} (\frac{\mu_0 r^2 \epsilon_0 \omega V_0 \sin(\omega t)}{4}) \\
+    \Rightarrow bE = \frac{\mu_0 r^2 \epsilon_0 \omega^2 V_0 \cos(\omega t)}{4} \\
+    \Rightarrow E_z^1 = \frac{-\mu_0 r^2 \epsilon_0 \omega^2 V_0 \cos(\omega t)}{4b}
+\end{lefteqs}
 
-% \begin{lefteqs}
-% \vec{B}(r,t)=-\sqrt{\epsilon_0\mu_0}\,\frac{V_0}{d}\frac{J_1(kr)}{J_0(ka)}\sin(\omega t)\hat{\phi}
-% \end{lefteqs}
+\textbf{ג)} 
+נחשב את $B_\phi^2 \, , E_z^2 \, , B_\phi^3 \, , E_z^3$
 
-% עם פיתוחי בסל:
-% \begin{lefteqs}
-% J_0(x)=1-\frac{x^2}{4}+\frac{x^4}{64}-\frac{x^6}{2304}+\cdots,
-% \qquad
-% J_1(x)=\frac{x}{2}-\frac{x^3}{16}+\frac{x^5}{384}-\cdots
-% \end{lefteqs}
+נעזר שוב בחוקי אמפר ופרדיי כדי למצוא את הערכים:
 
-% \vspace{3em}
-% \hrule
-% \vspace{2em}
+\begin{lefteqs}
+    B_\phi \cdot 2\pi r = \mu_0 \epsilon_0 \frac{\partial \Phi_E^1}{\partial t} = \mu_0 \epsilon_0 \frac{\partial}{\partial  t} (E \cdot S) \\
+    \Rightarrow B_\phi^n = \frac{\mu_0 \epsilon_0}{2\pi r} \cdot \frac{d}{dt} \int_0^r E_z^{n-1} 2\pi r' dr' \\
+    B_\phi^2 = \frac{\mu_0 \epsilon_0}{r} \cdot \frac{d}{dt} \int_0^r \frac{\mu_0 r'^2 \epsilon_0 \omega^2 V_0 \cos(\omega t)}{4b} r' dr' \\
+    B_\phi^2 = \frac{\mu_0 \epsilon_0}{r} \cdot \frac{\omega^2 \mu_0 \epsilon_0 V_0}{4b} \cdot \frac{d}{dt} \int_0^r -r'^3 \cos(\omega t) dr' \\
+    = -\frac{(\mu_0 \epsilon_0)^2 \omega^2 V_0}{4b r} \cdot \frac{r^4}{4} \cdot (-\omega \sin(\omega t)) \\
+    \Rightarrow B_\phi^2 =\frac{(\mu_0 \epsilon_0)^2 (\omega r)^3 V_0 \sin(\omega t)}{16b} \\
+    E_z^2 = -\frac{1}{b} \frac{d}{dt} \int_0^r B_\phi^2(r') b dr' = \frac{(\mu_0 \epsilon_0)^2 (\omega r)^4 V_0 \cos(\omega t)}{64b} \\
+    B_\phi^3 = \frac{\mu_0 \epsilon_0}{r} \cdot \frac{d}{dt} \int_0^r E_z^2(r') r' dr' = -\frac{(\mu_0 \epsilon_0)^3 (\omega r)^5 V_0 \sin(\omega t)}{384b} \\
+    E_z^3 = -\frac{1}{b} \cdot \frac{d}{dt} \int_0^r B_\phi^3(r') b dr' = -\frac{(\mu_0 \epsilon_0)^3 (\omega r)^6 V_0 \cos(\omega t)}{2304b}
+\end{lefteqs}
 
-% \textbf{\large שאלה 4}
+\textbf{ד)} 
+\begin{lefteqs}
+    E_z(r,t) = E_z^0 + E_z^1 + E_z^2 + E_z^3 \\
+    E_z = \frac{V_0 \cos(\omega t)}{b} \left[1 - \frac{(\omega r / c)^2}{4} + \frac{(\omega r / c)^4}{64} - \frac{(\omega r / c)^6}{2304}\right] \\
+    B_\phi = -\frac{V_0 \sin(\omega t)}{b c} \left[ \frac{\omega r / c}{2} - \frac{(\omega r / c)^3}{16} + \frac{(\omega r / c)^5}{384} \right]
+\end{lefteqs}
+כאשר $c = \frac{1}{\sqrt{\epsilon_0 \mu_0}}$ כפי שנכתב בהערה בעמוד 243
 
-% נתון הפוטנציאל הווקטורי (בצורה גלית):
-% \begin{lefteqs}
-% \vec{A}=\ell\,\frac{\sin\left(k(r-ct)\right)}{r}\hat{z}
-% \end{lefteqs}
+\textbf{ה)} 
+נשווה לתוצאות מ 4.80 ו 4.81:
+\begin{lefteqs}
+    E(r,t) =  \frac{V_0}{d} \frac{J_0(kr)}{J_0(ka)} \cos(\omega t) \hat{z} \\
+    B(r,t) = -\sqrt{\epsilon_0 \mu_0} \frac{V_0}{d} \frac{J_1(kr)}{J_0(ka)} \sin(\omega t) \hat{\phi}
+\end{lefteqs}
+כאשר פיתוחי מקלורן של פונקצית בסל הם:
+\begin{lefteqs}
+    J_0(x) = 1 - \frac{x^2}{4} + \frac{x^4}{64} - \frac{x^6}{2304} + \cdots \\
+    J_1(x) = \frac{x}{2} - \frac{x^3}{16} + \frac{x^5}{384} - \cdots
+\end{lefteqs}
 
-% נציב בצילינדריות עם:
-% \begin{lefteqs}
-% r=\sqrt{\rho^2+z^2}
-% \end{lefteqs}
+בקירוב הקוואזיסטטי ($\omega \to 0 \, ,J_0(ka) \to 1$) גאשר $k=\frac{\omega}{c}$
+\begin{lefteqs}
+    E(r,t) = \frac{V_0 \cos(\omega t)}{d} \left[1 - \frac{(\omega r / c)^2}{4} + \frac{(\omega r / c)^4}{64} - \frac{(\omega r / c)^6}{2304}\right] \hat{z} \\
+    B(r,t) = -\frac{V_0 \sin(\omega t)}{d c} \left[ \frac{\omega r / c}{2} - \frac{(\omega r / c)^3}{16} + \frac{(\omega r / c)^5}{384} \right] \hat{\phi}
+\end{lefteqs}
 
-% ולכן:
-% \begin{lefteqs}
-% \vec{A}=\ell\,\frac{\sin\left(k\left(\sqrt{\rho^2+z^2}-ct\right)\right)}{\sqrt{\rho^2+z^2}}\hat{z}
-% \end{lefteqs}
+קיבלנו תוצאה זהה עד כדי הקירוב שחושב
 
-% חישוב השדה המגנטי:
-% \begin{lefteqs}
-% \vec{B}=\nabla\times\vec{A}
-% = -\ell\rho\hat{\phi}\left(\frac{k\cos(k(r-ct))}{r^2}-\frac{\sin(k(r-ct))}{r^3}\right)
-% \end{lefteqs}
 
-% בכדוריות, $\rho=r\sin\theta$:
-% \begin{lefteqs}
-% \vec{B}=-\ell\sin\theta\,\hat{\phi}\left(\frac{k\cos(k(r-ct))}{r}-\frac{\sin(k(r-ct))}{r^2}\right)
-% \end{lefteqs}
+\vspace{3em}
+\hrule
+\vspace{2em}
 
-% נסמן $\beta=k(r-ct)$ ונחשב את הסיבוב. מתקבל לאחר פישוט:
-% \begin{lefteqs}
-% \nabla\times\vec{B}=\mu_0\epsilon_0\frac{\partial\vec{E}}{\partial t}
-% \end{lefteqs}
+\textbf{\large שאלה 4}
 
-% וכן:
-% \begin{lefteqs}
-% \vec{E}=E_r\hat{r}+E_\theta\hat{\theta}
-% \end{lefteqs}
+נתון הפונציאל הוקטורי מתאר גל אלקטרומגנטי $A=\frac{\alpha \sin(k(r-ct))}{r}  \hat{z}$
 
-% עם
-% \begin{lefteqs}
-% E_r=c^2\frac{-2\ell\cos\theta}{r}\int\left(\frac{k\cos\beta}{r}-\frac{\sin\beta}{r^2}\right)dt
-% =\frac{2\ell c\cos\theta}{r^2}\left(\sin\beta+\frac{\cos\beta}{kr}\right)
-% \end{lefteqs}
+הקאורדינטה הכדורית $r$ מתארת את המרחק ממקור הגל
 
-% \begin{lefteqs}
-% E_\theta=c^2\frac{-\ell\sin\theta}{r}\int\left(k^2\sin\beta+\frac{k\cos\beta}{r}-\frac{\sin\beta}{r^2}\right)dt
-% \end{lefteqs}
+\textbf{א)} 
+נחשב את השדה המגנטי בקאורדינטות גליליות
 
-% \vspace{3em}
-% \hrule
-% \vspace{2em}
+בקאורדינטות גליליות: $r=\sqrt{\rho^2 + z^2}$
 
-% \textbf{\large שאלה 5}
+\begin{lefteqs}
+    \vec{B} = \vec{\nabla} \times \vec{A}
+    \vec{B} = \frac{1}{\rho} \begin{vmatrix}
+        \hat{\rho} & \hat{\phi} & \hat{z} \\
+        \frac{\partial}{\partial \rho} & \frac{\partial}{\partial \phi} & \frac{\partial}{\partial z} \\
+        A_\rho & \rho A_\phi & A_z
+    \end{vmatrix}
+    = \frac{1}{\rho} \cdot -\rho \hat{\phi} \cdot \frac{\partial A_z}{\partial \rho} \\
+    = -\alpha \hat{\phi} \cdot \frac{k\rho \cdot \cos(k(\sqrt{\rho^2 + z^2} - ct)) - \frac{\rho \sin(k(\sqrt{\rho^2 + z^2} - ct))}{\sqrt{\rho^2 + z^2}}}{(\sqrt{\rho^2 + z^2})^2} \\
+    \Rightarrow \vec{B} = -\alpha \rho \hat{\phi} \left( \frac{k\cos(k(r-ct))}{r^2} - \frac{\sin(k(r-ct))}{r^3} \right)
+\end{lefteqs}
 
-% (א) הוכחה למקסוול-פאראדיי:
-% \begin{lefteqs}
-% \nabla\times\vec{E}=-\frac{\partial\vec{B}}{\partial t}
-% \end{lefteqs}
+\textbf{ב)} 
+בקאורדינטות כדוריות $\rho=r\sin(\theta)$
+\begin{lefteqs}
+    \vec{B} = -\alpha r \sin(\theta) \hat{\phi} \left( \frac{k\cos(k(r-ct))}{r^2} - \frac{\sin(k(r-ct))}{r^3} \right) \\
+    \Vec{B} = -\alpha \sin(\theta) \hat{\phi} \left( \frac{k\cos(k(r-ct))}{r} - \frac{\sin(k(r-ct))}{r^2} \right)
+\end{lefteqs}
 
-% (ב) הוכחה ל-$\nabla\cdot\vec{B}=0$ מתוך זהות וקטורית:
-% \begin{lefteqs}
-% \nabla\cdot\left(\nabla\times\vec{A}\right)=0,
-% \qquad \vec{B}=\nabla\times\vec{A}
-% \end{lefteqs}
+\textbf{ג)} 
+\begin{lefteqs}
+    \vec{\nabla} \times \vec{B} = \frac{1}{r^2 \sin(\theta)} \begin{vmatrix}
+        \hat{r} & r\hat{\theta} & r\sin(\theta)\hat{\phi} \\
+        \frac{\partial}{\partial r} & \frac{\partial}{\partial \theta} & \frac{\partial}{\partial \phi} \\
+        B_r & rB_\theta & r\sin(\theta)B_\phi
+    \end{vmatrix} \\
+    = \frac{1}{r^2\sin(\theta)}(\hat{r} \cdot \frac{\partial}{\partial \theta}(r\sin(\theta)B_\phi) - r\hat{\theta} \cdot \frac{\partial}{\partial r}(r\sin(\theta)B_\phi)) \\
+    = \frac{1}{r^2\sin(\theta)} \left( r\hat{r} \cdot 2\cos(\theta) \cdot B_\phi - \hat{\theta} \cdot r\sin{\theta} \cdot (B_\phi + r\cdot\frac{\partial B_\phi}{\partial r}) \right) \\
+    \frac{\partial B_\phi}{\partial r} = -\alpha \sin(\theta) \left(k \frac{-k\sin(k(r-ct))\cdot r - \cos(k(r-ct))}{r^2} - \frac{k\cos(k(r-ct))r^2 - 2r\sin(k(r-ct))}{r^4} \right) \\
+    \beta = k(r-ct) \\
+    \frac{\partial B_\phi}{\partial r} = -\alpha \sin(\theta) ( -\frac{k^2\sin(\beta)}{r} - \frac{k\cos(\beta)}{r^2} - \frac{k\cos(\beta)}{r^2} + \frac{2\sin(\beta)}{r^3} ) \\
+    = \alpha \sin(\theta) \left( \frac{k^2\sin(\beta)}{r} + \frac{2k\cos(\beta)}{r^2} - \frac{2\sin(\beta)}{r^3} \right) \\
+    B_\phi + r\frac{\partial B_\phi}{\partial r} = \alpha \sin(\theta) (k^2 \sin(\beta) + \frac{2k\cos(\beta)}{r} - \frac{2\sin(\beta)}{r^2} - \frac{k\cos(\beta)}{r} + \frac{sin(\beta)}{r^2}) \\
+    = \alpha \sin(\theta) (k^2 \sin(\beta) + \frac{k\cos(\beta)}{r} - \frac{\sin(\beta)}{r^2}) \\
+    \vec{\nabla} \times \vec{B} = \hat{r} (\frac{1}{\sin(\theta)} \cdot 2\cos(\theta) (-\alpha) \sin(\theta)(\frac{k\cos(\beta)}{r} - \frac{\sin(\beta)}{r^2})  \\
+    \qquad \qquad -\hat{\theta} (\frac{1}{r} \alpha \sin(\theta) (k^2 \sin(\beta) + \frac{k\cos(\beta)}{r} - \frac{\sin(\beta)}{r^2}))))
+\end{lefteqs}
 
-% ולכן:
-% \begin{lefteqs}
-% \nabla\cdot\vec{B}=\nabla\cdot(\nabla\times\vec{A})=0
-% \end{lefteqs}
+מכיוון ש $J=0$ ע"פ חוק אמפר המתוקן: $\vec{\nabla} \times \vec{B} = \mu_0 \epsilon_0 \frac{\partial E}{\partial t}$
+
+\begin{lefteqs}
+    E = c^2 \int \vec{\nabla} \times \vec{B} dt \\
+    E_r = c^2 \cdot \frac{-2 \alpha \cos(\theta)}{r} \int \frac{k\cos(k(r-ct))}{r} - \frac{\sin(k(r-ct))}{r^2} dt \\
+    = -\frac{-2\alpha c^2 \cos(\theta)}{r} \left( \frac{-\sin(\beta)}{rc} - \frac{\cos(\beta)}{r^2 kc} \right) \\
+    E_\theta = c^2 \cdot \frac{-\alpha \sin(\theta)}{r} \int (k^2 \sin(\beta) + \frac{\cos(\beta)}{r} - \frac{\sin(\beta)}{r^2}) dt \\
+    = \frac{\alpha c \sin(\theta)}{r} (-k\cos(\beta) + \frac{\sin(\beta)}{r} + \frac{\cos(\beta)}{k r^2}) \\
+    \vec{E} = E_r \hat{r} + E_\theta \hat{\theta} \, , \beta = k(r-ct)
+\end{lefteqs}
+
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 5}
+
+\textbf{א.1)} 
+נבדוק את התקיימות חוק פרדיי $\vec{\nabla} \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}$
+
+\begin{lefteqs}
+    -\frac{\partial \vec{B}}{\partial t} = -\frac{\partial}{\partial t} \left( \alpha \sin(\theta)(\frac{k\cos(k(r-ct))}{r} - \frac{\sin(k(r-ct))}{r^2}) \right) \\
+    = \alpha \sin(\theta) \left( \frac{k \cdot (-kc) \cdot -\sin(\beta)}{r} - \frac{-kc \cdot \cos(\beta)}{r^2} \right) \\
+    = kc \alpha \sin(\theta) (\frac{k\sin(\beta)}{r} + \frac{\cos(\beta)}{r^2}) \\
+    \vec{\nabla} \times \vec{E} = \frac{1}{r^2 \sin(\theta)} \begin{vmatrix}
+        \hat{r} & r\hat{\theta} & r\sin(\theta)\hat{\phi} \\
+        \frac{\partial}{\partial r} & \frac{\partial}{\partial \theta} & \frac{\partial}{\partial \phi} \\
+        E_r & rE_\theta & 0
+    \end{vmatrix} \\
+    = \frac{1}{r^2 \sin(\theta)} \left( r\sin(\theta) \hat{\phi} (\frac{\partial(rE_\theta)}{\partial r} - \frac{\partial E_r}{\partial \theta}) \right) \\
+    = \hat{\phi} \cdot \frac{1}{r} [\frac{\partial}{\partial r}(\alpha c \sin(\theta)(-k \cos(\beta) + \frac{\sin(\beta)}{r} + \frac{\cos(\beta)}{kr^2})  \\
+    - \frac{\partial}{\partial \theta}(\frac{2\alpha \cos(\theta) \cdot c}{r^2}(\sin(\beta) - \frac{\cos(\beta)}{kr})) ] \\
+    = \hat{\phi} \frac{\alpha c}{r} [\sin(\theta)(k^2 \sin(\beta) + \frac{k\cos(\beta)}{r} - \frac{\sin(\beta)}{r^2} - \frac{\sin(\beta)}{r^2} - \frac{2\cos(\beta)}{kr^3}) + \sin(\theta)(\frac{2\sin(\beta)}{r^2} + \frac{2\cos(\beta)}{kr^3}))] \\
+    = \hat{\phi} \frac{\alpha c \sin(\theta)}{r} (k^2 \sin(\beta) + \frac{k\cos(\beta)}{r} - \frac{2\sin(\beta)}{r} - \frac{2\cos(\beta)}{kr^2}\\
+    \qquad + 2\frac{\sin(\beta)}{r^2} + \frac{2\cos(\beta)}{kr^3}) \\
+    = \hat{\phi} = k\alpha c \sin(\theta) (\frac{k\sin(\beta)}{r} + \frac{\cos(\beta)}{r^2}) \\
+    \Rightarrow \vec{\nabla} \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}
+\end{lefteqs}
+
+\textbf{א.2)} 
+חוק גאוס בריק הוא $\vec{\nabla} \cdot \vec{E} = 0$
+\begin{lefteqs}
+    \vec{\nabla} \cdot \vec{E} = \frac{\partial E_r}{\partial r} + \frac{2}{r} E_r + \frac{1}{r} (\frac{\partial E_\theta}{\partial \theta} + \frac{\cos(\theta)}{\sin(\theta)} E_\theta) \\
+    2 \alpha \cos(\theta) c \left[ \frac{k\cos(\beta)}{r^2} -\frac{2\sin(\beta)}{r^3} - \frac{\sin(\beta)}{r^3} - \frac{3\cos(\beta)}{kr^4} \right] \\
+    + \frac{4\alpha \cos(\theta) c}{r^3} (\sin(\beta) + \frac{\cos(\beta)}{kr}) + \frac{2c \cos(\theta)}{r^2}(-k\cos(\beta) + \frac{\sin(\beta)}{r} + \frac{\cos(\beta)}{kr^2}) \\
+    + \frac{2c\cos(\theta)}{r^2}(-k\cos(\beta) + \frac{\sin(\beta)}{r} + \frac{\cos(\beta)}{kr^4}) \\
+    = \alpha c \cos(\theta) [\frac{-6\sin(\beta)}{r^3} - \frac{6\cos(\beta)}{kr^4} + \frac{2k\cos(\beta)}{r^2} + \frac{4\sin(\beta)}{r^3} + \frac{4\cos(\beta)}{kr^4} - \frac{k\cos(\beta)}{r^2} + \frac{\sin(\beta)}{r^3}\\
+    \qquad + \frac{\cos(\beta)}{kr^4} - \frac{k\cos(\beta)}{r^2} + \frac{\sin(\beta)}{r^3} + \frac{\cos(\beta)}{kr^4}) ] \\
+    \frac{\sin(\beta)}{r^3}(4+1+1-6) + \frac{k\cos(\beta)}{r^2}(2-1-1) + \frac{\cos(\beta)}{kr^4}(1+4+1-6) = 0 \\
+    \Rightarrow \vec{\nabla} \cdot \vec{E} = 0
+\end{lefteqs}
+
+\textbf{ב)} 
+לא.
+
+ידועה הזהות של $\vec{\nabla} \cdot (\vec{\nabla} \times \vec{A})=0$
+
+מכיוון שידוע $\vec{B} = \vec{\nabla} \times \vec{A}$ אז
+
+\begin{lefteqs}
+    \vec{\nabla} \cdot \vec{B} = \vec{\nabla} \cdot (\vec{\nabla} \times \vec{A}) = 0
+\end{lefteqs}
 
 \end{document}
