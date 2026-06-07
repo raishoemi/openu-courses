@@ -1,0 +1,313 @@
+\documentclass[14pt]{extarticle}
+\usepackage{fontspec}
+\usepackage{braket}
+\usepackage{polyglossia}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Hebrew setup
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\newfontfamily\hebrewfont[Script=Hebrew]{Arial}
+
+% Math font setup for proper Greek symbols
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% Increase line spacing throughout document
+\linespread{1.3}
+
+\usepackage[margin=1in]{geometry}
+
+% Left-aligned equation environment
+\newenvironment{lefteqs}{%
+    \begin{english}%
+    \begin{flushleft}%
+    \renewcommand{\arraystretch}{1.3}%
+    $\begin{array}{@{}l@{}}%
+}{%
+    \end{array}$%
+    \end{flushleft}%
+    \end{english}%
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{מטלה 3 - פיזיקה קוונטית 1}}\\[0.5em]
+    {\large שי רואימי - 318986270}\\[0.3em]
+\end{center}
+
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 1}
+
+\textbf{א)}
+הצמוד ההרמיטי של $A$ מוגדר כך ש: (ע"פ 3.20):
+\begin{lefteqs}
+    \langle f | \hat{A} g \rangle = \langle \hat{A}^\dagger f | g \rangle
+\end{lefteqs}
+ולכן $A^{\dagger \dagger}$ הוא הצמוד ההרמיטי של $A^\dagger$, וכן:
+\begin{lefteqs}
+    \langle \hat{A}^\dagger f | g \rangle = \langle f | \hat{A}^{\dagger \dagger} g \rangle
+\end{lefteqs}
+ולכן
+\begin{lefteqs}
+    \langle f | \hat{A} g \rangle = \langle f | \hat{A}^{\dagger \dagger} g \rangle \Rightarrow A = A^{\dagger \dagger}
+\end{lefteqs}
+
+\textbf{ב)}
+$A+A^\dagger$ הרמיטי אם (3.20) $A+A^\dagger = (A+A^\dagger)^\dagger$
+
+נוכיח עבור אופרטורים $A \, , B$ כי $(A+B)^\dagger = A^\dagger + B^\dagger$:
+\begin{lefteqs}
+    \langle f | (A+B) g \rangle = \langle f | Ag + Bg \rangle = \langle f | A g \rangle + \langle f | Bg \rangle = \langle A^\dagger f | g \rangle + \langle B^\dagger f | g \rangle \\
+    = \langle (A^\dagger + B^\dagger) f | g \rangle 
+\end{lefteqs}
+ולכן $(A+B)^\dagger = A^\dagger + B^\dagger$.
+\begin{lefteqs}
+    (A+A^\dagger)\dagger = A^\dagger + A^{\dagger \dagger}
+\end{lefteqs}
+ע"פ סעיף א' $A=A^{\dagger \dagger}$ ולכן $A^\dagger + A^{\dagger \dagger} = A+A^\dagger$
+
+\begin{lefteqs}
+    \Rightarrow A+A^\dagger = (A+A^\dagger)^\dagger
+\end{lefteqs}
+
+כלומר $A+A^\dagger$ הרמיטי.
+
+\textbf{ג)}
+ע"פ הערת צד 19 בעמוד 106 אופרטור $Q$ מוגדר בתור אנטי הרמיטי אם $\hat{Q}^\dagger = -\hat{Q}$
+
+ע"פ תוצאות סעיף א', וההוכחה כי $(A+B)^\dagger = A^\dagger + B^\dagger$ מסעיף ב':
+\begin{lefteqs}
+    (A-A^\dagger)^\dagger = A^\dagger - A^{\dagger \dagger} = A^\dagger - A \\
+    \Rightarrow A-A^\dagger = -(A-A^\dagger)^\dagger
+\end{lefteqs}
+כנדרש
+
+\textbf{ד)}
+נתחיל בהוכחת למה, עבור אופרטורים $A\, , B$, נוכיח $(AB)^\dagger = B^\dagger A^\dagger$:
+\begin{lefteqs}
+    \langle f | (AB)g\rangle = \langle f | A(Bg) \rangle = \langle A^\dagger f | Bg \rangle = \langle B^\dagger A^\dagger f | g \rangle
+\end{lefteqs}
+ולכן $(AB)^\dagger = B^\dagger A^\dagger$.
+\begin{lefteqs}
+    (A^\dagger A)^\dagger = A^\dagger A^{\dagger \dagger} = A^\dagger A \Rightarrow A^\dagger A = (A^\dagger A)^\dagger
+\end{lefteqs}
+ולכן $A^\dagger A$ הרמיטי.
+
+ערך התצפית של $Q$ ניתן לביטוי (3.13) כך: $\langle Q \rangle = \langle \psi | \hat{Q} \psi \rangle$
+
+\begin{lefteqs}
+    \langle A^\dagger A \rangle = \langle \psi | A^\dagger A \psi \rangle = \langle A\psi | A\psi \rangle \\
+\end{lefteqs}
+ע"פ 3.9 $\langle f | f \rangle$ ממשי ואי שלילי ולכן $\langle A^\dagger A \rangle$ אי שלילי.
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 2}
+
+\textbf{א)}
+ראשית נזכיר ע"פ הגדרה $[\hat{A},\hat{B}]=\hat{A}\hat{B}-\hat{B}\hat{A}$
+
+\begin{lefteqs}
+    [A,B+C] = A(B+C) - (B+C)A \\
+    = AB + AC - BA - CA = AB -BA + (AC -CA) \\
+    = [A,B] + [A,C] \Rightarrow [A,B+C] = [A,B] + [A,C]  
+\end{lefteqs}
+
+\textbf{ב)}
+
+\begin{lefteqs}
+    [A,BC] = A(BC) - (BC)A = (AB)C - B(CA) \\
+    = (AB)C - (BA)C + B(AC) - B(CA) = [A,B]C + B[A,C] \\
+    \Rightarrow [A,BC] = [A,B]C + B[A,C]
+\end{lefteqs}
+
+\textbf{ג)}
+
+\begin{lefteqs}
+    [A,[B,C]] = [B,[C,A]] + [C,[A,B]] \\
+    = [A,BC-CB] + [B,CA-AC] + [C, AB-BA] + A(BC-CB) \\
+    - (BC-CB)A + B(CA-AC) - (CA-AC)B + C(AB-BA) - (AB-BA)C \\
+    = A(BC) - A(CB) - (BC)A + (CB)A + B(CA) - B(AC)\\
+    - (CA)B + (AC)B + C(AB)- C(BA) - (AB)C + (BA)C = 0
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 3}
+
+$A$ אופרטור ליניארי, פונקציה של $A$ מוגדרת ע"י טור חזקות:
+\begin{lefteqs}
+    F(A) = \displaystyle\sum_{n=0}^\infty f_n A^n
+\end{lefteqs}
+
+\textbf{א)}
+
+\begin{lefteqs}
+    [A,F(A)] = AF(A) - F(A)A = A(\displaystyle\sum_{n=0}^\infty f_n A^n) - (\displaystyle\sum_{n=0}^\infty f_n A^n)A \\
+    = \displaystyle\sum_{n=0}^\infty f_n A^{n+1} - \displaystyle\sum_{n=0}^\infty f_n A^{n+1} = 0
+\end{lefteqs}
+
+כאשר $A$  יכול להכנס ל $\displaystyle\sum$ בשני הביטויים ומכיוון ש $f_n$ סקאלר:
+\begin{lefteqs}
+    A f_n A^n = f_n A A^n = f_n A^{n+1}
+\end{lefteqs}
+
+\textbf{ב)}
+נניח $[B,A]=0$, עבור $n=1$ מתקיים $[B,A^1]=0$
+
+נניח כי $[B,A^n]=0$ ונוכיח כי $[B,A^{n+1}]=0$:
+
+\begin{lefteqs}
+    [B,A^{n+1}] = BA^{n+1} - A^{n+1}B = BAA^n - A^n AB \\
+\end{lefteqs}
+
+\begin{lefteqs}
+    [B,A]=0 \Rightarrow BA = AB \,\, , 
+    [B,A^n]=0 \Rightarrow BA^n = A^n B
+    \Rightarrow [B,A^{n+1}] = ABA^n - A^nBA=AA^nB - A^nAB \\
+    = AA^nB - AA^nB = 0 \Rightarrow [B,A^{n+1}] = 0
+\end{lefteqs}
+הוכחנו באינדוקציה ש $[B,A^n]=0$
+
+\begin{lefteqs}
+    [B,F(A)] = B \displaystyle\sum_{n=0}^\infty f_n A^n  - \displaystyle\sum_{n=0}^\infty f_n A^n B \\
+    = \displaystyle\sum_{n=0}^\infty f_n (BA^n - A^nB) = \displaystyle\sum_{n=0}^\infty f_n [B,A^n] = 0
+\end{lefteqs}
+
+\textbf{ג)}
+
+\begin{lefteqs}
+    [x,F(p)] = x \displaystyle\sum_{n=0}^\infty f_n p^n - \displaystyle\sum_{n=0}^\infty f_n p^n x \\
+    = \displaystyle\sum_{n=0}^\infty f_n (xp^n - p^n x) = \displaystyle\sum_{n=0}^\infty f_n [x,p^n] \\
+    {}[x,p^n] = xp^n - p^n x = xp^{n-1}p - p^{n-1}px = [x,p^{n-1}p]
+\end{lefteqs}
+לפי שאלה 2, סעיף ב':
+\begin{lefteqs}
+    [x,p^n] = [x,p^{n-1}]p + p^{n-1}[x,p] = [x,p^{n-1}]p + i\hbar p^{n-1}
+\end{lefteqs}
+נוכיח באינדוקציה $[x,p^n] = i\hbar \frac{\partial p^n}{\partial p}$, נניח $[x,p^{n-1}] = i\hbar (n-1)p^{n-1}$
+
+עבור $n=1$, מתקיים $[x,p^1]=i\hbar \cdot 1 = i\hbar$, עבור $n$:
+
+\begin{lefteqs}
+    [x,p^n] = [x,p^{n-1}]p + i\hbar p^{n-1} = i\hbar (n-1)p^{n-2}p + i\hbar p^{n-1} \\
+    = i\hbar n p^{n-1} \Rightarrow \frac{\partial F(p)}{\partial p} = \displaystyle\sum_{n=0}^\infty f_n n p^{n-1} \\
+    \Rightarrow [x,F(p)] = \displaystyle\sum_{n=0}^\infty f_n i\hbar n p^{n-1} = i\hbar \frac{\partial}{\partial p} F(p)
+\end{lefteqs}
+
+נעבור לחלק השני של הסעיף:
+
+\begin{lefteqs}
+    [p,G(x)] = pG(x) - G(x)p = p \displaystyle\sum_{n=0}^\infty g_n x^n - \displaystyle\sum_{n=0}^\infty g_n x^n p \\
+    = \displaystyle\sum_{n=0}^\infty g_n (px^n - x^n p) = \displaystyle\sum_{n=0}^\infty g_n [p,x^n] \\
+\end{lefteqs}
+לפי שאלה 2, סעיף ב':
+\begin{lefteqs}
+    [p,x^n] = [p,x^{n-1}x] = [p,x^{n-1}]x + x^{n-1}[p,x] \\
+    = [p,x^{n-1}]x - i\hbar x^{n-1}
+\end{lefteqs}
+
+כמו מקודם, נניח $[p,x^{n-1}] = -i\hbar(n-1)x^{n-2}$, ונוכיח $[p,x^n]=-i\hbar nx^{n-1}$:
+
+עבור  $n=1$, מתקיים $[p,x^1]=-i\hbar x^0=-i\hbar$, השוויון מתקיים, עבור $n$:
+
+\begin{lefteqs}
+    [p,x^n] = -i\hbar (n-1)x^{n-1}-i\hbar x^{n-1} = -i\hbar n x^{n-1} \\
+    \frac{\partial}{\partial x} G(x) = \frac{\partial}{\partial x} \displaystyle\sum_{n=0}^\infty g_n x^n = \displaystyle\sum_{n=0}^\infty g_n n x^{n-1} \\
+    {}[p,G(x)] = -i\hbar \frac{\partial G(x)}{\partial x}
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 4}
+
+משוואה 3.73 היא:
+\begin{lefteqs}
+    \frac{d}{dt} \langle Q \rangle = \frac{i}{\hbar} \langle [\hat{H},\hat{Q}] \rangle + \langle \frac{\partial \hat{Q}}{\partial t} \rangle \\
+\end{lefteqs}
+
+נוכיח כי:
+\begin{lefteqs}
+    \frac{d}{dt} \langle xp \rangle = 2\langle T \rangle - \langle x \frac{\partial V}{\partial x} \rangle
+\end{lefteqs}
+
+עבור $\hat{Q} = \hat{x}\hat{p}$, כאשר $\hat{x}=x \, , \hat{p} = -i\hbar \frac{\partial}{\partial x}$, אז  $\hat{Q} = -xi\hbar \frac{\partial}{\partial x}$
+
+ולכן $\frac{\partial Q}{\partial t} = 0$, לפי שאלה 2.
+
+\begin{lefteqs}
+    [H,xp] = [H,x]p + x[H,p] = [\frac{p^2}{2m} + V,x]p + x[\frac{p^2}{2m} + V, p] \\
+    = ([\frac{p^2}{2m},x] + [V,x])p + x([\frac{p^2}{2m},p] + [V,p]) \\
+    {}[\frac{p^2}{2m},x] = [\frac{p}{2m}p, x] = \frac{p}{2m}[p,x] + [\frac{p}{2m},x]p = -\frac{i\hbar p}{2m} + \frac{-i\hbar p}{2m} \\
+    = \frac{-2i\hbar p}{2m} = -\frac{i\hbar p}{m} \\
+\end{lefteqs}
+
+נסתכל על $[V,p]$ על פונקציה $f$:
+
+\begin{lefteqs}
+    [V,p]f = V\hat{p}f - \hat{p}(Vf) = -i\hbar V \frac{\partial f}{\partial x} + i\hbar \frac{\partial}{\partial x}(Vf) \\
+    = i\hbar V \frac{\partial f}{\partial x} + i\hbar \frac{\partial V}{\partial x}f + i\hbar V \frac{\partial f}{\partial x} = i\hbar \frac{\partial V}{\partial x}f \\
+    \Rightarrow [V,p] = i\hbar \frac{\partial V}{\partial x}
+\end{lefteqs}
+
+נשים לב גם כי $[V,x]=[\frac{p^2}{2m},p]=0$ ולכן:
+\begin{lefteqs}
+    [H,xp] = -\frac{i\hbar p}{m}p + x i \hbar \frac{\partial V}{\partial x} \\
+    \frac{d}{dt} \langle xp \rangle = \frac{i}{\hbar} \langle -\frac{i\hbar p^2}{m} + i \hbar x \frac{\partial V}{\partial x} \rangle \\
+    = \frac{-i \cdot i \cdot \hbar}{\hbar} \langle \frac{p^2}{m} + x\frac{\partial V}{\partial x} \rangle = 2\langle T \rangle - \langle x \frac{\partial V}{\partial x} \rangle
+\end{lefteqs}
+
+עבור מצב סטציונרי כל ערכי הציפייה של אופרטורים לא תלויים בזמן הם קבועים בזמן, ולכן $\frac{d}{dt} \langle xp \rangle = 0$
+
+עבור אוסצילטור הרמוני:
+\begin{lefteqs}
+    V=\frac{1}{2}m \omega^2 x^2 \Rightarrow \frac{\partial V}{\partial x} = m\omega^2 x \\
+    \Rightarrow x \frac{\partial V}{\partial x} = m\omega^2 x^2 = 2V
+\end{lefteqs}
+
+נציב ב Virial Theorem:
+
+\begin{lefteqs}
+    2\langle T \rangle = 2 \langle V \rangle \Rightarrow \langle T \rangle = \langle V \rangle
+\end{lefteqs}
+כנדרש.
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 5}
+
+תהי מערכת $\hat{H} \ket{n} = E_n \ket{n} \, \, n=1,2$
+
+\textbf{א)}
+
+\begin{lefteqs}
+    i\hbar \frac{d}{dt} \ket{\psi} = \hat{H} \ket{\psi} \\
+    \ket{\psi} = \alpha(t) \ket{1} + \beta(t) \ket{2} \\
+    i\hbar (\frac{d\alpha}{dt} \ket{1} + \frac{d\beta}{dt} \ket{2}) = \alpha E_1 \ket{1} + \beta E_2 \ket{2} \\
+    i\hbar \frac{d\alpha}{dt} = \alpha E_1 \, , i\hbar \frac{d\beta}{dt} = \beta E_2 \\
+\end{lefteqs}
+
+\textbf{ב)}
+זוהי ה $\text{Matrix Projection}$:
+
+\begin{lefteqs}
+    \rho = \ket{\psi}\bra{\psi} = 
+\end{lefteqs}
+
+\end{document}
