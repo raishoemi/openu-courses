@@ -307,7 +307,124 @@ $A$ אופרטור ליניארי, פונקציה של $A$ מוגדרת ע"י ט
 זוהי ה $\text{Matrix Projection}$:
 
 \begin{lefteqs}
-    \rho = \ket{\psi}\bra{\psi} = 
+    \rho = \ket{\psi}\bra{\psi}
+    = \begin{pmatrix}\alpha \\ \beta\end{pmatrix}
+      \begin{pmatrix}\alpha^{*} & \beta^{*}\end{pmatrix}
+    = \begin{pmatrix}
+        \alpha \alpha^{*} & \alpha\beta^{*} \\
+        \beta\alpha^{*}   & \beta\beta^{*}
+      \end{pmatrix} \\
 \end{lefteqs}
+
+\textbf{ג)}
+
+\begin{lefteqs}
+    tr \rho = \alpha \alpha^{*} + \beta\beta^{*} = |\alpha|^2 + |\beta|^2 = 1 \\
+    \rho^2 = \begin{pmatrix}
+        \alpha\alpha^{*} & \alpha\beta^{*} \\
+        \beta\alpha^{*} & \beta\beta^{*}
+    \end{pmatrix}
+    \begin{pmatrix}
+        \alpha\alpha^{*} & \alpha\beta^{*} \\
+        \beta\alpha^{*} & \beta\beta^{*}
+    \end{pmatrix} \\
+    = \begin{pmatrix}
+    \alpha\alpha^{*}\alpha\alpha^{*}
+    +
+    \alpha\beta^{*}\beta\alpha^{*}
+    &
+    \alpha\alpha^{*}\alpha\beta^{*}
+    +
+    \alpha\beta^{*}\beta\beta^{*}
+    \\[6pt]
+    \beta\alpha^{*}\alpha\alpha^{*}
+    +
+    \beta\beta^{*}\beta\alpha^{*}
+    &
+    \beta\alpha^{*}\alpha\beta^{*}
+    +
+    \beta\beta^{*}\beta\beta^{*}
+    \end{pmatrix} \\
+    =
+    \begin{pmatrix}
+    \alpha\alpha^{*}\left(\alpha\alpha^{*}+\beta\beta^{*}\right)
+    &
+    \alpha\beta^{*}\left(\alpha\alpha^{*}+\beta\beta^{*}\right)
+    \\[6pt]
+    \beta\alpha^{*}\left(\alpha\alpha^{*}+\beta\beta^{*}\right)
+    &
+    \beta\beta^{*}\left(\alpha\alpha^{*}+\beta\beta^{*}\right)
+    \end{pmatrix} \\
+    =
+    \begin{pmatrix}
+    \alpha\alpha^{*} & \alpha\beta^{*} \\
+    \beta\alpha^{*} & \beta\beta^{*}
+    \end{pmatrix} = \rho \\
+    \Rightarrow \rho^2 = \rho
+\end{lefteqs}
+
+\textbf{ד)}
+
+\begin{lefteqs}
+    \bra{\psi}\hat A\ket{\psi}
+    =
+    \bra{\psi}
+    \left(
+    \alpha \hat A\ket{1}
+    +
+    \beta \hat A\ket{2}
+    \right) \\
+    =
+    \left(
+    \alpha^*\bra{1}
+    +
+    \beta^*\bra{2}
+    \right)
+    \left(
+    \alpha \hat A\ket{1}
+    +
+    \beta \hat A\ket{2}
+    \right)\\
+    =
+    \alpha\alpha^*\bra{1}\hat A\ket{1}
+    +
+    \alpha^*\beta\bra{1}\hat A\ket{2}
+    +
+    \beta^*\alpha\bra{2}\hat A\ket{1}
+    +
+    \beta\beta^*\bra{2}\hat A\ket{2}\\
+    \operatorname{tr}(\rho A)
+    =
+    \operatorname{tr}
+    \left(
+    \begin{pmatrix}
+    \alpha\alpha^* & \alpha\beta^* \\
+    \beta\alpha^* & \beta\beta^*
+    \end{pmatrix}
+    \begin{pmatrix}
+    A_{11} & A_{12} \\
+    A_{21} & A_{22}
+    \end{pmatrix}
+    \right)\\
+    =
+    \alpha\alpha^* A_{11}
+    +
+    \alpha^*\beta A_{21}
+    +
+    \beta^*\alpha A_{12}
+    +
+    \beta\beta^* A_{22},
+\end{lefteqs}
+
+כאשר עבור הבסיס $e={\ket{1},\ket{2}}$, מתקיים $\bra{e_m} \hat{A} \ket{e_n} = A_{mn}$
+
+כלומר:
+
+\begin{lefteqs}
+    A_{11} = \bra{1}\hat A\ket{1} \, , A_{12} = \bra{1}\hat A\ket{2} \\
+    A_{21} = \bra{2}\hat A\ket{1} \, , A_{22} = \bra{2}\hat A\ket{2}
+\end{lefteqs}
+
+ולכן $\bra{\psi}\hat A\ket{\psi} = \operatorname{tr}(\rho A)$
 
 \end{document}
