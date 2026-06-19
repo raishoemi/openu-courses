@@ -221,4 +221,377 @@
 
 לסיכום, אף אחד מהאופרטורים לא תלויים בזמן, וכולם מתחלפים עם H ולכן ערכי התצפית קבועים.
 
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 3}
+
+נתון גוף קשיח בשדה מגנטי בכיוון $z$, מתואר ע"י $H=\frac{\vec{L^2}}{2I} + \beta L_z$
+
+כאשר $I$ מומנט ההתמד של הגוף.
+
+
+\textbf{א)}
+
+\begin{lefteqs}
+    H \ket{\ell,m} = (\frac{L^2}{2I} + \beta L_z) \ket{\ell,m} = \frac{\hbar^2}{2I} \ket{\ell, m} + \beta L_z \ket{\ell,m} \\
+    \frac{1}{2I} L^2 \ket{\ell, m} = \frac{1}{2I} \hbar^2 \ell (\ell + 1) \ket{\ell, m} \\
+    \beta L_z \ket{\ell, m} = \beta \hbar m \ket{\ell, m} \\ 
+    \Rightarrow H \ket{\ell, m} = \left( \frac{1}{2I} \hbar^2 \ell (\ell + 1) + \beta \hbar m \right) \ket{\ell, m}
+\end{lefteqs}
+
+כלומר הערכים העצמיים של H הם: $E_{\ell, m} = \frac{\hbar^2 \ell (\ell + 1)}{2I} + \beta \hbar m$
+
+כאשר $\ell$ מספר טבעי, ו $m \in [-\ell, \ell]$
+
+\textbf{ב)}
+נתון בזמן $t=0$ הגוף במצב $\ket{\ell=1, m_x=0}$
+
+\textbf{ב.1)}
+הערכים האפשריים שיתקבלו במדידת $L_z$ הם הערכים העצמיים של $L_z$, שהם מהצורה $\hbar m$.
+הגוף במצב בו $\ell =1$ ולכן $m \in \{-1, 0, 1\}$
+
+ולכן הערכים היכולים להתקבל במדידה הם $-\hbar\, , 0\, , \hbar$.
+
+
+\textbf{ב.2)}
+ע"פ 4.105, $L_{\pm} = L_x \pm i L_y$ כלומר
+
+\begin{lefteqs}
+    L_x = L_+ - i L_y \\
+    L_x = L_- + i L_y \\
+    2L_x = L_+ + L_- \\
+    L_x = \frac{1}{2} (L_+ + L_-) \\
+\end{lefteqs}
+
+ע"פ 4.121:
+\begin{lefteqs}
+    L_+ f_{\ell}^m = (A_{\ell}^m) f_{\ell}^{m+1} \\
+    L_- f_{\ell}^m = (B_{\ell}^m) f_{\ell}^{m-1} \\
+\end{lefteqs}
+
+כאשר
+
+\begin{lefteqs}
+    A_{\ell}^m = \hbar \sqrt{(\ell - m)(\ell + m + 1)} \\
+    B_{\ell}^m = \hbar \sqrt{(\ell + m)(\ell - m + 1)} \\
+\end{lefteqs}
+
+ולכן
+
+\begin{lefteqs}
+    L_+ \ket{1,1} = \hbar \sqrt{(1-1)(1+1+1)} = 0 \\
+    L_+ \ket{1,0} = \hbar \sqrt{(1-0)(1+0+1)} \ket{1,1} = \hbar \sqrt{2} \ket{1,1} \\
+    L_+ \ket{1, -1} = \hbar \sqrt{(1+1)(1-1+1)} \ket{1,0} = \hbar \sqrt{2} \ket{1,0} \\
+    L_- \ket{1,1} = \hbar \sqrt{(1+1)(1-1+1)} \ket{1,0} = \hbar \sqrt{2} \ket{1,0} \\
+    L_- \ket{1,0} = \hbar \sqrt{(1+0)(1-0+1)} \ket{1,-1} = \hbar \sqrt{2} \ket{1,-1} \\
+    L_- \ket{1,-1} = \hbar \sqrt{(1-1)(1+(-1)+1)} = 0 \\
+    L_+ = \begin{pmatrix}
+        0 & \hbar \sqrt{2} & 0 \\
+        0 & 0 & \hbar \sqrt{2} \\
+        0 & 0 & 0
+    \end{pmatrix} \\
+    L_- = \begin{pmatrix}
+        0 & 0 & 0 \\
+        \hbar \sqrt{2} & 0 & 0 \\
+        0 & \hbar \sqrt{2} & 0
+    \end{pmatrix} \\
+    L_+ = \frac{1}{2} (L_+ + L_-) = \frac{1}{2} \begin{pmatrix}
+        0 & \hbar \sqrt{2} & 0 \\
+        \hbar \sqrt{2} & 0 & \hbar \sqrt{2} \\
+        0 & \hbar \sqrt{2} & 0
+    \end{pmatrix} = \frac{\hbar}{\sqrt{2}} \begin{pmatrix}
+        0 & 1 & 0 \\
+        1 & 0 & 1 \\
+        0 & 1 & 0
+    \end{pmatrix} \\
+    \begin{pmatrix}
+        0 & 1 & 0 \\
+        1 & 0 & 1 \\
+        0 & 1 & 0
+    \end{pmatrix} \begin{pmatrix}
+        c_1 \\
+        0 \\
+        c_{-1}
+    \end{pmatrix} = 0 \iff \begin{pmatrix}
+        c_0 \\
+        c_1 + c_{-1} \\
+        c_0
+    \end{pmatrix} = 0 \Rightarrow c_0 = 0 \, , c_1 = -c_{-1} \\
+    \Rightarrow \begin{pmatrix}
+        c_1 \\
+        0 \\
+        c_{-1}
+    \end{pmatrix} = c_1 \begin{pmatrix}
+        1 \\
+        0 \\
+        -1
+    \end{pmatrix}
+\end{lefteqs}
+
+נאכוף נורמליזציה:
+
+\begin{lefteqs}
+    |c_1|^2 + |c_0|^2 + |c_{-1}|^2 = 1 \\
+    c_1^2 + 0^2 + c_1^2 = 2c_1^2 = 1 \Rightarrow c_1 = \frac{1}{\sqrt{2}} \\
+    \ket{1, m_x=0} = c_1 \ket{1,1} + c_0 \ket{1,0} + c_{-1} \ket{1,-1} = \frac{1}{\sqrt{2}} \ket{1,1} -\frac{1}{\sqrt{2}}\ket{1,-1} \\
+    P(L_z = \hbar) = |\frac{1}{\sqrt{2}}|^2 = \frac{1}{2} \\
+    P(L_z = 0) = |0|^2 = 0 \\
+    P(L_z = -\hbar) = |-\frac{1}{\sqrt{2}}|^2 = \frac{1}{2}
+\end{lefteqs}
+
+
+\textbf{ג.1)}
+כפי שראינו בסעיף א
+\begin{lefteqs}
+    E_{\ell, m} = \frac{\hbar^2 \ell (\ell + 1)}{2I} + \beta \hbar m
+\end{lefteqs}
+
+ידוע ש $\ell = 1$, וכן הסתברות ל $m=0$ במצב זה היא 0, ולכן הערכים האפשריים שיתקבלו במדידת האנרגיה הם:
+
+\begin{lefteqs}
+    E_{1,1} = \frac{\hbar^2 1(1+1)}{2I} + \beta \hbar 1 = \frac{\hbar^2}{I} + \beta \hbar \\
+    E_{1,-1} = \frac{\hbar^2 1(1+1)}{2I} + \beta \hbar (-1) = \frac{\hbar^2}{I} - \beta \hbar
+\end{lefteqs}
+
+\textbf{ג.2)}
+
+כפי שראינו בסעיף ב.2, כיוון והאנרגיה תלויה ב $\ell, m$, וכאשר $\ell = 1$,
+ההסתברות לקבל ערך מסוים של אנרגיה במדידה זהה להסתברות לקבל $L_z$ מסוים, וכן:
+\begin{lefteqs}
+    P(E_{1,1}) = \frac{1}{2} \, , P(E_{1,-1}) = \frac{1}{2}
+\end{lefteqs}
+
+\textbf{ד)}
+
+\begin{lefteqs}
+    \Psi(t) = \frac{1}{\sqrt{2}} \ket{1,1} e^{\frac{-i E_{1,1} t}{\hbar}} + \frac{1}{\sqrt{2}} \ket{1,-1} e^{\frac{-i E_{1,-1} t}{\hbar}} \\
+    \Rightarrow \Psi(t) = \frac{1}{\sqrt{2}} e^{-i \frac{\hbar}{I} t} (\ket{1,1} e^{-i \beta t} + \ket{1,-1} e^{-1 \beta t})
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 4}
+(שאלה 4.32)
+
+\textbf{א)}
+ע"פ 4.147, $S_y = \frac{\hbar}{2} \begin{pmatrix}
+    0 & -i \\
+    i & 0
+\end{pmatrix}$
+
+\begin{lefteqs}
+    S_y \chi = \lambda \chi \iff |S_y - \lambda I| = 0 \\
+    \iff \frac{\hbar}{2} \begin{vmatrix}
+        -\lambda & -i \\
+        i & -\lambda
+    \end{vmatrix} = \frac{\hbar}{2}(\lambda^2 - 1) = 0 \iff \lambda = \pm \frac{\hbar}{2} \\
+    (S_y - \lambda I) \chi = 0 \\
+    \underline{\lambda = \frac{\hbar}{2}} \Rightarrow \left[ \frac{\hbar}{2} \begin{pmatrix}
+        0 & -i \\
+        i & 0
+    \end{pmatrix} - \frac{\hbar}{2} \begin{pmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{pmatrix} \right] \begin{pmatrix}
+        a \\
+        b
+    \end{pmatrix} = 0 \\
+    \frac{\hbar}{2} \begin{pmatrix}
+        -1 & -i \\
+        i & -1
+    \end{pmatrix} \begin{pmatrix}
+        a \\
+        b
+    \end{pmatrix} = \begin{pmatrix}
+        -a -bi \\
+        ai - b
+    \end{pmatrix} = 0 \\
+    a=-bi\, , b=ai \Rightarrow \begin{pmatrix}
+        a \\
+        b
+    \end{pmatrix} = \begin{pmatrix}
+        a \\
+        ai
+    \end{pmatrix} = a \begin{pmatrix}
+        1 \\
+        i
+    \end{pmatrix} \\
+    |a|^2 + |ai|^2 = |a|^2 + |i|^2|a|^2 = 2|a|^2=1 \iff a=\frac{1}{\sqrt{2}} \\
+    \chi_+ = \frac{1}{\sqrt{2}} \begin{pmatrix}
+        1 \\
+        i
+    \end{pmatrix} \\
+    
+    \underline{\lambda = -\frac{\hbar}{2}} \, , (S_y - \lambda I) \begin{pmatrix}
+        c \\
+        d
+    \end{pmatrix} \\
+    \Rightarrow \left[ \frac{\hbar}{2} \begin{pmatrix}
+        0 & -i \\
+        i & 0
+    \end{pmatrix} - \frac{\hbar}{2} \begin{pmatrix}
+        -1 & 0 \\
+        0 & -1
+    \end{pmatrix} \right] \begin{pmatrix}
+        c \\
+        d
+    \end{pmatrix} = 0 \\
+    \frac{\hbar}{2} \begin{pmatrix}
+        1 & -i \\
+        i & 1
+    \end{pmatrix} \begin{pmatrix}
+        c \\
+        d
+    \end{pmatrix} = \begin{pmatrix}
+        c - di \\
+        ci + d
+    \end{pmatrix} = 0 \\
+    c = di \, , d = -ci \Rightarrow \begin{pmatrix}
+        c \\
+        d
+    \end{pmatrix} = \begin{pmatrix}
+        c \\
+        -ci
+    \end{pmatrix} = c \begin{pmatrix}
+        1 \\
+        -i
+    \end{pmatrix} \\
+    |c|^2 + |-ci|^2 = |c|^2 + |i|^2|c|^2 = 2|c|^2=1 \iff c=\frac{1}{\sqrt{2}} \\
+    \chi_- = \frac{1}{\sqrt{2}} \begin{pmatrix}
+        1 \\
+        -i
+    \end{pmatrix}
+\end{lefteqs}
+
+הערכים העצמיים הם $\pm \frac{\hbar}{2}$, והספינורים העצמיים הם
+\begin{lefteqs}
+    \chi_+ = \frac{1}{\sqrt{2}} \begin{pmatrix}
+        1 \\
+        i
+    \end{pmatrix} \, , \chi_- = \frac{1}{\sqrt{2}} \begin{pmatrix}
+        1 \\
+        -i
+    \end{pmatrix}
+\end{lefteqs}
+
+\textbf{ב)}
+הערכים שניתן לקבל במדידה הם הערכים העצמיים שנמצאו בסעיף א: $\pm \frac{\hbar}{2}$
+
+\begin{lefteqs}
+    c_+ = \braket{\chi_+^y | \chi} = (\chi_+^y)^\dagger \chi = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 & -i
+    \end{pmatrix} \begin{pmatrix}
+        a \\
+        b
+    \end{pmatrix} = \frac{1}{\sqrt{2}}(a-ib) \\
+    c_- = \braket{\chi_-^y | \chi} = (\chi_-^y)^\dagger \chi = \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 & i
+    \end{pmatrix} \begin{pmatrix}
+        a \\
+        b
+    \end{pmatrix} = \frac{1}{\sqrt{2}}(a+ib) \\
+    |c_+|^2 = c_+ c_+^* = \frac{1}{2}(a-ib)(a^* + ib^*) = \frac{1}{2}(|a|^2 + |b|^2 + iab^* -ia^*b) \\
+    = \frac{1}{2}(|a|^2 + |b|^2 + i(ab^* - a^*b)) = \frac{1}{2}(|a|^2 + |b|^2 + \text{Im}(ab^*)) \\
+    |c_-|^2 = c_- c_-^* = \frac{1}{2}(a+ib)(a^* - ib^*) = \frac{1}{2}(|a|^2 + |b|^2 - iab^* +ia^*b) \\
+    = \frac{1}{2}(|a|^2 + |b|^2 - i(ab^* - a^*b)) = \frac{1}{2}(|a|^2 + |b|^2 - \text{Im}(ab^*)) \\
+    \\
+    P(\frac{\hbar}{2}) = |c_+|^2 = \frac{1}{2}(|a|^2 + |b|^2 + \text{Im}(ab^*)) \\
+    P(-\frac{\hbar}{2}) = |c_-|^2 = \frac{1}{2}(|a|^2 + |b|^2 - \text{Im}(ab^*)) \\
+    P(\frac{\hbar}{2}) + P(-\frac{\hbar}{2}) = \frac{1}{2}(|a|^2 + |b|^2 + \text{Im}(ab^*)) + \frac{1}{2}(|a|^2 + |b|^2 - \text{Im}(ab^*)) = |a|^2 + |b|^2 = 1
+\end{lefteqs}
+
+כנדרש
+
+\textbf{ג)}
+\begin{lefteqs}
+    S_y^2 = S_y S_y = \frac{\hbar}{2} \begin{pmatrix}
+        0 & -i \\
+        i & 0
+    \end{pmatrix} \frac{\hbar}{2} \begin{pmatrix}
+        0 & -i \\
+        i & 0 
+    \end{pmatrix} = \frac{\hbar^2}{4} \begin{pmatrix}
+        0 & -i \\
+        i & 0
+    \end{pmatrix} \\
+    |S_y^2 - \lambda I| = 0 \iff \begin{vmatrix}
+        \frac{\hbar^2}{4} - \lambda & 0 \\
+        0 & \frac{\hbar^2}{4} - \lambda
+    \end{vmatrix} = (\frac{\hbar^2}{4} - \lambda)^2 = 0  \\
+    \iff \lambda = \frac{\hbar^2}{4} \\
+\end{lefteqs}
+
+הערך העצמי היחיד של האופרטור $S_y^2$ הוא $\frac{\hbar^2}{4}$, ולכן זה הערך היחיד הצפוי לצאת במדידה.
+
+כיוון וישנו רק ערך אחד מן הסתם שההסתברות שנקבל אותו היא 1.
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 5}
+(שאלה 4.40)
+
+\textbf{א)}
+נתון המערכת במצב $\ket{s=3, m=1}$, אילו ערכים ניתן לקבל במדידת $S_z^{(2)}$ ובאילו הסתברויות?
+
+כאשר $s_2=2 \, , s_1=1$, אז $m_1 \in \{-1, 0, 1\} \, , m_2 \in \{-2, -1, 0, 1, 2\}$
+
+אך נתון ש $m=m_1 + m_2 = 1$ ולכן רק הזוגות הבאים ייתכנו:
+
+\begin{lefteqs}
+    m_2=0\, m_1=1 \\
+    m_2=1\, m_1=0 \\
+    m_2=2\, m_1=-1
+\end{lefteqs}
+
+כלומר הערכים האפשריים במדידת $S_z^{(2)}$ הם $0\, , \hbar\, , 2\hbar$, וכן:
+
+\begin{lefteqs}
+    \ket{3 1} = a\ket{1 1}\ket{2 0} + b\ket{1 0}\ket{2 1} + c\ket{1 -1} \ket{2 2} \\
+\end{lefteqs}
+
+ע"פ טבלת קלבש גורדן: $a=\sqrt{\frac{6}{15}} \, , b=\sqrt{\frac{8}{15}} \, , c=\sqrt{\frac{1}{15}}$
+
+\begin{lefteqs}
+    P(S_z^{(2)}=0) = |a|^2 = \frac{6}{15} \\
+    P(S_z^{(2)}=\hbar) = |b|^2 = \frac{8}{15} \\
+    P(S_z^{(2)}=2\hbar) = |c|^2 = \frac{1}{15}
+\end{lefteqs}
+
+\textbf{ב)}
+נתון אלקטרון במצב $\ket{\frac{1}{2} -\frac{1}{2}}$ סביב אטום מימן, במצב $\psi_{5,1,0}$
+
+עלינו למצוא את הערכים האפשריים של ריבוע התנע הזוויתי הכולל במדידה, וההסתברות של כל אחד.
+
+\begin{lefteqs}
+    \ket{1 0} \ket{\frac{1}{2} -\frac{1}{2}} = \Sigma_j c_j \ket{j, m_j} \\
+    m_{\ell} = 0 \, , m_s = -\frac{1}{2} \Rightarrow m_j = m_\ell + m_s = -\frac{1}{2} \\
+\end{lefteqs}
+
+ע"פ 4.182:
+
+\begin{lefteqs}
+    \ell = 1 \, , s=\frac{1}{2} \Rightarrow j=\{ (1+\frac{1}{2}), (|1-\frac{1}{2}|) \} = \{\frac{1}{2}, \frac{3}{2} \} \\
+    J^2 \ket{j, m_j} = \hbar^2 j(j+1) \ket{j, m_j} \\
+    \Rightarrow J^2 \in \{ \frac{3}{4}\hbar^2, \frac{15}{4}\hbar^2 \}
+\end{lefteqs}
+
+כלומר הערכים שניתן לקבל במדידה של $J^2$ הם $\frac{3}{4}\hbar^2$ ו $\frac{15}{4}\hbar^2$
+
+\begin{lefteqs}
+    \ket{1 0} \ket{\frac{1}{2} -\frac{1}{2}} = a \ket{\frac{1}{2} -\frac{1}{2}} + b \ket{\frac{3}{2} -\frac{1}{2}} \\
+\end{lefteqs}
+
+ע"פ טבלת קלבש גורדן: $a=\sqrt{\frac{1}{3}} \, , b=\sqrt{\frac{2}{3}}$
+
+\begin{lefteqs}
+    P(J^2 = \frac{3}{4}\hbar^2) = |a|^2 = \frac{1}{3} \\
+    P(J^2 = \frac{15}{4}\hbar^2) = |b|^2 = \frac{2}{3}
+\end{lefteqs}
+
 \end{document}
