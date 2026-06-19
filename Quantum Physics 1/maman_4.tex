@@ -1,0 +1,224 @@
+\documentclass[14pt]{extarticle}
+\usepackage{fontspec}
+\usepackage{braket}
+\usepackage{polyglossia}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Hebrew setup
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\newfontfamily\hebrewfont[Script=Hebrew]{Arial}
+
+% Math font setup for proper Greek symbols
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% Increase line spacing throughout document
+\linespread{1.3}
+
+\usepackage[margin=1in]{geometry}
+
+% Left-aligned equation environment
+\newenvironment{lefteqs}{%
+    \begin{english}%
+    \begin{flushleft}%
+    \renewcommand{\arraystretch}{1.3}%
+    $\begin{array}{@{}l@{}}%
+}{%
+    \end{array}$%
+    \end{flushleft}%
+    \end{english}%
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{מטלה 4 - פיזיקה קוונטית 1}}\\[0.5em]
+    {\large שי רואימי - 318986270}\\[0.3em]
+\end{center}
+
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 1}
+
+חלקיק בעל מסה $M$ נמצא בפוטנציאל מרובע נתון ע"י
+\begin{lefteqs}
+    V(x,y) = \begin{cases}
+        0 & |x|<a \, , |y|<b \\
+        \infty & \text{otherwise}
+    \end{cases}
+\end{lefteqs}
+
+\textbf{א)}
+משוואת שרודינגר שאינה תלויה בזמן היא $H\psi = E\psi$
+
+כאשר ע"פ 4.8:
+
+\begin{lefteqs}
+    -\frac{\hbar^2}{2M} \nabla^2 \psi + V\psi = E\psi \\
+    \nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}
+\end{lefteqs}
+
+נתון בתוך בור הפוטנציאל ($|x|<a \, , |y|<b$), מתקיים $V=0$ ואינסוף מחוצה לו.
+לכן בתוך הבור:
+
+\begin{lefteqs}
+    E\psi = -\frac{\hbar^2}{2M} \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2 }{\partial y^2} \right) \psi(x,y) \\
+    \psi(x,y) = X(x)Y(y) \\
+    E\psi = -\frac{\hbar^2}{2M} \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2 }{\partial y^2}  \right) X(x) Y(y) \\
+    = -\frac{\hbar^2}{2M} \left( Y(y) \frac{d^2 X(x)}{dx^2} + X(x) \frac{d^2 Y(y)}{dy^2} \right) \\
+    E = -\frac{\hbar^2}{2M} \left( \frac{1}{X(x)} \frac{d^2 X(x)}{dx^2} + \frac{1}{Y(y)} \frac{d^2 Y(y)}{dy^2} \right)
+\end{lefteqs}
+
+עבור $E=E_x + E_y$:
+
+\begin{lefteqs}
+    E_x = -\frac{\hbar^2}{2M} \frac{1}{X(x)} \frac{d^2 X(x)}{dx^2} \\
+    E_y = -\frac{\hbar^2}{2M} \frac{1}{Y(y)} \frac{d^2 Y(y)}{dy^2}
+\end{lefteqs}
+
+מחוץ לבור $V=\infty$ ולכן $\psi=0$.
+
+\textbf{ב)}
+בתוך הבור:
+\begin{lefteqs}
+    X E_x = -\frac{\hbar^2}{2M} \frac{d^2 X}{dx^2} \\
+    Y E_y = -\frac{\hbar^2}{2M} \frac{d^2 Y}{dy^2}
+\end{lefteqs}
+
+קיבלנו 2 משוואות חד מימדיות, נעזר בפתרון החד מימדי הידוע לבור פוטנציאל חד מימדי:
+
+\begin{lefteqs}
+    E_x(n) = \frac{\hbar^2 \pi^2 n^2}{8 M a^2} \\
+    E_y(m) = \frac{\hbar^2 \pi^2 m^2}{8 M b^2} \\
+    E_{n,m} = E_x(n) + E_y(m) = \frac{\hbar^2 \pi^2}{8 M} \left( \frac{n^2}{a^2} + \frac{m^2}{b^2} \right)
+\end{lefteqs}
+
+\textbf{ג)}
+נניח $a=b$ ולכן:
+
+\begin{lefteqs}
+    E_{n,m} = \frac{\hbar^2 \pi^2}{8 M a^2} ( n^2 + m^2 )
+\end{lefteqs}
+
+ניוון באנרגיה מתקבל כאשר $E_{n_1,m_1} = E_{n_2,m_2}$, כאשר $n_1 \neq n_2\, , m_1 \neq m_2$.
+
+\begin{lefteqs}
+    E_{11} = \frac{\pi^2 \hbar^2}{8M a^2} \cdot 2 \\
+    E_{12} = E_{21} = \frac{\pi^2 \hbar^2}{8M a^2} \cdot 5 \\
+    E_{22} = \frac{\pi^2 \hbar^2}{8M a^2} \cdot 8 \\
+    E_{13} = E_{31} = \frac{\pi^2 \hbar^2}{8M a^2} \cdot 10 \\
+    E_{23} = E_{32} = \frac{\pi^2 \hbar^2}{8M a^2} \cdot 13
+\end{lefteqs}
+
+ניתן לראות שקיים ניוון באנרגיה ברמות השנייה, הרביעית, החמישית
+
+\textbf{ד)}
+
+כידוע $\Psi_{n,m}(x,y,t) = \psi_{n,m}(x,y) e^{\frac{-i E_{n,m} t}{\hbar}}$
+
+נעזר בפתרונות הידועים לבעיה החד מימדית עבור $X$ ו-$Y$:
+
+\begin{lefteqs}
+    X_n(x) = \sqrt{\frac{2}{2a}} \sin \left( \frac{n\pi}{2a}(x-a) \right) = \sqrt{\frac{1}{a}} \sin\left(\frac{n\pi}{2a}x - \frac{n\pi}{2}\right) \\
+    Y_m(y) = \sqrt{\frac{2}{2b}} \sin \left( \frac{m\pi}{2b}(y-b) \right) = \sqrt{\frac{1}{b}} \sin\left(\frac{m\pi}{2b}y - \frac{m\pi}{2}\right)
+\end{lefteqs}
+
+עבור $\psi_{n,m}(x,y) = X_n(x) Y_m(y)$, ו $E_{n,m}$ שנמצא בסעיף ב:
+
+\begin{lefteqs}
+    \Psi_{n,m}(x,y,t) = \sqrt{\frac{1}{ab}} \sin\left(\frac{n\pi}{2a}x - \frac{n\pi}{2}\right) \sin\left(\frac{m\pi}{2b}y - \frac{m\pi}{2}\right) e^{\frac{-i \frac{\pi^2 \hbar}{8M} (n^2 + m^2) t}{\hbar}}
+\end{lefteqs}
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{\large שאלה 2}
+
+נתון אטום מימן בזמן $t=0$ במצב $\psi(t=0) = \sqrt{\frac{1}{14}} (\psi_{1,0,0} - 2\psi_{2,1,-1} + 3\psi_{3,2,1})$
+
+\textbf{א)}
+לפי 4.70: $E_n = \frac{E_1}{n^2}$, כאשר $E_1 = -13.6 eV$.
+
+\begin{lefteqs}
+    \langle H \rangle = \Sigma_i P_i E_i = (\frac{1}{\sqrt{14}})^2 E_1 + (\frac{-2}{\sqrt{14}})^2 E_2 + (\frac{3}{\sqrt{14}})^2 E_3 \\
+    = -13.6 (\frac{1}{14} + \frac{4}{14} \cdot \frac{1}{4} + \frac{9}{14} \cdot \frac{1}{9}) eV = -2.914 eV
+\end{lefteqs}
+
+לפי 4.118,  $\langle \psi | L^2 \psi \rangle = \hbar^2 \ell (\ell + 1)$
+
+\begin{lefteqs}
+    \langle L^2 \rangle = \frac{1}{14} \cdot \hbar^2 0(0+1) + \frac{4}{14} \cdot \hbar^2 1(1+1) + \frac{9}{14} \cdot \hbar^2 2(2+1) = \\
+    = \hbar^2 (\frac{8}{14} + \frac{54}{14}) = \frac{31}{7} \hbar^2
+\end{lefteqs}
+
+וכן $\langle \psi | L_z \psi \rangle = \hbar m$
+
+\begin{lefteqs}
+    \langle L_z \rangle = \hbar (\frac{1}{14} \cdot 0 + \frac{4}{14} \cdot (-1) + \frac{9}{14} \cdot 1) = \hbar (\frac{-4}{14} + \frac{9}{14}) = \frac{5}{14} \hbar
+\end{lefteqs}
+
+\textbf{ב)}
+כפי שראינו בסעיף א, בזמן $t=0$ מצב האטום הוא סופרפוזיציה של המצבים הסטציונרים $\psi_{1,0,0}\, , \psi_{2,1,-1} \, , \psi_{3,2,1}$
+
+ולכן התוצאות האפשריות במדידה הן, כאשר
+\begin{lefteqs}
+    L_{z,m} = m\hbar \\
+    L_{\ell}^2 = \hbar^2 \ell (\ell + 1) \\
+    E_n = \frac{E_1}{n^2}
+    E \in {E_1, E_2, E_3} = \{-13.6, -3.4, -1.51\} eV \\
+    L^2 \in {L_0^2, L_1^2, L_2^2} = \{0, 2\hbar^2, 6\hbar^2\} \\
+    L_z \in {L_{z,0}, L_{z,-1}, L_{z,1}} = \{0, -\hbar, \hbar\}
+\end{lefteqs}
+
+\textbf{ג)}
+לכל מצב סטציונרי ההסתברות היא $|P_i|^2$
+
+\begin{lefteqs}
+    P({E=-13.6, L^2=0, L_z=0}) = \frac{1}{14} \\
+    P({E=-3.4, L^2=2\hbar^2, L_z=-\hbar}) = \frac{4}{14} \\
+    P({E=-1.51, L^2=6\hbar^2, L_z=\hbar}) = \frac{9}{14}
+\end{lefteqs}
+
+\textbf{ד)}
+כידוע $\Psi = \psi_{n,m,l} \cdot e^{\frac{-i E_n t}{\hbar}}$
+
+\begin{lefteqs}
+    \Psi = \frac{1}{\sqrt{14}} \left( \psi_{1,0,0} \cdot e^{\frac{-i E_1 t}{\hbar}} - 2 \psi_{2,1,-1} \cdot e^{\frac{-i E_2 t}{\hbar}} + 3 \psi_{3,2,1} \cdot e^{\frac{-i E_3 t}{\hbar}} \right) \\
+    = \frac{1}{\sqrt{14}} \left( \psi_{1,0,0} \cdot e^{\frac{-i (-13.6) t}{\hbar}} - 2 \psi_{2,1,-1} \cdot e^{\frac{-i (-3.4) t}{\hbar}} + 3 \psi_{3,2,1} \cdot e^{\frac{-i (-1.51) t}{\hbar}} \right)
+\end{lefteqs}
+
+\textbf{ה)}
+ממשוואה 3.73 ידוע כי $\frac{d}{dt} \langle Q \rangle = \frac{i}{\hbar} \langle [\hat{H},\hat{Q}] \rangle + \langle \frac{\partial \hat{Q}}{\partial t} \rangle $
+
+כלומר אם $Q$ לא תלוי בזמן ישירות וגם מתחלף עם $H$ אז $Q$ קבוע בזמן.
+
+כידוע, לאטום המימן בקאורדינטות כדוריות:
+\begin{lefteqs}
+    H = \frac{p^2}{2m} + V(r) \, , L_z = xp_y - yp_x \, , L^2 = L_x^2 + L_y^2 + L_z^2
+\end{lefteqs}
+
+כלומר, אין תלות ישירה בזמן לאף אחד מהאופרטורים
+
+וכן מן הסתם [H,H]=0 (H מתחלף עם עצמו)
+
+בנוסף, כפי שראינו בפרק 4 בקאורדינטות כדוריות:
+
+\begin{lefteqs}
+    H = \frac{p_r^2}{2m} + \frac{L^2}{2mr^2} + V(r) \\
+\end{lefteqs}
+
+הקאורידנטה $\phi$ ציקלית (לא מופיעה בהימלטוניאן) ולכן הגודל $p_\phi=L_z$ נשמר,
+כלומר ${H,L_z}=0$ כלומר $[H,L_z]=0$
+
+ע"פ סימטריה $[H,L_x]=[H,L_y]=[H,L_z]=0$ ולכן גם $[H, L^2]=0$
+
+לסיכום, אף אחד מהאופרטורים לא תלויים בזמן, וכולם מתחלפים עם H ולכן ערכי התצפית קבועים.
+
+\end{document}
