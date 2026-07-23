@@ -1,0 +1,20 @@
+Yellow:
+2.5 mm
+3.4 mm
+4.2 mm
+5.0 mm
+5.6 mm
+
+Green:
+2.2 mm
+3.1 mm
+4.0 mm
+4.8 mm
+5.2 mm
+
+Magenta:
+2.3 mm
+3.2 mm 
+4.1 mm
+4.8 mm
+5.3 mm
