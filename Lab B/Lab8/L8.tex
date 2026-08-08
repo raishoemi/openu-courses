@@ -1,0 +1,63 @@
+\documentclass[14pt]{extarticle}
+\usepackage{fontspec}
+\usepackage{polyglossia} % use instead of babel
+\usepackage{pgfplots}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\newfontfamily\hebrewfont[Script=Hebrew]{Arial}
+
+% TODO: figure out if better to keep this or not, for word document pdf output similarity
+\usepackage[margin=1in]{geometry}
+
+% might be useful to ensure similarity to word document pdf output
+% \usepackage{setspace}
+% \singlespacing
+
+% Reset equation counter at the start of each section
+\usepackage{chngcntr}
+\usepackage{etoolbox}
+\counterwithin*{equation}{section}
+\preto{\section}{\setcounter{equation}{0}}
+
+% Left-aligned equation environment
+\newenvironment{lefteqs}{%
+    \begin{english}%
+    \begin{flushleft}%
+    \renewcommand{\arraystretch}{1.3}%
+    $\begin{array}{@{}l@{}}%
+}{%
+    \end{array}$%
+    \end{flushleft}%
+    \end{english}%
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{מעבדה 8}}\\
+    {\textbf{מעגלי זרם חילופין}}
+\end{center}
+
+\begin{itemize}
+    \item מגישים
+    \begin{itemize}
+        \item אורי כספי - 331496927 
+        \item שי רואימי - 318986270
+    \end{itemize}
+    \item תאריך ביצוע הניסוי: 3 באוגוסט 2026
+\end{itemize}
+\newpage
+\section*{רקע תיאורטי}
+l
+\section*{ניסוי 1 - מעגל RL טורי}
+
+\subsection*{מטרת הניסוי}
+
+
+\subsection*{רקע תיאורטי}
+
+
+\end{document}
