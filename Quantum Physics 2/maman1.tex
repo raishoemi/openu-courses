@@ -91,41 +91,68 @@ And so we've shown that:
 \vspace{2em}
 
 \textbf{(b)}
-$A^m_l$ and $B^m_l$ are defined in eq. 4.121 (and 4.120) as, $A^m_l = \hbar \sqrt{(l - m)(l + m + 1)}$
-and $B^m_l = \hbar \sqrt{(l + m)(l - m + 1)}$.
+$A^m_l$ and $B^m_l$ are defined in eq. 4.121 (and 4.120) as $A^m_l = \hbar \sqrt{(l - m)(l + m + 1)}$
+and $B^m_l = \hbar \sqrt{(l + m)(l - m + 1)}$
 
-Applying $\hat{J}_{\pm}$ on the equation 6.64 we get:
+Applying $\hat{J}_{\pm} = \hat{J}^{(1)}_{\pm} + \hat{J}^{(2)}_{\pm}$ to equation 6.64 we get:
 
 \begin{lefteqs}
-    \hat{J}_{\pm} \ket{J M} = \sum_{m_1, m_2} C^{j_1 j_2 J}_{m_1 m_2 M} \left[\hat{J}^{(1)}_{\pm} \ket{j_1 j_2 m_1 m_2} + \hat{J}^{(2)}_{\pm} \ket{j_1 j_2 m_1 m_2} \right]
+    \hat{J}_{\pm} \ket{J M} = \sum_{m_1, m_2} C^{j_1 j_2 J}_{m_1, m_2, M} \left[\hat{J}^{(1)}_{\pm} \ket{j_1 \, j_2 \, m_1 \, m_2} + \hat{J}^{(2)}_{\pm} \ket{j_1 \, j_2 \, m_1 \, m_2} \right]
 \end{lefteqs}
 
+Taking the upper sign ($\hat{J}_+$):
 
 \begin{lefteqs}
-    A^m_l \ket{J M+1} = \sum_{m_1, m_2} C^{j_1 j_2 J}_{m_1 m_2 M}
-    \left[A^{m_1}_{j1} \ket{j_1 \, j_2 \, m_1+1 \, m_2} + A^{m_2}_{j_2} \ket{j_1 \, j_2 \, m_1 \, m_2+1}  \right] \\
+    A^M_J \ket{J \, M+1} = \sum_{m_1, m_2} C^{j_1 j_2 J}_{m_1, m_2, M}
+    \left[A^{m_1}_{j_1} \ket{j_1 \, j_2 \, m_1+1 \, m_2} + A^{m_2}_{j_2} \ket{j_1 \, j_2 \, m_1 \, m_2+1}  \right]
 \end{lefteqs}
 
 Like in part (a), we multiply from the left by $\bra{j_1 \, j_2 \, m_1' \, m_2'}$:
 
 \begin{lefteqs}
-    \bra{j_1 \, j_2 \, m_1' \, m_2'} A^m_l \ket{J M+1} = \\ \bra{j_1 \, j_2 \, m_1' \, m_2'} \sum_{m_1, m_2} 
-    \left[A^{m_1}_{j1} \ket{j_1 \, j_2 \, m_1+1 \, m_2} + A^{m_2}_{j_2} \ket{j_1 \, j_2 \, m_1 \, m_2+1}  \right] \\
-    \implies \bra{j_1 \, j_2 \, m_1' \, m_2'} A^m_l \ket{J M+1} = \\ \sum_{m_1, m_2} C^{j_1, j_2, J}_{m_1, m_2, M}
-    \left[ A^{m_1}_{j_1} \delta_{m_1 + 1, m_1'} \delta_{m_2, m_2'} + A^{m_2}_{j_2} \delta_{m_1, m_1'} \delta_{m_2 + 1, m_2'} \right] \\
-    = A^{m_1'-1}_{j_1} C^{j_1, j_2, J}_{m_1'-1, m_2', M} + A^{m_2'-1}_{j_2} C^{j_1, j_2, J}_{m_1', m_2'-1, M}
+    \bra{j_1 \, j_2 \, m_1' \, m_2'} A^M_J \ket{J \, M+1} = \\
+    \bra{j_1 \, j_2 \, m_1' \, m_2'} \sum_{m_1, m_2} C^{j_1 j_2 J}_{m_1, m_2, M}
+    \left[A^{m_1}_{j_1} \ket{j_1 \, j_2 \, m_1+1 \, m_2} + A^{m_2}_{j_2} \ket{j_1 \, j_2 \, m_1 \, m_2+1}  \right]
 \end{lefteqs}
 
-And since $A^{m-1}_l = B^m_l$ this means that:
+$A^M_J$ is a number, so by part (a) the LHS is
+$A^M_J \braket{j_1 \, j_2 \, m_1' \, m_2' | J \, M+1} = A^M_J \, C^{j_1 j_2 J}_{m_1', m_2', M+1}$.
+For the RHS, orthonormality of uncoupled eigenstates gives:
 
 \begin{lefteqs}
-    A^M_J C^{j_1 j_2 J}_{m_1 m_2 M+1} = B^{m_1}_{j_1} C^{j_1 j_2 J}_{m_1 - 1, m_2 M} + B^{m_2}_{j_2} C^{j_1 j_2 J}_{m_1 m_2 -1 M}
+    A^M_J \, C^{j_1 j_2 J}_{m_1', m_2', M+1} =
+    \sum_{m_1, m_2} C^{j_1 j_2 J}_{m_1, m_2, M}
+    \left[ A^{m_1}_{j_1} \delta_{m_1 + 1, m_1'} \delta_{m_2, m_2'} + A^{m_2}_{j_2} \delta_{m_1, m_1'} \delta_{m_2 + 1, m_2'} \right] \\
+    = A^{m_1'-1}_{j_1} C^{j_1 j_2 J}_{m_1'-1, m_2', M} + A^{m_2'-1}_{j_2} C^{j_1 j_2 J}_{m_1', m_2'-1, M}
 \end{lefteqs}
 
-This is the first recursion relation, the second one will be produced in a similar manner:
+And since $A^{m-1}_l = B^m_l$, this means that:
 
+\begin{lefteqs}
+    A^M_J C^{j_1 j_2 J}_{m_1, m_2, M+1} = B^{m_1}_{j_1} C^{j_1 j_2 J}_{m_1 - 1, m_2, M} + B^{m_2}_{j_2} C^{j_1 j_2 J}_{m_1, m_2 - 1, M}
+\end{lefteqs}
 
+This is the first recursion relation. The second one is produced in a similar manner, taking the lower sign ($\hat{J}_-$):
 
+\begin{lefteqs}
+    B^M_J \ket{J \, M-1} = \sum_{m_1, m_2} C^{j_1 j_2 J}_{m_1, m_2, M}
+    \left[B^{m_1}_{j_1} \ket{j_1 \, j_2 \, m_1-1 \, m_2} + B^{m_2}_{j_2} \ket{j_1 \, j_2 \, m_1 \, m_2-1}  \right]
+\end{lefteqs}
+
+Multiplying from the left by $\bra{j_1 \, j_2 \, m_1' \, m_2'}$ and using part (a) on the LHS as before:
+
+\begin{lefteqs}
+    B^M_J \, C^{j_1 j_2 J}_{m_1', m_2', M-1} =
+    \sum_{m_1, m_2} C^{j_1 j_2 J}_{m_1, m_2, M} \left[B^{m_1}_{j_1} \delta_{m_1-1, m_1'} \delta_{m_2, m_2'} + B^{m_2}_{j_2} \delta_{m_1, m_1'} \delta_{m_2-1, m_2'} \right] \\
+    = B^{m_1'+1}_{j_1} C^{j_1 j_2 J}_{m_1'+1, m_2', M} + B^{m_2'+1}_{j_2} C^{j_1 j_2 J}_{m_1', m_2'+1, M} \\
+    B^M_J C^{j_1 j_2 J}_{m_1, m_2, M-1} = B^{m_1+1}_{j_1} C^{j_1 j_2 J}_{m_1+1, m_2, M} + B^{m_2+1}_{j_2} C^{j_1 j_2 J}_{m_1, m_2+1, M}
+\end{lefteqs}
+
+And again, since $B^{m+1}_l = A^m_l$, we can write the relation as:
+
+\begin{lefteqs}
+    B^M_J C^{j_1 j_2 J}_{m_1, m_2, M-1} = A^{m_1}_{j_1} C^{j_1 j_2 J}_{m_1+1, m_2, M} + A^{m_2}_{j_2} C^{j_1 j_2 J}_{m_1, m_2+1, M}
+\end{lefteqs}
 
 
 \newpage
