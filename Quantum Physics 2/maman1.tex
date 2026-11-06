@@ -1,0 +1,134 @@
+\documentclass[14pt]{extarticle}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{amsmath}
+\usepackage{braket}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Hebrew setup
+% \setdefaultlanguage{hebrew}
+% \setotherlanguage{english}
+% \newfontfamily\hebrewfont[Script=Hebrew]{Arial}
+
+% Math font setup for proper Greek symbols
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% Increase line spacing throughout document
+\linespread{1.3}
+
+\usepackage[margin=1in]{geometry}
+
+% Left-aligned equation environment
+\newenvironment{lefteqs}{%
+    \begin{flushleft}%
+    \renewcommand{\arraystretch}{1.3}%
+    $\begin{array}{@{}l@{}}%
+}{%
+    \end{array}$%
+    \end{flushleft}%
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Assignment 1 - Quantum Physics 2}}\\[0.5em]
+    {\large Shai Roemi - 318986270}\\[0.3em]
+\end{center}
+
+\hrule
+\vspace{2em}
+
+\textbf{\large 1.}
+(Problem 6.23 from course book)
+
+As the questions states, a $\ket{J M}$ coupled state can be represented as an uncoupled state using a Clebsch-Gordan coefficient:
+
+\begin{lefteqs}
+    (6.64) \, \ket{J M} = \sum_{m_1, m_2} C^{j_1 j_2 J}_{m_1 m_2 M} \ket{j_1 \, j_2 \, m_1 \, m_2}
+\end{lefteqs}
+
+\textbf{(a)} Mutiply from the left by $\bra{j_1 \, j_2 \, m_1 \, m_2}$ to obtain:
+
+\begin{lefteqs}
+    \braket{j_1 \, j_2 \, m_1 \, m_2 | J M} = \bra{j_1 \, j_2 \, m_1 \, m_2} \left( \sum_{m_1', m_2'} C^{j_1 j_2 J}_{m_1' m_2' M}  \ket{j_1 \, j_2 \, m_1' \, m_2'}  \right) \\
+\end{lefteqs}
+
+The uncoupled states are eigenstates of $\hat{J}_{1z}$ and $\hat{J}_{2z}$ with eigenvalues $m_1 \hbar$ and $m_2 \hbar$ respectively,
+where both operators are Hermitian. Eigenvectors of a Hermitian operator that belong to different eigenvalues are orthogonal.
+
+For example, given a Hermitian operator $\hat{A}$ where:
+\begin{lefteqs}
+    \text{Let } a \neq b \\
+    \hat{A} \ket{a} = a \ket{a} \\
+    \hat{A} \ket{b} = b \ket{b} \\
+    \braket{a | \hat{A} | b} = \bra{a} \left( \hat{A} \ket{b} \right) = \bra{a} b \ket{b} = b \braket{a | b} \\
+    \braket{a | \hat{A} | b} = \left( \bra{a} \hat{A} \right) \ket{b} = a^* \braket{a | b} \\
+    \braket{a | \hat{A} | b} = a \braket{a | b} \quad\text{(eigenvalues of a Hermitian operator are real)} \\
+    (a - b) \braket{a | b} = 0 \\
+    \text{Since } a \neq b, \text{ it means } \braket{a | b} = 0.
+\end{lefteqs}
+
+The uncoupled basis states are normalized, so the inner product is 1 when the states are identical.
+
+Therefore, in our case:
+\begin{lefteqs}
+    \bra{j_1 \, j_2 \, m_1 \, m_2} \sum_{m_1', m_2'} C^{j_1 j_2 J}_{m_1' m_2' M} \ket{j_1 \, j_2 \, m_1' \, m_2'} = \\
+    \sum_{m_1', m_2'} C^{j_1 j_2 J}_{m_1' m_2' M} \braket{j_1 \, j_2 \, m_1 \, m_2 | j_1 \, j_2 \, m_1' \, m_2'} \\
+    = \sum_{m_1', m_2'} C^{j_1 j_2 J}_{m_1' m_2' M} \delta_{m_1 m_1'} \delta_{m_2 m_2'} = C^{j_1 j_2 J}_{m_1 m_2 M}
+\end{lefteqs}
+
+And so we've shown that:
+
+\begin{lefteqs}
+    \braket{j_1 \, j_2 \, m_1 \, m_2 | J M} = C^{j_1 j_2 J}_{m_1 m_2 M}
+\end{lefteqs}
+
+\hrule
+\vspace{2em}
+
+\textbf{(b)}
+$A^m_l$ and $B^m_l$ are defined in eq. 4.121 (and 4.120) as, $A^m_l = \hbar \sqrt{(l - m)(l + m + 1)}$
+and $B^m_l = \hbar \sqrt{(l + m)(l - m + 1)}$.
+
+Applying $\hat{J}_{\pm}$ on the equation 6.64 we get:
+
+\begin{lefteqs}
+    \hat{J}_{\pm} \ket{J M} = \sum_{m_1, m_2} C^{j_1 j_2 J}_{m_1 m_2 M} \left[\hat{J}^{(1)}_{\pm} \ket{j_1 j_2 m_1 m_2} + \hat{J}^{(2)}_{\pm} \ket{j_1 j_2 m_1 m_2} \right]
+\end{lefteqs}
+
+
+\begin{lefteqs}
+    A^m_l \ket{J M+1} = \sum_{m_1, m_2} C^{j_1 j_2 J}_{m_1 m_2 M}
+    \left[A^{m_1}_{j1} \ket{j_1 \, j_2 \, m_1+1 \, m_2} + A^{m_2}_{j_2} \ket{j_1 \, j_2 \, m_1 \, m_2+1}  \right] \\
+\end{lefteqs}
+
+Like in part (a), we multiply from the left by $\bra{j_1 \, j_2 \, m_1' \, m_2'}$:
+
+\begin{lefteqs}
+    \bra{j_1 \, j_2 \, m_1' \, m_2'} A^m_l \ket{J M+1} = \\ \bra{j_1 \, j_2 \, m_1' \, m_2'} \sum_{m_1, m_2} 
+    \left[A^{m_1}_{j1} \ket{j_1 \, j_2 \, m_1+1 \, m_2} + A^{m_2}_{j_2} \ket{j_1 \, j_2 \, m_1 \, m_2+1}  \right] \\
+    \implies \bra{j_1 \, j_2 \, m_1' \, m_2'} A^m_l \ket{J M+1} = \\ \sum_{m_1, m_2} C^{j_1, j_2, J}_{m_1, m_2, M}
+    \left[ A^{m_1}_{j_1} \delta_{m_1 + 1, m_1'} \delta_{m_2, m_2'} + A^{m_2}_{j_2} \delta_{m_1, m_1'} \delta_{m_2 + 1, m_2'} \right] \\
+    = A^{m_1'-1}_{j_1} C^{j_1, j_2, J}_{m_1'-1, m_2', M} + A^{m_2'-1}_{j_2} C^{j_1, j_2, J}_{m_1', m_2'-1, M}
+\end{lefteqs}
+
+And since $A^{m-1}_l = B^m_l$ this means that:
+
+\begin{lefteqs}
+    A^M_J C^{j_1 j_2 J}_{m_1 m_2 M+1} = B^{m_1}_{j_1} C^{j_1 j_2 J}_{m_1 - 1, m_2 M} + B^{m_2}_{j_2} C^{j_1 j_2 J}_{m_1 m_2 -1 M}
+\end{lefteqs}
+
+This is the first recursion relation, the second one will be produced in a similar manner:
+
+
+
+
+
+\newpage
+
+
+\end{document}
