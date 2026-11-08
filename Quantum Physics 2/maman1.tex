@@ -254,5 +254,113 @@ We can calcualte the expectation value:
     \braket{p} = \frac{e}{\sqrt{2}} \braket{21 || \hat{r} || 20} = \frac{e}{\sqrt{2}} (-3 a) = -\frac{3 e a}{\sqrt{2}}
 \end{lefteqs}
 
+\newpage
+
+\textbf{\large 3.}
+
+\textbf{(a)}
+\begin{lefteqs}
+    [\hat{H}, \hat{a}] = [\hbar \omega (\hat{a}^\dagger \hat{a} + \frac{1}{2}), \hat{a}]
+    = \hbar \omega \left( [\hat{a}^\dagger \hat{a}, \hat{a}] + [\frac{1}{2}, \hat{a}] \right) \\
+    \text{* } [\frac{1}{2}, \hat{a}] = 0 \\
+    \text{* } [\hat{a}, \hat{a}^\dagger] = 1 \implies [\hat{a}^\dagger, \hat{a}] = -1 \\
+    \implies [\hat{H}, \hat{a}] = \hbar \omega [\hat{a}^\dagger, \hat{a}] \hat{a}  = -\hbar \omega \hat{a}
+\end{lefteqs}
+
+\hrule
+\vspace{2em}
+
+\textbf{(b)}
+Setting $\hat{A} = \hat{a}$, we have $\frac{d \hat{a}_H}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{a}_H]$
+
+From part (a) we know that $[\hat{H}, \hat{a}] = -\hbar \omega \hat{a}$
+\begin{lefteqs}
+    [\hat{H}, \hat{a}_H] = \text{?} \\
+    \hat{U}^\dagger [\hat{H}, \hat{a}] \hat{U} = \hat{U}^\dagger (-\hbar \omega \hat{a}) \hat{U} = -\hbar \omega \hat{U}^\dagger \hat{a} \hat{U} = -\hbar \omega \hat{a}_H \\
+    \implies -\hbar \omega \hat{a}_H = \hat{U}^\dagger \left( \hat{H} \hat{a} - \hat{a} \hat{H} \right) \hat{U}
+\end{lefteqs}
+
+* Since $U$ is unitary, $\hat{U} \hat{U}^\dagger = \hat{U}^\dagger \hat{U} = \hat{1}$ (identity operator)
+
+\begin{lefteqs}
+    = \hat{U}^\dagger \hat{H} \hat{a} \hat{U} - \hat{U}^\dagger \hat{a} \hat{H} \hat{U} \\
+    = \hat{U}^\dagger \hat{H} \hat{U} \hat{U}^\dagger \hat{a} \hat{U} - \hat{U}^\dagger \hat{a} \hat{U} \hat{U}^\dagger \hat{H} \hat{U} \\
+    = (\hat{U}^\dagger \hat{H} \hat{U}) (\hat{U}^\dagger \hat{a} \hat{U}) - (\hat{U}^\dagger \hat{a} \hat{U}) (\hat{U}^\dagger \hat{H} \hat{U}) \\
+    = \hat{H}_H \hat{a}_H - \hat{a}_H \hat{H}_H \\
+    = [\hat{H}_H, \hat{a}_H]
+\end{lefteqs}
+
+Since $\hat{H}_H = \hat{H}$ then $[\hat{H}, \hat{a}_H] = -\hbar \omega \hat{a}_H$
+
+\begin{lefteqs}
+    \frac{d \hat{a}_H}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{a}_H] = \frac{i}{\hbar} (-\hbar \omega \hat{a}_H) = -i \omega \hat{a}_H \\
+    a_H(t) = \hat{C} e^{-i \omega t} \\
+    a_H(t=0) = \hat{C} e^{-i \omega \cdot 0} = \hat{C} = \hat{a}  \\
+    \implies a_H(t) = \hat{a} e^{-i \omega t} 
+\end{lefteqs}
+
+\hrule
+\vspace{2em}
+
+\textbf{(c)}
+
+\begin{lefteqs}
+    \frac{d \hat{x}_H}{dt}
+    = \frac{i}{\hbar} [\hat{H}, \hat{x}_H],
+    \quad
+    \hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2} m \omega^2 \hat{x}^2 \\
+    {}[\hat{H}, \hat{x}] = \frac{1}{2m} [\hat{p}^2, \hat{x}] + \frac{1}{2} m \omega^2 [\hat{x}^2, \hat{x}] \\
+    {}[\hat{x}^2, \hat{x}] = 0 \quad [\hat{p}^2, \hat{x}] = \hat{p} [\hat{p}, \hat{x}] + [\hat{p}, \hat{x}] \hat{p} = -2 i \hbar \hat{p} \\
+    \implies [\hat{H}, \hat{x}] = \frac{1}{2m} (-2 i \hbar \hat{p}) = -\frac{i \hbar}{m} \hat{p} 
+\end{lefteqs}
+
+We'll use the same U-sandwich method, using unitary U:
+
+\begin{lefteqs}
+\hat{U}^\dagger [\hat{H}, \hat{x}] \hat{U} = \hat{U}^\dagger \left( -\frac{i \hbar}{m} \hat{p} \right) \hat{U} = -\frac{i \hbar}{m} \hat{U}^\dagger \hat{p} \hat{U} = -\frac{i \hbar}{m} \hat{p}_H \\
+    \implies [\hat{H}, \hat{x}_H] = -\frac{i \hbar}{m} \hat{p}_H \\
+    \frac{d \hat{x}}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{x}_H] = \frac{i}{\hbar} \left( -\frac{i \hbar}{m} \hat{p}_H \right) = \frac{\hat{p}_H}{m} \\
+    \frac{d^2 \hat{x}_H}{dt^2} = \frac{d}{dt} \left( \frac{\hat{p}_H}{m} \right) = \frac{1}{m} \frac{d \hat{p}_H}{dt} \\
+\end{lefteqs}
+
+We'll now find the equivalent values for $\hat{p}_H$:
+
+\begin{lefteqs}
+    \frac{d \hat{p}_H}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{p}_H] \\
+    {}[\hat{H}, \hat{p}] = \frac{1}{2m} [\hat{p}^2, \hat{p}] + \frac{1}{2} m \omega^2 [\hat{x}^2, \hat{p}] \\
+    {}[\hat{p}^2, \hat{p}] = 0 \quad [\hat{x}^2, \hat{p}] = \hat{x} [\hat{x}, \hat{p}] + [\hat{x}, \hat{p}] \hat{x} = 2 i \hbar \hat{x} \\
+    \implies [\hat{H}, \hat{p}] = \frac{1}{2} m \omega^2 (2 i \hbar \hat{x}) = i \hbar m \omega^2 \hat{x} \\
+    \hat{U}^\dagger [\hat{H}, \hat{p}] \hat{U} = \hat{U}^\dagger (i \hbar m \omega^2 \hat{x}) \hat{U} = i \hbar m \omega^2 \hat{U}^\dagger \hat{x} \hat{U} = i \hbar m \omega^2 \hat{x}_H \\
+    \implies [\hat{H}, \hat{p}_H] = i \hbar m \omega^2 \hat{x}_H \\
+    \frac{d \hat{p}_H}{dt} = \frac{i}{\hbar} [\hat{H}, \hat{p}_H] = \frac{i}{\hbar} (i \hbar m \omega^2 \hat{x}_H) = m \omega^2 \hat{x}_H
+\end{lefteqs}
+
+And we now have: $\frac{d^2 \hat{x}_H}{dt^2} = \frac{1}{m} \frac{d \hat{p}_H}{dt} = \frac{1}{m} (m \omega^2 \hat{x}_H) = \omega^2 \hat{x}_H$
+
+This is the equation of motion for an SHO.
+The general solution is:
+\begin{lefteqs}
+    \hat{x}_H(t) = A \cos(\omega t) + B \sin(\omega t)
+\end{lefteqs}
+
+At $t=0$ we know $\hat{x}_H(0) = \hat{x}$ and $\hat{p}_H(0) = \hat{p}$.
+
+\begin{lefteqs}
+    \hat{x}_H(0) = A \cos(0) + B \sin(0) = A = \hat{x} \\
+\end{lefteqs}
+
+To find $B$, we'll use the derivative:
+
+\begin{lefteqs}
+    \frac{d \hat{x}_H}{dt} = -A \omega \sin(\omega t) + B \omega \cos(\omega t) \\
+    \frac{d \hat{x}_H}{dt} \Big|_{t=0} = -A \omega \sin(0) + B \omega \cos(0) = B \omega = \frac{\hat{p}_H(0)}{m} = \frac{\hat{p}}{m} \\
+    \implies B = \frac{\hat{p}}{m \omega}
+\end{lefteqs}
+And therefore:
+\begin{lefteqs}
+    \hat{x}_H(t) = \hat{x} \cos(\omega t) + \frac{\hat{p}}{m \omega} \sin(\omega t) \\
+    \hat{p}_H(t) = m \frac{d \hat{x}_H}{dt} = m \left( -\hat{x} \omega \sin(\omega t) + \frac{\hat{p}}{m \omega} \omega \cos(\omega t) \right) = -m \omega \hat{x} \sin(\omega t) + \hat{p} \cos(\omega t) \\
+\end{lefteqs}
+
 
 \end{document}
