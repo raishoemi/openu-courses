@@ -220,12 +220,38 @@ Since $\hat{r}_x$ is Hermitian, $\braket{200 | \hat{r}_x | 211} = \braket{211 | 
 
 And since $\braket{211|\hat{r}_x|200} = \frac{1}{2}\braket{211|\hat{r}_+|200} = -\frac{\sqrt{2}}{2} \braket{21 || \hat{r} || 20}$ is real, the terms are equal and:
 \begin{lefteqs}
-    \braket{p}_x = -\frac{e}{2} \left( 2 \cdot \left(-\frac{\sqrt{2}}{2} \braket{21 || \hat{r} || 20}\right) \right) = \frac{e}{\sqrt{2}} \braket{21 || \hat{r} || 20}
+    \braket{p} = \braket{p}_x = -\frac{e}{2} \left( 2 \cdot \left(-\frac{\sqrt{2}}{2} \braket{21 || \hat{r} || 20}\right) \right) = \frac{e}{\sqrt{2}} \braket{21 || \hat{r} || 20}
 \end{lefteqs}
 
-Lastly, we'll evaluate the expectation value, by first calculating one of the matrix elements.
+Lastly, we'll evaluate the expectation value. To do this, we need to calculate $\braket{21 || \hat{r} || 20}$.
+To find this number we'll choose a matrix element between $n'=2 \, \ell'=1 \, n=2\, \ell=0$.
+
+For simplicity, we'll use $m'=0 \, m=0$ and according to 6.61 we get:
 \begin{lefteqs}
-    \braket{210 | \hat{r}_x | 200} = 
+    \braket{210 | \hat{r}_z |  200} = C^{0 1 1}_{0 0 0} \braket{20 || \hat{r} || 21} \\
+    \braket{210 | \hat{r}_z |  200} = 1 \cdot \braket{20 || \hat{r} || 21} \\
+    \braket{210 | \hat{r}_z |  200} = \int \psi_{210}^*(\mathbf{r}) \, z \, \psi_{200}(\mathbf{r}) \, d^3r \\
+    = \int_0^\infty R_{21}^*(r) \, r \, R_{20}(r) \, r^2 dr \int Y^0_1(\theta, \phi)^* \cos(\theta) Y^0_0(\theta, \phi) d\Omega \\
+    \int_0^\infty R_{21}^*(r) \, r \, R_{20}(r) \, r^2 dr = \int_0^\infty \frac{1}{2\sqrt{6}} a^{-\frac{3}{2}} (\frac{r}{a}) e^{-\frac{r}{2a}} \cdot \frac{1}{\sqrt{2}} a^{-\frac{3}{2}} (1 - \frac{r}{2a}) e^{-\frac{r}{2a}} r^3 dr \\
+    = \int_0^\infty \frac{1}{a^4 \sqrt{48}} \cdot e^{-\frac{r}{a}} (r^4 - \frac{r^5}{2a}) dr
+    = \frac{1}{a^4 \sqrt{48}} (\int_0^\infty e^{-\frac{r}{a}} r^4 dr - \frac{1}{2a} \int_0^\infty e^{-\frac{r}{a}} r^5 dr) \\
+\end{lefteqs}
+
+We'll use the known formula: $\int_0^\infty e^{-\frac{r}{a}} r^n dr = n! \, a^{n+1}$.
+
+\begin{lefteqs}
+    \int_0^\infty e^{-\frac{r}{a}} r^4 dr = 4! \, a^5 = 24 a^5 \\
+    \frac{1}{2a} \int_0^\infty e^{-\frac{r}{a}} r^5 dr = \frac{1}{2a} 5! \, a^6 = 60 a^5
+    \frac{1}{a^4 \sqrt{48}} (24 a^5 - 60 a^5) = -3 \sqrt{3} a \\
+    \int Y^0_1(\theta, \phi)^* \cos(\theta) Y^0_0(\theta, \phi) d\Omega
+    = \int \sqrt{\frac{3}{4\pi}} \cos(\theta) \cos(\theta)  \sqrt{\frac{1}{4\pi}} d\Omega \\
+    = \frac{1}{\sqrt{3}} \int Y^0_1(\theta, \phi)^*  Y^0_1(\theta, \phi) d\Omega = \frac{1}{\sqrt{3}} \cdot 1 = \frac{1}{\sqrt{3}} \\
+    \implies \braket{20 || \hat{r} || 21} = -3 \sqrt{3} a \cdot \frac{1}{\sqrt{3}} = -3 a
+\end{lefteqs}
+
+We can calcualte the expectation value:
+\begin{lefteqs}
+    \braket{p} = \frac{e}{\sqrt{2}} \braket{21 || \hat{r} || 20} = \frac{e}{\sqrt{2}} (-3 a) = -\frac{3 e a}{\sqrt{2}}
 \end{lefteqs}
 
 
