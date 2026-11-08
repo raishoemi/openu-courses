@@ -455,4 +455,41 @@ Lastly, we'll verify $\braket{x}(t)$ with the Schrodinger picture:
 
 We reached an identical result in the Schrodinger picture as we did in the Heisenberg picture.
 
+\newpage
+
+\textbf{\large 4.}
+(Problem 6.31 from course book)
+
+First step would be compute $\Phi(p)$:
+\begin{lefteqs}
+    \Phi(p) = \braket{p | \psi} = \int_{-\infty}^{\infty} \braket{p | x} \braket{x | \psi} \, dx \\
+    \braket{x | \psi} = \psi(x) = \sqrt{\lambda} e^{-\lambda |x|} \\
+    \braket{p | x} = \braket{x | p}^* = f_p^*(x) = \frac{1}{\sqrt{2\pi\hbar}} e^{\frac{-i p x}{\hbar}} \\
+    \Phi(p) = \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^{\infty} e^{\frac{-i p x}{\hbar}} \sqrt{\lambda} e^{-\lambda |x|} \, dx \\
+    = \sqrt{\frac{\lambda}{2\pi\hbar}} \left[ \int_{-\infty}^{0}e^{\frac{-ipx}{\hbar}}e^{\lambda x} \, dx + \int_{0}^{\infty} e^{\frac{-ipx}{\hbar}} e^{-\lambda x} \, dx \right] \\
+    = \sqrt{\frac{\lambda}{2\pi\hbar}} \left[ \int_{-\infty}^{0} e^{\left(\frac{-ip}{\hbar} + \lambda \right)x} \, dx + \int_{0}^{\infty} e^{\left(\frac{ip}{\hbar} + \lambda \right)(-x)} \, dx \right] \\
+    = \sqrt{\frac{\lambda}{2\pi\hbar}} \left( \frac{1}{\frac{-ip}{\hbar} + \lambda} + \frac{1}{\frac{ip}{\hbar} + \lambda} \right)
+    = \sqrt{\frac{\lambda}{2\pi\hbar}} \left( \frac{\frac{ip}{\hbar} + \lambda + \frac{-ip}{\hbar} + \lambda}{\left(\frac{-ip}{\hbar} + \lambda\right)\left(\frac{ip}{\hbar} + \lambda\right)} \right) \\
+    = \sqrt{\frac{\lambda}{2\pi\hbar}} \left( \frac{2\lambda}{\lambda^2 + \frac{p^2}{\hbar^2}} \right) \\
+    \implies \Phi(p) = \sqrt{\frac{2}{\pi}} \cdot \frac{(\lambda \hbar)^{\frac{3}{2}}}{p^2 + (\hbar \lambda)^2}
+\end{lefteqs}
+
+Putting $\Phi(p)$ back into 6.81:
+
+\begin{lefteqs}
+    \hat{T}(a) \psi(x) = \int_{-\infty}^{\infty} e^{\frac{-iap}{\hbar}} \frac{1}{\sqrt{2\pi \hbar}} e^{\frac{ipx}{\hbar}} \sqrt{\frac{2}{\pi}} \cdot \frac{(\lambda \hbar)^{\frac{3}{2}}}{p^2 + (\hbar \lambda)^2} \, dp \\
+\end{lefteqs}
+
+We'll substitute $p=\hbar \lambda q$:
+\begin{lefteqs}
+    dp = \hbar \lambda \, dq \quad p^2 + (\hbar \lambda)^2 = (\hbar \lambda)^2 (q^2 + 1) \\
+    \frac{ip(x-a)}{\hbar} = iq\lambda(x-a) \\
+    \hat{T}(a) \phi(x) = \frac{\sqrt{\lambda}}{\pi} \int_{-\infty}^{\infty} \frac{e^{iq\lambda(x-a)}}{q^2 + 1} \, dq
+    = \frac{2\sqrt{\lambda}}{\pi} \int_{0}^{\infty} \frac{\cos(q\lambda(x-a))}{q^2 + 1} \, dq \quad \text{(known integral)} \\
+    = \frac{2\sqrt{\lambda}}{\pi} \cdot \frac{\pi}{2} e^{-\lambda |x-a|}
+    = \sqrt{\lambda} e^{-\lambda |x-a|} = \psi(x-a)
+\end{lefteqs}
+
+Therefore $\hat{T}(a)\psi(x) = \psi(x-a)$: the spectral definition from 6.81 translates $\psi$ by a.
+
 \end{document}
