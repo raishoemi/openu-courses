@@ -157,5 +157,76 @@ And again, since $B^{m+1}_l = A^m_l$, we can write the relation as:
 
 \newpage
 
+\textbf{\large 2.}
+(Problem 6.25 from course book, with $\psi=\frac{1}{\sqrt{2}} (\psi_{211} + \psi_{200})$)
+
+First, we'll express the value of the dipole moment for an electron in the hydrogen state in terms of a single reduced matrix element.
+
+\begin{lefteqs}
+    \braket{\psi | \hat{p}_e | \psi} = \frac{1}{\sqrt{2}} (\bra{211} + \bra{200}) \hat{p}_e \frac{1}{\sqrt{2}} (\ket{211} + \ket{200}) \\
+    = \frac{1}{2} \left( \braket{211 | \hat{p}_e | 211} + \braket{211 | \hat{p}_e | 200} + \braket{200 | \hat{p}_e | 211} + \braket{200 | \hat{p}_e | 200} \right) \\
+\end{lefteqs}
+
+According to Laporte's rule: $\braket{n' \ell' m' | \hat{p}_e | n \ell m} = 0$ if $\ell' + \ell$ is even.
+So only the cross-terms remain:
+\begin{lefteqs}
+    \braket{\psi | \hat{p}_e | \psi} = \frac{1}{2} \left( \braket{211 | \hat{p}_e | 200} + \braket{200 | \hat{p}_e | 211} \right)
+\end{lefteqs}
+
+We'll use the Wigner-Eckart Theorem selection rules for the vector operators to address the cross terms.
+
+\begin{lefteqs}
+    \hat{p}_e = -e \hat{r} \implies \braket{211 | \hat{p}_e | 200} = -e \braket{211 | \hat{r} | 200} \\ \\
+    \text{6.57: } \braket{n' \ell' m' | \hat{V}_z | n \ell m} = 0 \quad \text{unless m=m'} \\
+    \implies \braket{211 | \hat{r}_z | 200} = 0 \quad \text{because } 1 \neq 0 \\
+    \hat{r}_+ + \hat{r}_- = \hat{r}_x + i \hat{r}_y + \hat{r}_x - i \hat{r}_y = 2 \hat{r}_x \implies \hat{r}_x = \frac{1}{2} (\hat{r}_+ + \hat{r}_-) \\
+    \hat{r}_+ - \hat{r}_- = \hat{r}_x + i \hat{r}_y - (\hat{r}_x - i \hat{r}_y) = 2 i \hat{r}_y \implies \hat{r}_y = \frac{1}{2i} (\hat{r}_+ - \hat{r}_-) \\
+    \braket{211 | \hat{r}_x | 200} = \frac{1}{2} \left( \braket{211 | \hat{r}_+ | 200} + \braket{211 | \hat{r}_- | 200} \right) \\
+    \braket{211 | \hat{r}_y | 200} = \frac{1}{2i} \left( \braket{211 | \hat{r}_+ | 200} - \braket{211 | \hat{r}_- | 200} \right) \\
+\end{lefteqs}
+
+According to 6.58, $\braket{211|\hat{r}_-|200}=0$ since $m' \neq m-1 \quad (1 \neq 0-1)$
+
+Therefore:
+
+\begin{lefteqs}
+    \braket{211 | \hat{r}_x | 200} = \frac{1}{2} \braket{211 | \hat{r}_+ | 200} \\
+    \braket{211 | \hat{r}_y | 200} = \frac{1}{2i} \braket{211 | \hat{r}_+ | 200} \\
+    \text{6.59: } \braket{n' \ell' m' | \hat{r}_+ | n \ell m} = - \sqrt{2} C^{\ell 1 \ell'}_{m, 1, m+1} \braket{n \ell' || \hat{r} || n \ell} \\
+    \braket{211 | \hat{r}_+ | 200} = - \sqrt{2} C^{0 1 1}_{0 1 1} \braket{200 || \hat{r} || 211} \\\
+    C^{0 1 1}_{0 1 1} = 1 \quad \text{(Coupling with $\ell=0$ is trivial)} \\
+    \braket{211 | \hat{r}_+ | 200} = - \sqrt{2} \braket{21 || \hat{r} || 20} \\
+\end{lefteqs}
+
+To summarize what we concluded so far:
+
+\begin{lefteqs}
+    \braket{\hat{p}_e} = \braket{p}_x \hat{x} + \braket{p}_y \hat{y} + \braket{p}_z \hat{z} \\
+    \braket{p}_z = -e \braket{r}_z = -\frac{e}{2} \left( \braket{211 | \hat{r}_z | 200} + \braket{200 | \hat{r}_z | 211} \right) \\
+\end{lefteqs}
+Using Hermiticity of the position operator, $\braket{211|r_i|200} = \braket{200|r_i|211}^*$ for $i = x, y, z$.
+
+\begin{lefteqs}
+    \braket{211 | \hat{r}_z | 200} = 0 \implies \braket{200 | \hat{r}_z | 211} = 0 \implies \braket{p}_z = 0 \\ \\
+    \braket{\hat{p}_y} = -e \braket{r}_y = -\frac{e}{2} \left( \braket{211 | \hat{r}_y | 200} + \braket{200 | \hat{r}_y | 211} \right) \\
+    \braket{200 | \hat{r}_y | 211} = \frac{1}{2i} (\braket{200 | \hat{r}_+ | 211} - \braket{200 | \hat{r}_- | 211}) \\
+    \braket{200 | \hat{r}_y | 211} = -\frac{1}{2i} (\braket{200 | \hat{r}_- | 211}) \\
+    \implies \braket{p}_y = -\frac{e}{2} \left( \braket{211 | \hat{r}_y | 200} + \braket{200 | \hat{r}_y | 211} \right) = -\frac{e}{2} \left( \frac{1}{2i} \braket{211 | \hat{r}_+ | 200} - \frac{1}{2i} \braket{200 | \hat{r}_- | 211} \right) \\
+    = -\frac{e}{2} \frac{1}{2i} \left( \braket{211 | \hat{r}_+ | 200} - \braket{211 | \hat{r}_+ | 200} \right) = 0 \\
+    \text{Because } (\braket{200 | \hat{r}_- | 211}^* = \braket{211 | \hat{r}_+ | 200}) \\
+    \hat{p_x} = -e \braket{r}_x = -\frac{e}{2} \left( \braket{211 | \hat{r}_x | 200} + \braket{200 | \hat{r}_x | 211} \right) \\
+\end{lefteqs}
+Since $\hat{r}_x$ is Hermitian, $\braket{200 | \hat{r}_x | 211} = \braket{211 | \hat{r}_x | 200}^*$.
+
+And since $\braket{211|\hat{r}_x|200} = \frac{1}{2}\braket{211|\hat{r}_+|200} = -\frac{\sqrt{2}}{2} \braket{21 || \hat{r} || 20}$ is real, the terms are equal and:
+\begin{lefteqs}
+    \braket{p}_x = -\frac{e}{2} \left( 2 \cdot \left(-\frac{\sqrt{2}}{2} \braket{21 || \hat{r} || 20}\right) \right) = \frac{e}{\sqrt{2}} \braket{21 || \hat{r} || 20}
+\end{lefteqs}
+
+Lastly, we'll evaluate the expectation value, by first calculating one of the matrix elements.
+\begin{lefteqs}
+    \braket{210 | \hat{r}_x | 200} = 
+\end{lefteqs}
+
 
 \end{document}
