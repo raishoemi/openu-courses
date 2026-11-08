@@ -356,11 +356,103 @@ To find $B$, we'll use the derivative:
     \frac{d \hat{x}_H}{dt} \Big|_{t=0} = -A \omega \sin(0) + B \omega \cos(0) = B \omega = \frac{\hat{p}_H(0)}{m} = \frac{\hat{p}}{m} \\
     \implies B = \frac{\hat{p}}{m \omega}
 \end{lefteqs}
+
 And therefore:
+
 \begin{lefteqs}
     \hat{x}_H(t) = \hat{x} \cos(\omega t) + \frac{\hat{p}}{m \omega} \sin(\omega t) \\
     \hat{p}_H(t) = m \frac{d \hat{x}_H}{dt} = m \left( -\hat{x} \omega \sin(\omega t) + \frac{\hat{p}}{m \omega} \omega \cos(\omega t) \right) = -m \omega \hat{x} \sin(\omega t) + \hat{p} \cos(\omega t) \\
 \end{lefteqs}
 
+\hrule
+\vspace{2em}
+
+\textbf{(d)}
+
+\begin{lefteqs}
+    [\hat{x}_H(t), \hat{x}] = \frac{1}{m\omega} [\hat{p}, \hat{x}] \sin(\omega t) + [\hat{x}, \hat{x}] \cos(\omega t) \\
+    = \frac{1}{m\omega} (-i \hbar) \sin(\omega t) + 0 \cdot \cos(\omega t) \\
+    = \frac{-i \hbar}{m\omega} \sin(\omega t)
+\end{lefteqs}
+The commutator vanishes at times $t = \frac{n \pi}{\omega}$, where $n = 0, 1, 2, \dots$.
+
+\hrule
+\vspace{2em}
+
+\textbf{(e)}
+The generalized uncertainty principle is: $\sigma_A \sigma_B \geq \frac{1}{2} |\langle [\hat{A}, \hat{B}] \rangle|$
+
+We'll set $\hat{A} = \hat{x}_H(t)$ and $\hat{B} = \hat{x}_H(0)$
+
+\begin{lefteqs}
+    \sigma_{x(t)} \sigma_{x(0)} \geq \frac{1}{2} \left| \langle [\hat{x}_H(t), \hat{x}_H(0)] \rangle \right| \\
+\end{lefteqs}
+
+From part (d):
+\begin{lefteqs}
+    [\hat{x}_H(t), \hat{x}_H(0)] = [\hat{x}_H(t), \hat{x}] = \frac{-i \hbar}{m\omega} \sin(\omega t) \\
+\implies \left| \langle [\hat{x}_H(t), \hat{x}_H(0)] \rangle \right| = \frac{\hbar}{m\omega} |\sin(\omega t)| \\
+\end{lefteqs}
+
+And therefore:
+\begin{lefteqs}
+    \sigma_{x(t)} \sigma_{x(0)} \geq \frac{1}{2} \frac{\hbar}{m\omega} |\sin(\omega t)| \\
+\end{lefteqs}
+
+\hrule
+\vspace{2em}
+
+\textbf{(f)}
+In the Heisenberg picture the state is frozen at $\ket{\psi}$ and time dependence
+is encoded in the operators themselves: $\braket{x}(t) = \braket{\psi | \hat{x}_H(t) | \psi}$
+
+From part (c):
+
+\begin{lefteqs}
+    \hat{x}_H(t) = \frac{1}{m\omega} \hat{p} \sin(\omega t) + \hat{x} \cos(\omega t) \\
+    \braket{\psi | \hat{x}_H(t) | \psi} = \braket{\psi | \frac{1}{m\omega} \sin(\omega t) \hat{p} | \psi} + \braket{\psi | \hat{x} \cos(\omega t) | \psi} \\
+    = \frac{1}{m\omega} \sin(\omega t) \braket{\psi | \hat{p} | \psi} + \cos(\omega t) \braket{\psi | \hat{x} | \psi} \\
+\end{lefteqs}
+
+We we know:
+
+\begin{lefteqs}
+    \hat{x} = \frac{\hbar}{2m\omega} (\hat{a} + \hat{a}^\dagger) ,
+    \quad \hat{p} = i \sqrt{\frac{\hbar m \omega}{2}} (\hat{a}^\dagger - \hat{a}) \\
+    \psi = \frac{1}{\sqrt{2}} (\ket{0} + \ket{1}) ,
+    \quad \hat{a} \ket{\psi} = \frac{1}{\sqrt{2}} \ket{0} ,
+    \quad \hat{a}^\dagger \ket{\psi} = \frac{1}{\sqrt{2}} (\ket{1} + \sqrt{2} \ket{2}) \\
+    \braket{\psi | \hat{x} | \psi} = \frac{1}{2} \sqrt{\frac{\hbar}{2m\omega}} (\bra{0} + \bra{1})(\ket{0} + \ket{1} + \sqrt{2}\ket{2})
+    = \sqrt{\frac{\hbar}{2m\omega}} \\
+    \braket{\psi | \hat{p} | \psi} = \frac{1}{2} \cdot i \sqrt{\frac{\hbar m \omega}{2}} (\bra{0} + \bra{1})(\ket{1} + \sqrt{2}\ket{2} - \ket{0}) = 0 \\
+    \braket{x}(t) = \frac{1}{m\omega} \sin(\omega t) \cdot 0 + \cos(\omega t) \cdot \sqrt{\frac{\hbar}{2m\omega}} = \sqrt{\frac{\hbar}{2m\omega}} \cos(\omega t) \\
+\end{lefteqs}
+
+We'll find $\braket{p}(t)$ in the same manner:
+
+\begin{lefteqs}
+    \braket{p}(t) = \braket{\psi | \hat{p}_H(t) | \psi} \\
+\end{lefteqs}
+
+From part (c):
+
+\begin{lefteqs}
+    \hat{p}_H(t) = \hat{p} \cos(\omega t) - m \omega \hat{x} \sin(\omega t) \\
+    \braket{p}(t) = \cos(\omega t) \braket{\psi | \hat{p} | \psi} - m \omega \sin(\omega t) \braket{\psi | \hat{x} | \psi} \\
+    \braket{p}(t) = -m\omega \sin(\omega t) \sqrt{\frac{\hbar}{2m\omega}} = -\sin(\omega t) \sqrt{\frac{\hbar m \omega}{2}} \\
+\end{lefteqs}
+
+Lastly, we'll verify $\braket{x}(t)$ with the Schrodinger picture:
+
+\begin{lefteqs}
+    E_0 = \frac{1}{2} \hbar \omega , \quad E_1 = \frac{3}{2} \hbar \omega \\
+    \ket{\psi(t)} = \frac{1}{\sqrt{2}} (e^{\frac{-i\omega t}{2}} \ket{0} + e^{-i \frac{3\omega t}{2}} \ket{1}) \\
+    \braket{\psi(t) | \hat{x} | \psi(t)} =  \frac{1}{2} \left( \braket{0 | \hat{x} | 0} + e^{-i \omega t} \braket{0 | \hat{x} | 1} + e^{i \omega t} \braket{1 | \hat{x} | 0} + \braket{1 | \hat{x} | 1} \right) \\
+    \braket{0 | \hat{x} | 0} = 0 , \quad \braket{1 | \hat{x} | 1} = 0 , \quad \braket{0 | \hat{x} | 1} = \sqrt{\frac{\hbar}{2m\omega}} , \quad \braket{1 | \hat{x} | 0} = \sqrt{\frac{\hbar}{2m\omega}} \\
+    \braket{\psi(t) | \hat{x} | \psi(t)} = \frac{1}{2} \left( e^{-i \omega t} + e^{i \omega t} \right) \sqrt{\frac{\hbar}{2m\omega}} = \sqrt{\frac{\hbar}{2m\omega}} \cos(\omega t) \\
+    \implies \braket{x}(t) = \sqrt{\frac{\hbar}{2m\omega}} \cos(\omega t)
+\end{lefteqs}
+
+We reached an identical result in the Schrodinger picture as we did in the Heisenberg picture.
 
 \end{document}
