@@ -492,4 +492,177 @@ We'll substitute $p=\hbar \lambda q$:
 
 Therefore $\hat{T}(a)\psi(x) = \psi(x-a)$: the spectral definition from 6.81 translates $\psi$ by a.
 
+\newpage
+
+\textbf{\large 5.}
+(Problem 6.32 from course book)
+
+\textbf{(a)}
+
+\begin{lefteqs}
+    \text{4.29:} \quad \sigma_j \sigma_k = \delta_{jk} + i \sum_l \epsilon_{jkl} \sigma_l
+\end{lefteqs}
+Expanding both dot products in components:
+\begin{lefteqs}
+    (\vec{a} \cdot \vec{\sigma})(\vec{b} \cdot \vec{\sigma}) = \left( \sum_j a_j \sigma_j \right) \left( \sum_k b_k \sigma_k \right) = \sum_{j,k} a_j b_k \, \sigma_j \sigma_k \\
+    = \sum_{j,k} a_j b_k \left( \delta_{jk} + i \sum_l \epsilon_{jkl} \sigma_l \right) \\
+    = \sum_{j,k} a_j b_k \, \delta_{jk} + i \sum_{j,k,l} a_j b_k \, \epsilon_{jkl} \, \sigma_l
+\end{lefteqs}
+
+The first sum:
+
+\begin{lefteqs}
+    \sum_{j,k} a_j b_k \, \delta_{jk} = \sum_j a_j b_j = \vec{a} \cdot \vec{b}
+\end{lefteqs}
+
+I will now break down the expression:
+\begin{lefteqs}
+    i \sum_{j,k,l} a_j b_k \, \epsilon_{jkl} \, \sigma_l
+\end{lefteqs}
+The Levi-Civita symbol is zero if the same index appears twice, so for example if $l = z$:
+\begin{lefteqs}
+    j = x,\ k = y,\ l = z \Rightarrow \epsilon_{xyz} = +1 \\
+    j = y,\ k = x,\ l = z \Rightarrow \epsilon_{yxz} = -1
+\end{lefteqs}
+\begin{lefteqs}
+    \Rightarrow \sum_{j,k} a_j b_k \, \epsilon_{jkz} = a_x b_y - a_y b_x = (\vec{a} \times \vec{b})_z
+\end{lefteqs}
+Same thing for $l = x$ and $l = y$, and therefore:
+\begin{lefteqs}
+    i \sum_{j,k,l} a_j b_k \, \epsilon_{jkl} \, \sigma_l = i \sum_l (\vec{a} \times \vec{b})_l \, \sigma_l = i (\vec{a} \times \vec{b}) \cdot \vec{\sigma}
+\end{lefteqs}
+\begin{lefteqs}
+    \Rightarrow (\vec{a} \cdot \vec{\sigma})(\vec{b} \cdot \vec{\sigma}) = \vec{a} \cdot \vec{b} + i (\vec{a} \times \vec{b}) \cdot \vec{\sigma}
+\end{lefteqs}
+
+\hrule
+\vspace{2em}
+
+\textbf{(b)} \quad $\hat{S} = \frac{\hbar}{2} \vec{\sigma}$
+
+We need to show that:
+\begin{lefteqs}
+    \exp\left[ -i \frac{\varphi}{\hbar} \vec{n} \cdot \hat{S} \right] = \cos\left(\frac{\varphi}{2}\right) - i \sin\left(\frac{\varphi}{2}\right) \vec{n} \cdot \vec{\sigma}
+\end{lefteqs}
+Using part (a) with $\vec{a} = \vec{b} = \vec{n}$:
+\begin{lefteqs}
+    (\vec{n} \cdot \vec{\sigma})(\vec{n} \cdot \vec{\sigma}) = (\vec{n} \cdot \vec{\sigma})^2 = \vec{n} \cdot \vec{n} + i (\vec{n} \times \vec{n}) \cdot \vec{\sigma} = 1 + 0 = 1
+\end{lefteqs}
+\begin{lefteqs}
+    \exp\left[ -i \frac{\varphi}{\hbar} \vec{n} \cdot \hat{S} \right] = \exp\left[ -i \frac{\varphi}{\hbar} \vec{n} \cdot \frac{\hbar}{2} \vec{\sigma} \right] = \exp\left[ -i \frac{\varphi}{2} \vec{n} \cdot \vec{\sigma} \right]
+\end{lefteqs}
+\begin{lefteqs}
+    \forall k \in \mathbb{N}, \quad (\vec{n} \cdot \vec{\sigma})^{2k} = 1, \quad (\vec{n} \cdot \vec{\sigma})^{2k+1} = \vec{n} \cdot \vec{\sigma}
+\end{lefteqs}
+\begin{lefteqs}
+    e^{-i \frac{\varphi}{2} \vec{n} \cdot \vec{\sigma}} = \sum_{m=0}^{\infty} \frac{\left(-i \frac{\varphi}{2}\right)^m (\vec{n} \cdot \vec{\sigma})^m}{m!}
+\end{lefteqs}
+For even $m$: $m = 2k$, $(-i)^{2k} = (-1)^k$ \\
+For odd $m$: $m = 2k+1$, $(-i)^{2k+1} = -i(-1)^k$ \\
+We'll split the infinite sum by even and odd:
+\begin{lefteqs}
+    = \sum_k \frac{(-1)^k \left(\frac{\varphi}{2}\right)^{2k}}{(2k)!} - i \sum_k \frac{(-1)^k \left(\frac{\varphi}{2}\right)^{2k+1}}{(2k+1)!} (\vec{n} \cdot \vec{\sigma}) \\
+    = \cos\left(\frac{\varphi}{2}\right) - i \sin\left(\frac{\varphi}{2}\right) (\vec{n} \cdot \vec{\sigma})
+\end{lefteqs}
+
+\hrule
+\vspace{2em}
+
+\textbf{(c)} \quad $n_x = \sin\theta \cos\phi, \quad n_y = \sin\theta \sin\phi, \quad n_z = \cos\theta$
+\begin{lefteqs}
+    \sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad
+    \sigma_y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad
+    \sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+\end{lefteqs}
+\begin{lefteqs}
+    \vec{n} \cdot \vec{\sigma} = \sin\theta \cos\phi \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+    + \sin\theta \sin\phi \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
+    + \cos\theta \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \\
+    = \begin{pmatrix} \cos\theta & \sin\theta \left( \cos\phi - i \sin\phi \right) \\ \sin\theta \left( \cos\phi + i \sin\phi \right) & -\cos\theta \end{pmatrix} \\
+    = \begin{pmatrix} \cos\theta & \sin\theta \, e^{-i\phi} \\ \sin\theta \, e^{i\phi} & -\cos\theta \end{pmatrix}
+\end{lefteqs}
+\begin{lefteqs}
+    R_{\vec{n}} = \cos\left(\frac{\varphi}{2}\right) \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+    - i \sin\left(\frac{\varphi}{2}\right) \begin{pmatrix} \cos\theta & \sin\theta \, e^{-i\phi} \\ \sin\theta \, e^{i\phi} & -\cos\theta \end{pmatrix}
+\end{lefteqs}
+
+\hrule
+\vspace{2em}
+
+\textbf{(d)} \quad A matrix $U$ is unitary if $U^\dagger U = I$.
+
+I'll denote $M = \vec{n} \cdot \vec{\sigma}$. From (c), $M$ is Hermitian ($M^\dagger = M$), and from (b), $M^2 = I$. Then:
+\begin{lefteqs}
+    R_{\vec{n}}^\dagger R_{\vec{n}} =
+    \left[ \cos\left(\frac{\varphi}{2}\right) \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+    + i \sin\left(\frac{\varphi}{2}\right) \begin{pmatrix} \cos\theta & \sin\theta \, e^{-i\phi} \\ \sin\theta \, e^{i\phi} & -\cos\theta \end{pmatrix} \right] \\
+    \cdot \left[ \cos\left(\frac{\varphi}{2}\right) \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+    - i \sin\left(\frac{\varphi}{2}\right) \begin{pmatrix} \cos\theta & \sin\theta \, e^{-i\phi} \\ \sin\theta \, e^{i\phi} & -\cos\theta \end{pmatrix} \right] \\
+    = \cos^2\left(\frac{\varphi}{2}\right) I
+    - i \sin\left(\frac{\varphi}{2}\right)\cos\left(\frac{\varphi}{2}\right) M
+    + i \sin\left(\frac{\varphi}{2}\right)\cos\left(\frac{\varphi}{2}\right) M
+    + \sin^2\left(\frac{\varphi}{2}\right) M^2 \\
+    = \cos^2\left(\frac{\varphi}{2}\right) I + \sin^2\left(\frac{\varphi}{2}\right) I = I
+\end{lefteqs}
+
+\hrule
+\vspace{2em}
+
+\textbf{(e)} \quad $R$ is a rotation by angle $\varphi$ about the $z$-axis.
+So $\vec{n} = \hat{z} \Rightarrow \theta = 0$. Plugging this into (c):
+\begin{lefteqs}
+    R = R_z = \cos\left(\frac{\varphi}{2}\right) \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+    - i \sin\left(\frac{\varphi}{2}\right) \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \\
+    \Rightarrow R = \begin{pmatrix} \cos\left(\frac{\varphi}{2}\right) - i \sin\left(\frac{\varphi}{2}\right) & 0 \\ 0 & \cos\left(\frac{\varphi}{2}\right) + i \sin\left(\frac{\varphi}{2}\right) \end{pmatrix}
+    = \begin{pmatrix} e^{-i\frac{\varphi}{2}} & 0 \\ 0 & e^{i\frac{\varphi}{2}} \end{pmatrix}
+\end{lefteqs}
+\begin{lefteqs}
+    R^\dagger = \begin{pmatrix} e^{i\frac{\varphi}{2}} & 0 \\ 0 & e^{-i\frac{\varphi}{2}} \end{pmatrix}
+\end{lefteqs}
+\begin{lefteqs}
+    \hat{S}_x = \frac{\hbar}{2} \sigma_x = \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+\end{lefteqs}
+\begin{lefteqs}
+    \hat{S}_x' = \hat{R}^\dagger \hat{S}_x \hat{R}
+    = \begin{pmatrix} e^{i\frac{\varphi}{2}} & 0 \\ 0 & e^{-i\frac{\varphi}{2}} \end{pmatrix}
+    \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+    \begin{pmatrix} e^{-i\frac{\varphi}{2}} & 0 \\ 0 & e^{i\frac{\varphi}{2}} \end{pmatrix} \\
+    = \frac{\hbar}{2} \begin{pmatrix} e^{i\frac{\varphi}{2}} & 0 \\ 0 & e^{-i\frac{\varphi}{2}} \end{pmatrix}
+    \begin{pmatrix} 0 & e^{i\frac{\varphi}{2}} \\ e^{-i\frac{\varphi}{2}} & 0 \end{pmatrix}
+    = \frac{\hbar}{2} \begin{pmatrix} 0 & e^{i\varphi} \\ e^{-i\varphi} & 0 \end{pmatrix}
+\end{lefteqs}
+\begin{lefteqs}
+    \hat{S}_x' = \frac{\hbar}{2} \begin{pmatrix} 0 & \cos\varphi + i \sin\varphi \\ \cos\varphi - i \sin\varphi & 0 \end{pmatrix}
+    = \cos\varphi \, \hat{S}_x - \sin\varphi \, \hat{S}_y
+\end{lefteqs}
+
+\hrule
+\vspace{2em}
+
+\textbf{(f)} \quad For a $\pi$ rotation around the $x$-axis:
+\begin{lefteqs}
+    \theta = \frac{\pi}{2}, \quad \phi = 0, \quad \varphi = \pi
+\end{lefteqs}
+\begin{lefteqs}
+    R_x(\pi) = \cos\left(\frac{\pi}{2}\right) \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+    - i \sin\left(\frac{\pi}{2}\right) \begin{pmatrix} \cos\left(\frac{\pi}{2}\right) & \sin\left(\frac{\pi}{2}\right) \\ \sin\left(\frac{\pi}{2}\right) & -\cos\left(\frac{\pi}{2}\right) \end{pmatrix} \\
+    = -i \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+    = \begin{pmatrix} 0 & -i \\ -i & 0 \end{pmatrix} = -i \sigma_x
+\end{lefteqs}
+\begin{lefteqs}
+    R_x(\pi) \chi_+ = \begin{pmatrix} 0 & -i \\ -i & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+    = \begin{pmatrix} 0 \\ -i \end{pmatrix} = -i \begin{pmatrix} 0 \\ 1 \end{pmatrix} = -i \chi_-
+\end{lefteqs}
+
+\hrule
+\vspace{2em}
+
+\textbf{5.(g)} \quad We know $R_z(\varphi)$ from part (e). Plugging in $\varphi = 2\pi$:
+\begin{lefteqs}
+    R_z(2\pi) = \begin{pmatrix} e^{-i\pi} & 0 \\ 0 & e^{i\pi} \end{pmatrix}
+    = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} = -I
+\end{lefteqs}
+This is surprising because I expected a $2\pi$ rotation to bring the state back to its original state.
+In this case, however, the $2\pi$ rotation flips the sign of the spinor, whilst a $4\pi$ rotation would have been a rotation that brings the state back to its original state.
+    
 \end{document}
