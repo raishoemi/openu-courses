@@ -250,6 +250,296 @@ The other two eigenvalues found in part (a) are:
 
 $E_+$ and $E_-$ are the eigenvalues expanded to second roder in $\lambda$.
 
+From part a the eigenvectors of $E_\pm$ have the form (a,a,c) where $c=\frac{2\lambda a}{E}$, which is $(1,1,\frac{2\lambda}{E_\pm})$
+
+\begin{lefteqs}
+    |\lambda| \ll |\Delta| \implies E_\pm \approx (1,1,\frac{2\lambda}{\Delta}) \approx (1,1,0)
+\end{lefteqs}
+
+Normalized, that's the good state $\frac{1}{\sqrt{2}}(e_1 + e_2)$
+
+\begin{lefteqs}
+    E_- \approx (1,1, \frac{2\lambda}{\frac{-2\lambda^2}{\Delta}}) = (1,1, -\frac{\Delta}{\lambda})
+    = -\frac{\Delta}{\lambda} (-\frac{-\lambda}{\Delta}, -\frac{-\lambda}{\Delta}, 1) \approx -\frac{-\Delta}{\lambda} (0,0,1)
+\end{lefteqs}
+
+So $E_+$ eigenstate is $\frac{1}{\sqrt{2}}(e_1 + e_2)$ and $E_-$ eigenstate is $e_3$.
+
+For $E_+$, the $H^0$ eigenvalues for the eigenstates $e_1$ and $e_2$ are $\Delta$.
+According to part (c) the first order correction $+\lambda$ correspondsd to the god state $\frac{1}{\sqrt{2}}(e_1 + e_2)$
+, so the first order energy is $\Delta + \lambda$, which matches the result we got, up to the first order.
+
+For $E_-$, the same process gives $H^0$ eigenvalue 0, and from part (d) first order correction 0,
+and second order correction equal $-\frac{2\lambda^2}{\Delta}$ which is equal to $E_+$ up to the second order expansion in $\lambda$.
+
+\newpage
+
+\textbf{\large 2.}
+(Problem 7.34 from course book)
+
+\begin{lefteqs}
+    P_D = \ket{\psi^0_a} \bra{\psi^0_a} + \ket{\psi^0_b} \bra{\psi^0_b} \\
+    H = H^0 + H' = \tilde{H}^0 + \tilde{H}' \\
+    \tilde{H}^0 = H^0 + P_D H' P_D \\
+    \tilde{H}' = H' - P_D H' P_D \\
+\end{lefteqs}
+
+\textbf{(a.i)}
+given eigenstate $\psi^0_n$ of $H^0$, where $n\neq a,b$
+
+\begin{lefteqs}
+    H^0 \psi^0_n = E^0_n \psi^0_n \\
+    \tilde{H}^0 \psi^0_n = (H^0 + P_D H' P_D) \psi^0_n = H^0 \psi^0_n + P_D H' P_D \psi^0_n  \\
+    P_D \psi^0_n = \ket{\psi^0_a} \bra{\psi^0_a} \psi^0_n + \ket{\psi^0_b} \bra{\psi^0_b} \psi^0_n \\
+\end{lefteqs}
+
+Because $\psi^0_n$ is an eigenstate of an Hermitian operator with a different eigenvalue than $\psi^0_n$ and $\psi^0_b$,
+they are orthogonal
+
+\begin{lefteqs}
+    \implies P_D \psi^0_n = 0 \implies P_D H' P_D \psi^0_n = 0 \\
+    \implies \tilde{H}^0 \psi^0_n = E^0_n \psi^0_n
+\end{lefteqs}
+
+And so any such $\psi^0_n$ eigenstate is also an eigenstate of $\tilde{H}^0$ with the same eigenvalue.
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{(a.ii)}
+
+\begin{lefteqs}
+    \ket{\psi^0} = \alpha \ket{\psi^0_a} + \beta \ket{\psi^0_b} \\
+    \tilde{H}^0 \ket{\psi^0} = H^0 \ket{\psi^0} + P_D H' P_D \ket{\psi^0} \\
+    H^0 \ket{\psi^0} = \alpha H^0 \ket{\psi^0_a} + \beta H^0 \ket{\psi^0_b} = \alpha E^0 \ket{\psi^0_a} + \beta E^0 \ket{\psi^0_b} = E^0 \ket{\psi^0} \\
+    P_D \ket{\psi^0} = \ket{\psi^0_a} \braket{\psi^0_a | \psi^0} + \ket{\psi^0_b} \braket{\psi^0_b | \psi^0} \\
+    \quad = \alpha \ket{\psi^0_a} + \beta \ket{\psi^0_b} \\
+    H' P_D \ket{\psi^0} = \alpha H' \ket{\psi^0_a} + \beta H' \ket{\psi^0_b} \\
+    P_D H' P_D \ket{\psi^0} = \ket{\psi^0_a} \bra{\psi^0_a} \left( \alpha H' \ket{\psi^0_a} + \beta H' \ket{\psi^0_b} \right) \\
+    \quad + \ket{\psi^0_b} \bra{\psi^0_b} \left( \alpha H' \ket{\psi^0_a} + \beta H' \ket{\psi^0_b} \right) \\
+    = \alpha \ket{\psi^0_a} \braket{\psi^0_a | H' | \psi^0_a} + \beta \ket{\psi^0_a} \braket{\psi^0_a | H' | \psi^0_b} \\
+    \quad + \beta \ket{\psi^0_b} \braket{\psi^0_b | H' | \psi^0_b} + \alpha \ket{\psi^0_b} \braket{\psi^0_b | H' | \psi^0_a} \\
+    \left( \text{(7.28)} \quad W_{ij} = \braket{\psi^0_i | H' | \psi^0_j} \right) \\
+    = \alpha \cdot W_{aa} \ket{\psi^0_a} + \beta W_{ab} \ket{\psi^0_a} + \beta W_{bb} \ket{\psi^0_b} + \alpha W_{ba} \ket{\psi^0_b} \\
+    = \left( \alpha W_{aa} + \beta W_{ab} \right) \ket{\psi^0_a} + \left( \beta W_{bb} + \alpha W_{ba} \right) \ket{\psi^0_b}
+\end{lefteqs}
+
+And according to 7.30:
+
+\begin{lefteqs}
+    = \left( E^1_{\pm} \cdot \alpha \right) \ket{\psi^0_a} + \left( E^1_{\pm} \cdot \beta \right) \ket{\psi^0_b} \\
+    = E^1_{\pm} \left( \alpha \ket{\psi^0_a} + \beta \ket{\psi^0_b} \right) = E^1_{\pm} \ket{\psi^0}
+\end{lefteqs}
+
+\begin{lefteqs}
+    \implies \tilde{H}^0 \ket{\psi^0} = \left( E^0 + E^1_{\pm} \right) \ket{\psi^0}
+\end{lefteqs}
+
+Therefore, the good states $\ket{\psi^0}$ are eigenstates of $\tilde{H}^0$ with energies $E^0 + E^1_{\pm}$
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{(b)}
+\begin{lefteqs}
+    \text{(7.15)} \quad E^2_n = \displaystyle \sum_{m \neq n} \frac{|\braket{\psi^0_m | H' | \psi^0_n}|^2}{E^0_n - E^0_m} \\
+    E_{\pm} \approx \left( E^0 + E^1_{\pm} \right) + \braket{\psi^0_{\pm} | \tilde{H}' | \psi^0_{\pm}} + \displaystyle \sum_{m \neq \pm} \frac{|\braket{\psi^0_m | \tilde{H}' | \psi^0_{\pm}}|^2}{\left( E_0 + E^1_{\pm} \right) - \tilde{E}^0_m} \\
+    \braket{\psi^0_{\pm} | \tilde{H} | \psi^0_{\pm}} = \braket{\psi^0_{\pm} | H' | \psi^0_{\pm}} - \braket{\psi^0_{\pm} | P_D H' P_D | \psi^0_{\pm}} \\
+    \left( \bra{\psi^0_{\pm}} P_D \right) H' \left( P_D \ket{\psi^0_{\pm}} \right) = \braket{\psi^0_{\pm} | H' | \psi^0_{\pm}}
+\end{lefteqs}
+
+(since $\ket{\psi^0_{\pm}}$ is a state in the degenerate subspace that $P_D$ projects onto, $P_D \ket{\psi^0_{\pm}} = \ket{\psi^0_{\pm}}$)
+
+\begin{lefteqs}
+    \implies \braket{\psi^0_{\pm} | \tilde{H} | \psi^0_{\pm}} = \braket{\psi^0_{\pm} | H' | \psi^0_{\pm}} - \braket{\psi^0_{\pm} | H' | \psi^0_{\pm}} = 0
+\end{lefteqs}
+
+We'll now address $E^2_{\pm}$,
+
+\begin{lefteqs}
+    m = \mp : \quad \braket{\psi^0_m | \tilde{H}' | \psi^0_{\pm}} = \braket{\psi^0_{\mp} | H' | \psi^0_{\pm}} - \braket{\psi^0_{\mp} | P_D H' P_D | \psi^0_{\pm}}
+\end{lefteqs}
+
+Again, both $\psi^0_{\pm}$ and $\psi^0_{\mp}$ are in the degenerate subspace so each $P_D$ acts like an identity, and the terms cancel: $\braket{\psi^0_m | \tilde{H}' | \psi^0_{\pm}} = 0$
+
+\begin{lefteqs}
+    E_0 + E^1_{\pm} - E_0 - E^1_{\mp} = E^1_{\pm} - E^1_{\mp} \neq 0 \quad (E_{\pm} \neq E_{\mp})
+\end{lefteqs}
+
+\begin{lefteqs}
+    m = n : \quad \braket{\psi^0_n | \tilde{H}' | \psi^0_{\pm}} = \braket{\psi^0_n | H' | \psi^0_{\pm}} + \braket{\psi^0_n | P_D H' P_D | \psi^0_{\pm}} \\
+    = \braket{\psi^0_n | H' | \psi^0_{\pm}} + \left( \bra{\psi^0_n} P_D \right) H' \left( P_D \ket{\psi^0_{\pm}} \right) \\
+    \bra{\psi^0_n} P_D = \braket{\psi^0_n | \psi^0_a} \bra{\psi^0_b} + \braket{\psi^0_n | \psi^0_b} \bra{\psi^0_b} = 0 \\
+    \implies E^2_{\pm} = \displaystyle \sum_{n \neq a,b} \frac{|\braket{\psi^0_n | H' | \psi^0_{\pm}}|^2}{E_0 + E^1_{\pm} - E^0_n} \\
+    \implies E_{\pm} = E^0 + E^1_{\pm} + \displaystyle \sum_{n \neq a,b} \frac{|\braket{\psi^0_n | H' | \psi^0_{\pm}}|^2}{E_0 + E^1_{\pm} - E^0_n}
+\end{lefteqs}
+
+\newpage
+
+\textbf{\large 3.}
+
+The fine-structure correction is given in eq. 7.68:
+
+\begin{lefteqs}
+    E^1_{fs} = \frac{(E_n)^2}{2mc^2} \left( 3 - \frac{4n}{j + \frac{1}{2}} \right)
+\end{lefteqs}
+
+For $n=2$, the allowed $\ell$ values are $\ell=0$ and $\ell=1$
+
+\begin{lefteqs}
+    j = \ell \pm \frac{1}{2} \quad \text{(spin can point with or against orbit)}
+\end{lefteqs}
+
+So $\ell=0$ allows $j=\frac{1}{2}$, and $\ell=1$ allows $j=\frac{1}{2}$ and $j=\frac{3}{2}$
+
+Since the fine structure correction depends only on $n$ and $j$, the energy level $n=2$ splits into 2 energy levels with $j=\frac{1}{2}$ and $j=\frac{3}{2}$
+
+\begin{lefteqs}
+    E_2 = -\frac{13.6}{4} = -3.4 \text{ eV} \\
+    E^1_{fs} = \frac{(-3.4)^2}{2mc^2} \left( 3 - \frac{4 \cdot 2}{j + \frac{1}{2}} \right)
+\end{lefteqs}
+
+For the states $n=2, \ell=0, j=\frac{1}{2}$ and $n=2, \ell=1, j=\frac{1}{2}$:
+
+\begin{lefteqs}
+    E^1_{fs} = \frac{-28.9}{mc^2} = \frac{-28.9}{5.11 \cdot 10^5} = -5.65 \cdot 10^{-5} \text{ eV}
+\end{lefteqs}
+
+For the state $n=2, \ell=1, j=\frac{3}{2}$:
+
+\begin{lefteqs}
+    E^1_{fs} = \frac{-5.78}{mc^2} = -1.13 \cdot 10^{-5} \text{ eV}
+\end{lefteqs}
+
+\newpage
+
+\textbf{\large 4.}
+(Problem 7.38 from course book)
+
+\begin{lefteqs}
+    \text{(7.9)} \quad E^1_n = \braket{\psi^0_n | H' | \psi^0_n}
+\end{lefteqs}
+
+\textbf{(a)}
+
+Given Hamiltonian $H(\lambda)$ and $E_n(\lambda)$ its eigenvalues and $\psi_n(\lambda)$ its eigenfunctions.
+
+We need to prove: $\dfrac{\partial E_n}{\partial \lambda} = \Braket{\psi_n | \dfrac{\partial H}{\partial \lambda} | \psi_n}$
+
+\begin{lefteqs}
+    H \ket{\psi_n} = E_n \ket{\psi_n} \\
+    \dfrac{\partial H}{\partial \lambda} \ket{\psi_n} + H \dfrac{\partial \ket{\psi_n}}{\partial \lambda}
+    = \dfrac{\partial E_n}{\partial \lambda} \ket{\psi_n} + E_n \dfrac{\partial \ket{\psi_n}}{\partial \lambda} \\
+    \Braket{\psi_n | \dfrac{\partial H}{\partial \lambda} | \psi_n} + \bra{\psi_n} H \dfrac{\partial \ket{\psi_n}}{\partial \lambda}
+    = \Braket{\psi_n | \dfrac{\partial E_n}{\partial \lambda} | \psi_n} + \bra{\psi_n} E_n \dfrac{\partial \ket{\psi_n}}{\partial \lambda} \\
+    \Braket{\psi_n | \dfrac{\partial H}{\partial \lambda} | \psi_n} + \left( \bra{\psi_n} H \right) \dfrac{\partial \ket{\psi_n}}{\partial \lambda}
+    = \Braket{\psi_n | \dfrac{\partial E_n}{\partial \lambda} | \psi_n} + E_n \bra{\psi_n} \dfrac{\partial \ket{\psi_n}}{\partial \lambda}
+\end{lefteqs}
+
+And since $H$ is Hermitian (so $E_n$ is real):
+
+\begin{lefteqs}
+    H \ket{\psi_n} = E_n \ket{\psi_n} \implies \bra{\psi_n} H = E_n \bra{\psi_n} \implies \left( \bra{\psi_n} H \right) \dfrac{\partial \ket{\psi_n}}{\partial \lambda} = E_n \bra{\psi_n} \dfrac{\partial \ket{\psi_n}}{\partial \lambda}
+\end{lefteqs}
+
+Also, since $\dfrac{\partial E_n}{\partial \lambda}$ is a scalar: $\Braket{\psi_n | \dfrac{\partial E_n}{\partial \lambda} | \psi_n} = \dfrac{\partial E_n}{\partial \lambda} \braket{\psi_n | \psi_n} = \dfrac{\partial E_n}{\partial \lambda}$
+
+And so we get $\dfrac{\partial E_n}{\partial \lambda} = \Braket{\psi_n | \dfrac{\partial H}{\partial \lambda} | \psi_n}$
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{(b)}
+For 1D harmonic oscillator: $H = \dfrac{p^2}{2m} + \dfrac{1}{2} m \omega^2 x^2$
+
+\begin{lefteqs}
+    E_n = \left( n + \frac{1}{2} \right) \hbar \omega \\
+    \lambda = \omega : \quad \frac{\partial E_n}{\partial \omega} = \left( n + \frac{1}{2} \right) \hbar
+    \quad , \quad
+    \frac{\partial H}{\partial \omega} = m \omega x^2 = \frac{2}{\omega} \cdot \frac{1}{2} m \omega^2 x^2 = \frac{2V}{\omega}
+\end{lefteqs}
+
+Applying Feynman-Hellmann:
+
+\begin{lefteqs}
+    \left( n + \frac{1}{2} \right) \hbar = \left\langle \frac{2V}{\omega} \right\rangle = \frac{2}{\omega} \langle V \rangle
+    \implies \langle V \rangle = \frac{1}{2} \left( n + \frac{1}{2} \right) \hbar \omega = \frac{E_n}{2} \\
+    \lambda = \hbar : \quad \frac{\partial E_n}{\partial \hbar} = \left( n + \frac{1}{2} \right) \omega
+\end{lefteqs}
+
+\begin{lefteqs}
+    \text{Since } \hat{p} = -i \hbar \frac{\partial}{\partial x} \implies p^2 = -\hbar^2 \frac{d^2}{dx^2}
+    \implies H = \left( -\frac{\hbar^2}{2m} \right) \frac{d^2}{dx^2} + \frac{1}{2} m \omega^2 x^2 \\
+    \frac{\partial H}{\partial \hbar} = \left( \frac{-\hbar}{m} \right) \cdot \frac{d^2}{dx^2}
+    = \frac{2}{\hbar} \cdot \frac{-\hbar^2}{2m} \cdot \frac{d^2}{dx^2} = \frac{2}{\hbar} \cdot T
+\end{lefteqs}
+
+Applying Feynman-Hellmann:
+
+\begin{lefteqs}
+    \left( n + \frac{1}{2} \right) \omega = \left\langle \frac{2}{\hbar} T \right\rangle = \frac{2}{\hbar} \langle T \rangle
+    \implies \langle T \rangle = \frac{1}{2} \left( n + \frac{1}{2} \right) \omega \hbar = \frac{E_n}{2} \\
+    \lambda = m : \quad \frac{\partial E_n}{\partial m} = 0
+    \quad , \quad
+    \frac{\partial H}{\partial m} = \frac{-p^2}{2m^2} + \frac{1}{2} \omega^2 x^2
+    = \frac{1}{m} \left( \frac{-p^2}{2m} + \frac{1}{2} m \omega^2 x^2 \right) \\
+    \quad = \frac{1}{m} \left( V - T \right) \\
+    0 = \left\langle \frac{1}{m} (V - T) \right\rangle = \frac{1}{m} \left( \langle V \rangle - \langle T \rangle \right)
+    \implies \langle V \rangle = \langle T \rangle
+\end{lefteqs}
+
+Problem 2.12 gives $\langle T \rangle = \frac{1}{2} \left( n + \frac{1}{2} \right) \hbar \omega = \frac{E_n}{2}$, as we just got.
+
+The virial theorem (Problem 3.37) finds that $\langle V \rangle = \langle T \rangle$, just as we got in this problem.
+
+\newpage
+
+\textbf{\large 5.}
+(Problem 7.42 from course book)
+
+\textbf{(a)}
+Equation 4.53 gives the effective Hamiltonian for the radial wave functions:
+
+\begin{lefteqs}
+    H = -\frac{\hbar^2}{2m} \cdot \frac{d^2}{dr^2} + \frac{\hbar^2}{2m} \cdot \frac{\ell(\ell+1)}{r^2} - \frac{e^2}{4 \pi \epsilon_0} \cdot \frac{1}{r}
+\end{lefteqs}
+
+And equation 4.70 gives the eigenvalues:
+
+\begin{lefteqs}
+    E_n = -\frac{m e^4}{32 \pi^2 \epsilon_0^2 \hbar^2 (N + \ell)^2}
+\end{lefteqs}
+
+We'll use $\lambda = e$ in the Feynman-Hellmann theorem.
+
+\begin{lefteqs}
+    \frac{\partial E_n}{\partial e} = -\frac{m e^3}{8 \pi^2 \epsilon_0^2 \hbar^2 (N + \ell)^2} \\
+    \frac{\partial H}{\partial e} = -\frac{e}{2 \pi \epsilon_0} \cdot \frac{1}{r} \\
+    -\frac{m e^3}{8 \pi^2 \epsilon_0^2 \hbar^2 (N + \ell)^2} = \left\langle \frac{-e}{2 \pi \epsilon_0} \cdot \frac{1}{r} \right\rangle = \frac{-e}{2 \pi \epsilon_0} \left\langle \frac{1}{r} \right\rangle \\
+    \left\langle \frac{1}{r} \right\rangle = \frac{m e^2}{4 \pi \epsilon_0 \hbar^2 (N + \ell)^2} = \frac{1}{(N + \ell)^2 a} = \frac{1}{n^2 a}
+\end{lefteqs}
+
+This result agrees with 7.56
+
+\vspace{3em}
+\hrule
+\vspace{2em}
+
+\textbf{(b)}
+Using $\lambda = \ell$:
+
+\begin{lefteqs}
+    \frac{\partial E_n}{\partial \ell} = \frac{m e^4}{16 \pi^2 \epsilon_0^2 \hbar^2 (N + \ell)^3} \\
+    \frac{\partial H}{\partial \ell} = \frac{\hbar^2}{2m} \cdot \frac{1}{r^2} \left( \ell + 1 + \ell \right) = \frac{\hbar^2}{2m} \cdot \frac{2\ell + 1}{r^2} \\
+    \frac{m e^4}{16 \pi^2 \epsilon_0^2 \hbar^2 (N + \ell)^3} = \frac{\hbar^2 \left( \ell + \frac{1}{2} \right)}{m} \left\langle \frac{1}{r^2} \right\rangle \\
+    \implies \left\langle \frac{1}{r^2} \right\rangle = \left( \frac{m e^2}{4 \pi \epsilon_0 \hbar^2} \right)^2 \cdot \frac{1}{(N + \ell)^3} \cdot \frac{1}{\ell + \frac{1}{2}} \\
+    \implies \left\langle \frac{1}{r^2} \right\rangle = \frac{1}{n^3 \left( \ell + \frac{1}{2} \right) a^2}
+\end{lefteqs}
+
+This result agrees with 7.57.
 
 
 \end{document}
